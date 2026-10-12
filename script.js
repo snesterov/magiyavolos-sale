@@ -1233,6 +1233,7 @@
       duration: '12 СЕК',
       title: 'Команда',
       descr: 'Мастера и технологи фабрики «Магия Волос» за отбором и контролем донорских волос.',
+      btnText: 'Смотреть видео',
       poster: 'https://kinescopecdn.net/be3501b7-76a0-44cc-b5a2-bf1ab144d162/posters/5cdb6dc7-7552-4d4f-8b1f-51b0003489b4/019e6de2-0bda-7a8d-b984-5519d76a7f17.jpg'
     }
   ];
@@ -1441,7 +1442,7 @@
                     <h3 class="mv-lesson-card-title">${item.title}</h3>
                     <p class="mv-lesson-card-descr">${item.descr}</p>
                     <div class="mv-lesson-card-action">
-                      <span>Смотреть урок</span>
+                      <span>${item.btnText || 'Смотреть урок'}</span>
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
                     </div>
                   </div>
