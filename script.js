@@ -1029,6 +1029,129 @@
         box-shadow: 0 0 16px rgba(239, 68, 68, 0.4) !important;
       }
 
+            /* МАСТЕРАМ & ОПТ (ПРЕМИУМ ДИЗАЙН 01 02 03) */
+      .mv-masters-section {
+        padding: 100px 0;
+        background: radial-gradient(circle at 50% 30%, rgba(197, 155, 109, 0.09) 0%, transparent 70%);
+        border-top: 1px solid var(--mv-border);
+        position: relative;
+      }
+      .mv-masters-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 28px;
+        align-items: stretch;
+      }
+      .mv-masters-card {
+        background: linear-gradient(165deg, rgba(26, 21, 18, 0.92) 0%, rgba(14, 11, 9, 0.98) 100%);
+        border: 1px solid var(--mv-border);
+        border-radius: 24px;
+        padding: 38px 30px 32px;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        backdrop-filter: blur(14px);
+      }
+      .mv-masters-card:hover {
+        transform: translateY(-6px);
+        border-color: var(--mv-border-active);
+        box-shadow: 0 16px 45px rgba(0, 0, 0, 0.8), 0 0 30px rgba(197, 155, 109, 0.2);
+      }
+      .mv-masters-card--featured {
+        border-color: rgba(229, 197, 158, 0.55);
+        background: linear-gradient(165deg, rgba(34, 26, 21, 0.95) 0%, rgba(18, 14, 11, 0.98) 100%);
+        box-shadow: 0 12px 38px rgba(0, 0, 0, 0.7), 0 0 25px rgba(197, 155, 109, 0.15);
+      }
+      .mv-masters-card--featured::before {
+        content: "";
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 3px;
+        background: var(--mv-grad-gold);
+      }
+      .mv-masters-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 22px;
+      }
+      .mv-masters-badge {
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--mv-gold-light);
+        background: rgba(197, 155, 109, 0.12);
+        border: 1px solid rgba(197, 155, 109, 0.25);
+        padding: 5px 12px;
+        border-radius: 999px;
+      }
+      .mv-masters-badge--gold {
+        background: var(--mv-grad-gold);
+        color: #0c0a09;
+        border: none;
+      }
+      .mv-masters-num {
+        font-family: 'Playfair Display', serif;
+        font-size: 48px;
+        font-weight: 700;
+        line-height: 1;
+        letter-spacing: -0.02em;
+        background: linear-gradient(135deg, rgba(229, 197, 158, 0.5) 0%, rgba(197, 155, 109, 0.18) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .mv-masters-card-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 21px;
+        font-weight: 700;
+        color: var(--mv-text);
+        margin: 0 0 12px;
+        line-height: 1.3;
+      }
+      .mv-masters-card-descr {
+        font-size: 13.5px;
+        line-height: 1.6;
+        color: var(--mv-text-muted);
+        margin: 0 0 20px;
+      }
+      .mv-masters-features {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 28px;
+        display: flex;
+        flex-direction: column;
+        gap: 11px;
+      }
+      .mv-masters-features li {
+        font-size: 13px;
+        color: #ddd4c8;
+        line-height: 1.5;
+        display: flex;
+        align-items: flex-start;
+        gap: 9px;
+      }
+      .mv-masters-features li span {
+        color: var(--mv-gold);
+        font-size: 12px;
+        flex-shrink: 0;
+        margin-top: 2px;
+      }
+      .mv-masters-action {
+        margin-top: auto;
+      }
+      .mv-masters-btn {
+        width: 100%;
+        padding: 13px 20px;
+        font-size: 13px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        box-sizing: border-box;
+      }
+
       /* FAQ */
       .mv-faq-section {
         padding: 90px 0;
@@ -1489,6 +1612,7 @@
         .mv-catalog-grid { grid-template-columns: repeat(2, 1fr); }
         .mv-quiz-grid { grid-template-columns: repeat(2, 1fr); }
         .mv-footer-grid { grid-template-columns: 1fr; }
+        .mv-masters-grid { grid-template-columns: 1fr; }
       }
       @media (max-width: 768px) {
         /* На мобильных шапка не мотается по экрану, а скроллится вверху страницы */
@@ -1877,29 +2001,73 @@
         </div>
       </section>
 
-      <!-- МАСТЕРАМ & ОПТ -->
-      <section id="masters" class="mv-about-section">
+            <!-- МАСТЕРАМ & ОПТ (ПРЕМИУМ ДИЗАЙН 01 02 03) -->
+      <section id="masters" class="mv-masters-section">
         <div class="mv-container">
           <div class="mv-sec-head">
             <span class="mv-sec-badge">Сотрудничество & Опт</span>
             <h2 class="mv-sec-title mv-title-serif">Специальные условия для мастеров и студий</h2>
-            <p class="mv-sec-sub">Оптовые цены от 1 кг, рассрочка и обучение авторскому лентированию</p>
+            <p class="mv-sec-sub">Оптовые цены от 1 кг напрямую от фабрики, обучение авторскому лентированию и гибкая рассрочка</p>
           </div>
-          <div class="mv-about-grid">
-            <div class="mv-about-card">
-              <div class="mv-about-num">01</div>
-              <div class="mv-about-title">Опт от 1 кг по фабричной цене</div>
-              <div class="mv-about-text">Самый выгодный прайс для мастеров наращивания и салонов красоты. Возможность разделения срезов и персональный видео-отбор.</div>
+          <div class="mv-masters-grid">
+            <!-- КАРТОЧКА 01 -->
+            <div class="mv-masters-card">
+              <div class="mv-masters-top">
+                <span class="mv-masters-badge">ОПТ ОТ 1 КГ</span>
+                <span class="mv-masters-num">01</span>
+              </div>
+              <h3 class="mv-masters-card-title">Фабричный прайс без посредников</h3>
+              <p class="mv-masters-card-descr">
+                Специальные закрытые цены для практикующих мастеров, колористов и салонов красоты. Прямые поставки отборного донорского волоса с фабрики в Москве.
+              </p>
+              <ul class="mv-masters-features">
+                <li><span>✦</span> Возможность делить срезы и формировать микс-заказы</li>
+                <li><span>✦</span> Персональный макро-видео отбор каждого хвоста технологом</li>
+                <li><span>✦</span> Быстрая доставка СДЭК по РФ и всему миру в день заказа</li>
+              </ul>
+              <div class="mv-masters-action">
+                <a href="#lead-box" class="mv-btn mv-btn-primary mv-masters-btn">Запросить оптовый прайс</a>
+              </div>
             </div>
-            <div class="mv-about-card">
-              <div class="mv-about-num">02</div>
-              <div class="mv-about-title">Обучение лентированию (офлайн)</div>
-              <div class="mv-about-text">2 дня практики на фабрике: классические ленты и биоленты, изготовление, правильная раскладка и колористика без колориста.</div>
+
+            <!-- КАРТОЧКА 02 -->
+            <div class="mv-masters-card mv-masters-card--featured">
+              <div class="mv-masters-top">
+                <span class="mv-masters-badge mv-masters-badge--gold">КУРС 2 ДНЯ</span>
+                <span class="mv-masters-num">02</span>
+              </div>
+              <h3 class="mv-masters-card-title">Обучение лентированию (офлайн)</h3>
+              <p class="mv-masters-card-descr">
+                Интенсивный 2-дневный практический курс на производстве фабрики: изготовление классических лент и биолент, секреты проклейки и схемы раскладки.
+              </p>
+              <ul class="mv-masters-features">
+                <li><span>✦</span> День 1: Инструменты, расчет веса и густоты, раскладка и клей</li>
+                <li><span>✦</span> День 2: Биоленты, колористика и смешивание без колориста</li>
+                <li><span>✦</span> Оборудование, волосы и материалы предоставляются на курс</li>
+              </ul>
+              <div class="mv-masters-action">
+                <a href="https://t.me/Magiavolos?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%D1%81%D1%8F%20%D0%BD%D0%B0%20%D0%BE%D0%B1%D1%83%D1%87%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BB%D0%B5%D0%BD%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8E" target="_blank" rel="noopener noreferrer" class="mv-btn mv-btn-primary mv-masters-btn">Записаться на курс в Telegram</a>
+              </div>
             </div>
-            <div class="mv-about-card">
-              <div class="mv-about-num">03</div>
-              <div class="mv-about-title">Рассрочка и оплата долями</div>
-              <div class="mv-about-text">Доступны гибкие формы расчетов: комфортная рассрочка без переплат и оплата долями для клиентов и оптовых покупателей.</div>
+
+            <!-- КАРТОЧКА 03 -->
+            <div class="mv-masters-card">
+              <div class="mv-masters-top">
+                <span class="mv-masters-badge">ФИНАНСЫ & ПАРТНЕРСТВО</span>
+                <span class="mv-masters-num">03</span>
+              </div>
+              <h3 class="mv-masters-card-title">Рассрочка 0% и оплата долями</h3>
+              <p class="mv-masters-card-descr">
+                Комфортные финансовые инструменты для вас и ваших клиентов: возможность закупать партии волос в рассрочку без переплат и увеличивать средний чек.
+              </p>
+              <ul class="mv-masters-features">
+                <li><span>✦</span> Оплата долями — разбивка платежа на 4 части без процентов</li>
+                <li><span>✦</span> Беспроцентная рассрочка от банков-партнеров на крупные партии</li>
+                <li><span>✦</span> Закрытый канал новинок и бронирование редких оттенков</li>
+              </ul>
+              <div class="mv-masters-action">
+                <a href="#lead-box" class="mv-btn mv-btn-primary mv-masters-btn">Узнать условия рассрочки</a>
+              </div>
             </div>
           </div>
         </div>
