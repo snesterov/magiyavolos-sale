@@ -181,7 +181,38 @@
       .mv-header-right {
         display: flex;
         align-items: center;
-        gap: 18px;
+        gap: 14px;
+      }
+      .mv-header-socials {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .mv-header-social {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 7px 12px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.2s ease;
+        border: 1px solid rgba(255,255,255,0.12);
+        background: rgba(255,255,255,0.06);
+        color: var(--mv-text);
+      }
+      .mv-header-social--tg:hover {
+        background: rgba(42, 171, 238, 0.2);
+        border-color: #2AABEE;
+        color: #fff;
+        transform: translateY(-1px);
+      }
+      .mv-header-social--max:hover {
+        background: rgba(0, 128, 255, 0.2);
+        border-color: #0080FF;
+        color: #fff;
+        transform: translateY(-1px);
       }
       .mv-header-phone {
         display: flex;
@@ -190,7 +221,7 @@
         text-decoration: none;
       }
       .mv-header-phone-val {
-        font-size: 14px;
+        font-size: 13.5px;
         font-weight: 600;
         color: var(--mv-text);
       }
@@ -199,8 +230,8 @@
         color: var(--mv-text-muted);
       }
       .mv-header-btn {
-        padding: 10px 20px;
-        font-size: 13px;
+        padding: 10px 18px;
+        font-size: 12.5px;
       }
 
       /* HERO С РОДНОЙ КАРТИНКОЙ С САЙТА */
@@ -580,8 +611,56 @@
         color: var(--mv-gold-light);
       }
       .mv-card-btn {
-        padding: 10px 18px;
+        padding: 9px 16px;
         font-size: 12px;
+      }
+      .mv-card-messengers {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 8px;
+        margin-top: 10px;
+      }
+      .mv-card-msg-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        padding: 8px 10px;
+        border-radius: 10px;
+        font-size: 11.5px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.2s ease;
+        background: rgba(255,255,255,0.04);
+        border: 1px solid var(--mv-border);
+        color: var(--mv-text);
+      }
+      .mv-card-msg--tg:hover {
+        background: rgba(42, 171, 238, 0.16);
+        border-color: #2AABEE;
+        color: #fff;
+      }
+      .mv-card-msg--max:hover {
+        background: rgba(0, 128, 255, 0.16);
+        border-color: #0080FF;
+        color: #fff;
+      }
+      .mv-card-channel-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        margin-top: 8px;
+        padding-top: 8px;
+        border-top: 1px dashed rgba(197, 155, 109, 0.2);
+        font-size: 11px;
+        color: var(--mv-gold);
+        text-decoration: none;
+        transition: color 0.2s ease;
+      }
+      .mv-card-channel-link:hover {
+        color: var(--mv-gold-light);
+        text-decoration: underline;
       }
 
       /* КВИЗ */
@@ -986,6 +1065,14 @@
         transition: color 0.2s ease;
       }
       .mv-footer-links a:hover { color: var(--mv-gold-light); }
+      .mv-footer-ls-item {
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+        color: var(--mv-text) !important;
+        font-weight: 500 !important;
+      }
+      .mv-footer-ls-item:hover { color: var(--mv-gold-light) !important; }
       .mv-footer-bottom {
         padding-top: 24px;
         border-top: 1px solid rgba(255,255,255,0.05);
@@ -998,23 +1085,44 @@
       /* Виджеты */
       #mv-widget-lead {
         position: fixed;
-        bottom: 24px; right: 24px;
+        bottom: 20px; right: 20px;
         z-index: 990;
-        transition: opacity 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(16, 13, 11, 0.92);
+        padding: 6px 8px 6px 12px;
+        border-radius: 999px;
+        border: 1px solid var(--mv-border);
+        box-shadow: 0 10px 35px rgba(0,0,0,0.65), 0 0 20px rgba(197, 155, 109, 0.15);
+        backdrop-filter: blur(14px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+      }
+      .mv-float-icon-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 38px; height: 38px;
+        border-radius: 50%;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        text-decoration: none;
+      }
+      .mv-float-icon-btn:hover {
+        transform: translateY(-2px) scale(1.06);
       }
       .mv-widget-btn {
         background: var(--mv-grad-gold);
         color: #0c0a09;
         font-weight: 700;
-        font-size: 14px;
-        padding: 14px 24px;
+        font-size: 13.5px;
+        padding: 10px 20px;
         border-radius: 999px;
-        box-shadow: 0 8px 30px rgba(197, 155, 109, 0.45);
+        box-shadow: 0 8px 24px rgba(197, 155, 109, 0.4);
         border: none;
         cursor: pointer;
         display: flex;
         align-items: center;
-        gap: 8px;
+        gap: 6px;
       }
       #mv-btn-top {
         position: fixed;
@@ -1070,6 +1178,8 @@
       }
       @media (max-width: 992px) {
         .mv-nav, .mv-header-phone { display: none !important; }
+        .mv-header-social-label { display: none !important; }
+        .mv-header-social { padding: 7px !important; }
         .mv-hero-layout { grid-template-columns: 1fr; }
         .mv-hero-title { font-size: 36px; }
         .mv-hero-stats { grid-template-columns: repeat(2, 1fr); }
@@ -1228,9 +1338,19 @@
               <a href="#contacts">Контакты</a>
             </nav>
             <div class="mv-header-right">
+              <div class="mv-header-socials">
+                <a href="https://t.me/Magiavolos" target="_blank" rel="noopener noreferrer" class="mv-header-social mv-header-social--tg" title="Написать в ЛС Telegram">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none"><circle cx="12" cy="12" r="12" fill="#2AABEE"/><path d="M5.5 11.8l3.2 1.2 1.3 4.1c.2.5.8.6 1.1.2l1.9-1.9 3.8 2.8c.4.3 1 .1 1.1-.4l2.2-10.4c.1-.6-.4-1.1-1-.9L5.5 10.7c-.6.2-.6 1 0 1.1zm4.2 1l6.8-4.3c.2-.1.3.1.2.2l-5.6 5.1-.2 2.3-.8-2.6-.4-.7z" fill="#ffffff"/></svg>
+                  <span class="mv-header-social-label">ЛС Telegram</span>
+                </a>
+                <a href="https://max.ru/u/f9LHodD0cOKWrw5xtMdExj0FHPSJ6XMPPXtGG050Eaxzc1IZ2NirvJiMRCo" target="_blank" rel="noopener noreferrer" class="mv-header-social mv-header-social--max" title="Написать в ЛС MAX">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none"><circle cx="12" cy="12" r="12" fill="#0080FF"/><path d="M6.5 15.5V8.5h2.2l2.3 4.5 2.3-4.5h2.2v7h-1.8v-4.8l-2.1 4.2h-1.2L8.3 10.7v4.8H6.5z" fill="#ffffff"/></svg>
+                  <span class="mv-header-social-label">ЛС MAX</span>
+                </a>
+              </div>
               <a href="tel:+79255063750" class="mv-header-phone">
                 <span class="mv-header-phone-val">+7 (925) 506-37-50</span>
-                <span class="mv-header-phone-sub">Москва, ул. Машкова, 26с1</span>
+                <span class="mv-header-phone-sub">Москва, Шоурум</span>
               </a>
               <a href="#lead-box" class="mv-btn mv-btn-primary mv-header-btn">Подобрать срез</a>
             </div>
@@ -1504,11 +1624,20 @@
               </div>
             </div>
             <div class="mv-footer-col">
-              <h4>Официальные каналы</h4>
+              <h4>Личные сообщения (ЛС)</h4>
               <div class="mv-footer-links">
-                <a href="https://t.me/magiavolos_chanel" target="_blank">Telegram-канал срезов (@magiavolos_chanel)</a>
-                <a href="https://t.me/Magiavolos" target="_blank">Менеджер в Telegram (@Magiavolos)</a>
-                <a href="#lead-box">Написать в MAX</a>
+                <a href="https://t.me/Magiavolos" target="_blank" rel="noopener noreferrer" class="mv-footer-ls-item">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none"><circle cx="12" cy="12" r="12" fill="#2AABEE"/><path d="M5.5 11.8l3.2 1.2 1.3 4.1c.2.5.8.6 1.1.2l1.9-1.9 3.8 2.8c.4.3 1 .1 1.1-.4l2.2-10.4c.1-.6-.4-1.1-1-.9L5.5 10.7c-.6.2-.6 1 0 1.1zm4.2 1l6.8-4.3c.2-.1.3.1.2.2l-5.6 5.1-.2 2.3-.8-2.6-.4-.7z" fill="#ffffff"/></svg>
+                  <span>Написать в ЛС Telegram (@Magiavolos)</span>
+                </a>
+                <a href="https://max.ru/u/f9LHodD0cOKWrw5xtMdExj0FHPSJ6XMPPXtGG050Eaxzc1IZ2NirvJiMRCo" target="_blank" rel="noopener noreferrer" class="mv-footer-ls-item">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none"><circle cx="12" cy="12" r="12" fill="#0080FF"/><path d="M6.5 15.5V8.5h2.2l2.3 4.5 2.3-4.5h2.2v7h-1.8v-4.8l-2.1 4.2h-1.2L8.3 10.7v4.8H6.5z" fill="#ffffff"/></svg>
+                  <span>Написать в ЛС MAX (Мессенджер)</span>
+                </a>
+                <a href="https://t.me/magiavolos_chanel" target="_blank" rel="noopener noreferrer" class="mv-footer-ls-item">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none"><circle cx="12" cy="12" r="12" fill="rgba(197,155,109,0.3)"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" fill="#edd8be"/></svg>
+                  <span>Канал со срезами (@magiavolos_chanel)</span>
+                </a>
               </div>
             </div>
           </div>
@@ -1574,6 +1703,19 @@
               <div class="mv-card-price">${item.price}</div>
               <button class="mv-btn mv-btn-primary mv-card-btn" data-title="${item.title}">Забронировать</button>
             </div>
+            <div class="mv-card-messengers">
+              <a href="https://t.me/Magiavolos?text=${encodeURIComponent('Здравствуйте! Интересует срез: ' + item.title + ' (' + item.len + ', ' + item.weight + ', ' + item.price + ')')}" target="_blank" rel="noopener noreferrer" class="mv-card-msg-btn mv-card-msg--tg" title="Уточнить наличие в Telegram">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none"><circle cx="12" cy="12" r="12" fill="#2AABEE"/><path d="M5.5 11.8l3.2 1.2 1.3 4.1c.2.5.8.6 1.1.2l1.9-1.9 3.8 2.8c.4.3 1 .1 1.1-.4l2.2-10.4c.1-.6-.4-1.1-1-.9L5.5 10.7c-.6.2-.6 1 0 1.1zm4.2 1l6.8-4.3c.2-.1.3.1.2.2l-5.6 5.1-.2 2.3-.8-2.6-.4-.7z" fill="#ffffff"/></svg>
+                <span>В Telegram</span>
+              </a>
+              <a href="https://max.ru/u/f9LHodD0cOKWrw5xtMdExj0FHPSJ6XMPPXtGG050Eaxzc1IZ2NirvJiMRCo" target="_blank" rel="noopener noreferrer" class="mv-card-msg-btn mv-card-msg--max" title="Написать в MAX">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none"><circle cx="12" cy="12" r="12" fill="#0080FF"/><path d="M6.5 15.5V8.5h2.2l2.3 4.5 2.3-4.5h2.2v7h-1.8v-4.8l-2.1 4.2h-1.2L8.3 10.7v4.8H6.5z" fill="#ffffff"/></svg>
+                <span>В MAX</span>
+              </a>
+            </div>
+            <a href="https://t.me/magiavolos_chanel" target="_blank" rel="noopener noreferrer" class="mv-card-channel-link">
+              <span>Смотреть видео срезов в канале</span> ↗
+            </a>
           </div>
         `;
 
@@ -1898,13 +2040,29 @@
     if (!document.getElementById('mv-widget-lead')) {
       var leadWidget = document.createElement('div');
       leadWidget.id = 'mv-widget-lead';
-      leadWidget.innerHTML = '<button type="button" class="mv-widget-btn"><span>✦</span> Подобрать срез</button>';
+      leadWidget.innerHTML = `
+        <a href="https://t.me/Magiavolos" target="_blank" rel="noopener noreferrer" class="mv-float-icon-btn mv-float--tg" title="Написать в ЛС Telegram">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none"><circle cx="12" cy="12" r="12" fill="#2AABEE"/><path d="M5.5 11.8l3.2 1.2 1.3 4.1c.2.5.8.6 1.1.2l1.9-1.9 3.8 2.8c.4.3 1 .1 1.1-.4l2.2-10.4c.1-.6-.4-1.1-1-.9L5.5 10.7c-.6.2-.6 1 0 1.1zm4.2 1l6.8-4.3c.2-.1.3.1.2.2l-5.6 5.1-.2 2.3-.8-2.6-.4-.7z" fill="#ffffff"/></svg>
+        </a>
+        <a href="https://max.ru/u/f9LHodD0cOKWrw5xtMdExj0FHPSJ6XMPPXtGG050Eaxzc1IZ2NirvJiMRCo" target="_blank" rel="noopener noreferrer" class="mv-float-icon-btn mv-float--max" title="Написать в ЛС MAX">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none"><circle cx="12" cy="12" r="12" fill="#0080FF"/><path d="M6.5 15.5V8.5h2.2l2.3 4.5 2.3-4.5h2.2v7h-1.8v-4.8l-2.1 4.2h-1.2L8.3 10.7v4.8H6.5z" fill="#ffffff"/></svg>
+        </a>
+        <a href="tel:+79255063750" class="mv-float-icon-btn mv-float--phone" title="Позвонить в шоурум">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none"><circle cx="12" cy="12" r="12" fill="rgba(197,155,109,0.35)"/><path d="M7 9.8a12.5 12.5 0 005.2 5.2l1.8-1.8c.2-.2.5-.3.8-.2.9.3 1.9.5 2.9.5.4 0 .8.4.8.8v2.9c0 .4-.4.8-.8.8-7.5 0-13.7-6.2-13.7-13.7 0-.4.4-.8.8-.8H8c.4 0 .8.4.8.8 0 1 .2 2 .5 2.9.1.3 0 .6-.2.8L7 9.8z" fill="#edd8be"/></svg>
+        </a>
+        <button type="button" class="mv-widget-btn" id="mv-float-btn-form">
+          <span>✦</span> Подобрать срез
+        </button>
+      `;
       document.body.appendChild(leadWidget);
 
-      leadWidget.querySelector('button').addEventListener('click', function() {
-        var leadBox = document.getElementById('lead-box');
-        if (leadBox) leadBox.scrollIntoView({ behavior: 'smooth' });
-      });
+      var floatBtn = leadWidget.querySelector('#mv-float-btn-form');
+      if (floatBtn) {
+        floatBtn.addEventListener('click', function() {
+          var leadBox = document.getElementById('lead-box');
+          if (leadBox) leadBox.scrollIntoView({ behavior: 'smooth' });
+        });
+      }
 
       window.addEventListener('scroll', function() {
         var leadSec = document.getElementById('lead-box');
