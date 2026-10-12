@@ -1490,6 +1490,17 @@
         .mv-quiz-grid { grid-template-columns: repeat(2, 1fr); }
         .mv-footer-grid { grid-template-columns: 1fr; }
       }
+      @media (max-width: 768px) {
+        /* На мобильных шапка не мотается по экрану, а скроллится вверху страницы */
+        .mv-header {
+          position: absolute !important;
+          top: 0; left: 0; right: 0;
+          background: rgba(12, 10, 9, 0.95);
+        }
+        .mv-hero {
+          padding-top: 95px !important;
+        }
+      }
       @media (max-width: 600px) {
         .mv-lessons-grid { grid-template-columns: 1fr; }
         .mv-hero-title { font-size: 28px; }
@@ -2511,19 +2522,39 @@
         });
       }
 
-      window.addEventListener('scroll', function() {
+      function updateLeadWidgetVisibility() {
+        if (!leadWidget) return;
+        var isMobile = window.innerWidth <= 768;
         var leadSec = document.getElementById('lead-box');
-        if (leadSec && leadWidget) {
+
+        // На мобильных: если в начале экрана (видна шапка, scrollY < 120) — плавающий виджет скрыт, чтобы не двоились контакты
+        if (isMobile && window.scrollY < 120) {
+          leadWidget.style.opacity = '0';
+          leadWidget.style.pointerEvents = 'none';
+          leadWidget.style.transform = 'translateY(30px)';
+          return;
+        }
+
+        // Если доскроллили до формы заявки — скрываем, чтобы не перекрывать кнопки и инпуты
+        if (leadSec) {
           var rect = leadSec.getBoundingClientRect();
           if (rect.top < window.innerHeight && rect.bottom > 80) {
             leadWidget.style.opacity = '0';
             leadWidget.style.pointerEvents = 'none';
-          } else {
-            leadWidget.style.opacity = '1';
-            leadWidget.style.pointerEvents = 'auto';
+            leadWidget.style.transform = 'translateY(30px)';
+            return;
           }
         }
-      });
+
+        // Иначе показываем зафиксированный снизу виджет
+        leadWidget.style.opacity = '1';
+        leadWidget.style.pointerEvents = 'auto';
+        leadWidget.style.transform = 'translateY(0)';
+      }
+
+      window.addEventListener('scroll', updateLeadWidgetVisibility);
+      window.addEventListener('resize', updateLeadWidgetVisibility);
+      updateLeadWidgetVisibility();
     }
   }
 
