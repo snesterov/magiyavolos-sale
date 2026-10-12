@@ -34,8 +34,8 @@
 
       :root {
         --mv-bg: #0c0a09;
-        --mv-bg-card: rgba(22, 18, 16, 0.82);
-        --mv-bg-card-hover: rgba(32, 26, 23, 0.94);
+        --mv-bg-card: rgba(22, 18, 16, 0.85);
+        --mv-bg-card-hover: rgba(32, 26, 23, 0.96);
         --mv-gold: #c59b6d;
         --mv-gold-light: #e5c59e;
         --mv-gold-dark: #967045;
@@ -45,7 +45,7 @@
         --mv-border: rgba(197, 155, 109, 0.22);
         --mv-border-active: rgba(229, 197, 158, 0.65);
         --mv-grad-gold: linear-gradient(135deg, #dfc098 0%, #c59b6d 50%, #9e7343 100%);
-        --mv-grad-card: linear-gradient(145deg, rgba(28, 22, 19, 0.9) 0%, rgba(16, 13, 11, 0.95) 100%);
+        --mv-grad-card: linear-gradient(145deg, rgba(28, 22, 19, 0.92) 0%, rgba(16, 13, 11, 0.96) 100%);
         --mv-glow: 0 8px 32px rgba(197, 155, 109, 0.16);
       }
 
@@ -132,7 +132,7 @@
         position: fixed;
         top: 0; left: 0; right: 0;
         z-index: 999;
-        background: rgba(12, 10, 9, 0.88);
+        background: rgba(12, 10, 9, 0.9);
         backdrop-filter: blur(16px);
         -webkit-backdrop-filter: blur(16px);
         border-bottom: 1px solid var(--mv-border);
@@ -247,7 +247,7 @@
         margin-bottom: 40px;
       }
 
-      /* Правый блок Hero: оригинальное фото с сайта kling_20260726_IMAGE.png */
+      /* Родная картинка с первого экрана (kling_20260726_IMAGE.png) */
       .mv-hero-visual {
         position: relative;
         border-radius: 24px;
@@ -314,7 +314,7 @@
         line-height: 1.4;
       }
 
-      /* ОБУЧАЮЩИЙ ВИДЕОГИД */
+      /* ОБУЧАЮЩИЕ ВИДЕОУРОКИ (4 РЕАЛЬНЫХ УРОКА ИЗ КИНЕСКОПА) */
       .mv-video-section {
         padding: 90px 0;
         background: rgba(16, 13, 11, 0.7);
@@ -323,7 +323,7 @@
       }
       .mv-sec-head {
         text-align: center;
-        max-width: 820px;
+        max-width: 840px;
         margin: 0 auto 50px;
       }
       .mv-sec-badge {
@@ -346,142 +346,95 @@
         margin: 0;
       }
 
-      .mv-video-layout {
+      /* Сетка из 4 видеоуроков с родными постерами и названиями Kinescope */
+      .mv-lessons-grid {
         display: grid;
-        grid-template-columns: 1.15fr 0.85fr;
-        gap: 28px;
-        align-items: stretch;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
       }
-      .mv-main-video-box {
+      .mv-lesson-card {
         background: var(--mv-grad-card);
         border: 1px solid var(--mv-border);
         border-radius: 20px;
         overflow: hidden;
         display: flex;
         flex-direction: column;
-      }
-      .mv-main-video-card {
-        position: relative;
-        aspect-ratio: 16/9;
-        overflow: hidden;
         cursor: pointer;
-        background: #000;
+        transition: all 0.3s ease;
       }
-      .mv-main-video-card img {
+      .mv-lesson-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--mv-gold-light);
+        box-shadow: var(--mv-glow);
+      }
+      .mv-lesson-video-box {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 16/10;
+        background: #000;
+        overflow: hidden;
+      }
+      .mv-lesson-video-box img {
         width: 100%;
         height: 100%;
         object-fit: cover;
         transition: transform 0.5s ease;
       }
-      .mv-main-video-card:hover img {
-        transform: scale(1.04);
+      .mv-lesson-card:hover .mv-lesson-video-box img {
+        transform: scale(1.05);
       }
-      .mv-play-btn {
+      .mv-lesson-play-btn {
         position: absolute;
         top: 50%; left: 50%;
         transform: translate(-50%, -50%);
-        width: 66px; height: 66px;
+        width: 52px; height: 52px;
         border-radius: 50%;
         background: var(--mv-grad-gold);
         display: flex;
         align-items: center;
         justify-content: center;
-        box-shadow: 0 4px 25px rgba(0,0,0,0.6);
-        transition: all 0.3s ease;
-        z-index: 2;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+        transition: all 0.25s ease;
       }
-      .mv-main-video-card:hover .mv-play-btn {
-        transform: translate(-50%, -50%) scale(1.12);
+      .mv-lesson-card:hover .mv-lesson-play-btn {
+        transform: translate(-50%, -50%) scale(1.15);
       }
-      .mv-main-video-info {
-        padding: 24px;
-      }
-      .mv-lesson-tag {
-        display: inline-block;
-        padding: 4px 12px;
-        border-radius: 999px;
-        font-size: 11px;
-        font-weight: 600;
-        background: rgba(197, 155, 109, 0.15);
-        color: var(--mv-gold-light);
-        margin-bottom: 10px;
-      }
-      .mv-main-video-title {
-        font-size: 20px;
-        font-weight: 600;
-        margin: 0 0 10px;
-      }
-      .mv-main-video-descr {
-        font-size: 13.5px;
-        color: var(--mv-text-muted);
-        line-height: 1.6;
-        margin: 0;
-      }
-
-      /* Сетка 4 практических уроков */
-      .mv-video-grid {
+      .mv-lesson-body {
+        padding: 20px;
         display: flex;
         flex-direction: column;
-        gap: 14px;
+        flex-grow: 1;
       }
-      .mv-lesson-item {
-        display: grid;
-        grid-template-columns: 130px 1fr;
-        gap: 16px;
-        background: var(--mv-grad-card);
-        border: 1px solid var(--mv-border);
-        border-radius: 16px;
-        overflow: hidden;
-        cursor: pointer;
-        transition: all 0.2s ease;
-        padding: 10px;
-      }
-      .mv-lesson-item:hover {
-        border-color: var(--mv-gold-light);
-        transform: translateX(4px);
-      }
-      .mv-lesson-thumb {
-        position: relative;
-        border-radius: 10px;
-        overflow: hidden;
-        aspect-ratio: 4/3;
-        background: #000;
-      }
-      .mv-lesson-thumb img {
-        width: 100%; height: 100%; object-fit: cover;
-      }
-      .mv-lesson-play {
-        position: absolute;
-        top: 50%; left: 50%;
-        transform: translate(-50%, -50%);
-        width: 32px; height: 32px;
-        border-radius: 50%;
-        background: rgba(197, 155, 109, 0.9);
+      .mv-lesson-badge {
+        font-size: 11px;
+        font-weight: 600;
+        color: var(--mv-gold-light);
+        margin-bottom: 8px;
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: space-between;
       }
-      .mv-lesson-content {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-      }
-      .mv-lesson-dur {
-        font-size: 11px;
-        color: var(--mv-gold-light);
-        font-weight: 600;
-        margin-bottom: 4px;
-      }
-      .mv-lesson-title {
-        font-size: 14px;
-        font-weight: 600;
-        margin: 0 0 6px;
+      .mv-lesson-card-title {
+        font-size: 16px;
+        font-weight: 700;
+        color: var(--mv-text);
+        margin: 0 0 8px;
         line-height: 1.35;
       }
-      .mv-lesson-sub {
-        font-size: 12px;
+      .mv-lesson-card-descr {
+        font-size: 12.5px;
         color: var(--mv-text-muted);
-        line-height: 1.4;
+        line-height: 1.5;
+        margin: 0 0 16px;
+      }
+      .mv-lesson-card-action {
+        margin-top: auto;
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--mv-gold);
+        display: flex;
+        align-items: center;
+        gap: 6px;
       }
 
       /* КАТАЛОГ С ХЭШТЕГАМИ TELEGRAM */
@@ -676,7 +629,7 @@
         color: var(--mv-text);
       }
 
-      /* СЕКЦИЯ ЗАЯВКИ С ФОРМОЙ TILDA (ИСПРАВЛЕННАЯ СТРУКТУРА) */
+      /* СЕКЦИЯ ЗАЯВКИ С ФОРМОЙ TILDA */
       .mv-lead-section {
         padding: 90px 0;
         position: relative;
@@ -705,7 +658,7 @@
         margin-bottom: 18px;
       }
 
-      /* СТИЛИ И ЧИСТКА ФОРМЫ ТИЛЬДЫ */
+      /* ЧИСТКА И ФИКС ФОРМЫ ТИЛЬДЫ */
       #mv-tilda-form-slot {
         width: 100% !important;
         margin-top: 20px !important;
@@ -733,7 +686,6 @@
         border: none !important;
         transform: none !important;
       }
-      /* Скрываем дублирующиеся нативные тексты попапа */
       #mv-tilda-form-slot .t-popup__close,
       #mv-tilda-form-slot .t702__text-wrapper,
       #mv-tilda-form-slot .t702__title,
@@ -784,7 +736,6 @@
         margin: 0 0 14px 0 !important;
         padding: 0 !important;
         width: 100% !important;
-        box-sizing: border-box !important;
       }
       #mv-tilda-form-slot .t-contact-method__type {
         background: rgba(255, 255, 255, 0.05) !important;
@@ -910,7 +861,6 @@
         box-shadow: 0 0 16px rgba(197, 155, 109, 0.35) !important;
       }
 
-      /* Чекбокс согласия */
       #mv-tilda-form-slot .t-checkbox__control {
         color: var(--mv-text-muted) !important;
         font-size: 12px !important;
@@ -924,7 +874,6 @@
         border-color: var(--mv-gold) !important;
       }
 
-      /* Кнопка отправки */
       #mv-tilda-form-slot .t-submit,
       #mv-tilda-form-slot button[type="submit"] {
         width: 100% !important;
@@ -948,13 +897,12 @@
       }
       #mv-tilda-form-slot .t-btn_wrap-effects { display: none !important; }
 
-      /* Мягкая подсветка ошибок под инпутом */
       .mv-input-err {
         border-color: #ef4444 !important;
         box-shadow: 0 0 16px rgba(239, 68, 68, 0.4) !important;
       }
 
-      /* FAQ АККОРДЕОН */
+      /* FAQ */
       .mv-faq-section {
         padding: 90px 0;
         background: rgba(16, 13, 11, 0.5);
@@ -1047,7 +995,7 @@
         color: var(--mv-text-muted);
       }
 
-      /* Плавающий мобильный виджет */
+      /* Виджеты */
       #mv-widget-lead {
         position: fixed;
         bottom: 24px; right: 24px;
@@ -1068,8 +1016,6 @@
         align-items: center;
         gap: 8px;
       }
-
-      /* Кнопка наверх */
       #mv-btn-top {
         position: fixed;
         bottom: 24px; left: 24px;
@@ -1086,12 +1032,12 @@
         backdrop-filter: blur(10px);
       }
 
-      /* Модальное окно видео */
+      /* Модалка Kinescope */
       #mv-video-modal {
         position: fixed;
         inset: 0;
         background: rgba(0,0,0,0.88);
-        backdrop-filter: blur(12px);
+        backdrop-filter: blur(14px);
         z-index: 10000;
         display: none;
         align-items: center;
@@ -1101,34 +1047,38 @@
       .mv-modal-content {
         position: relative;
         width: 100%;
-        max-width: 900px;
+        max-width: 960px;
         aspect-ratio: 16/9;
         background: #000;
-        border-radius: 16px;
+        border-radius: 20px;
         overflow: hidden;
         border: 1px solid var(--mv-border);
+        box-shadow: 0 20px 60px rgba(0,0,0,0.9);
       }
       .mv-modal-close {
         position: absolute;
-        top: -44px; right: 0;
+        top: -46px; right: 0;
         background: transparent;
         border: none;
         color: #fff;
-        font-size: 32px;
+        font-size: 34px;
         cursor: pointer;
       }
 
+      @media (max-width: 1100px) {
+        .mv-lessons-grid { grid-template-columns: repeat(2, 1fr); }
+      }
       @media (max-width: 992px) {
         .mv-nav, .mv-header-phone { display: none !important; }
         .mv-hero-layout { grid-template-columns: 1fr; }
         .mv-hero-title { font-size: 36px; }
         .mv-hero-stats { grid-template-columns: repeat(2, 1fr); }
-        .mv-video-layout { grid-template-columns: 1fr; }
         .mv-catalog-grid { grid-template-columns: repeat(2, 1fr); }
         .mv-quiz-grid { grid-template-columns: repeat(2, 1fr); }
         .mv-footer-grid { grid-template-columns: 1fr; }
       }
       @media (max-width: 600px) {
+        .mv-lessons-grid { grid-template-columns: 1fr; }
         .mv-hero-title { font-size: 28px; }
         .mv-catalog-grid { grid-template-columns: 1fr; }
         .mv-hero-stats { grid-template-columns: 1fr; }
@@ -1141,7 +1091,43 @@
     document.head.appendChild(s);
   }
 
-  // Данные срезов на основе реального Telegram-канала Магия Волос
+  // 4 видеоурока напрямую из аккаунта Kinescope
+  var LESSON_VIDEOS = [
+    {
+      id: '9iFkqc7sAqedM6nr7QcMgj',
+      lessonNum: 'УРОК 1',
+      duration: '46 СЕК',
+      title: 'Есть ли на волосах силикон?',
+      descr: 'Как выявить скрытую силиконовую обработку и убедиться в естественной мягкости волоса.',
+      poster: 'https://kinescopecdn.net/be3501b7-76a0-44cc-b5a2-bf1ab144d162/posters/d3e93fec-773b-4f73-8b5c-29f7dda9271a/019e6d8b-f288-769c-b7f2-cfdd407a5bea.jpg'
+    },
+    {
+      id: 'oBK1RzCCNt8hJjRS4FeRVp',
+      lessonNum: 'УРОК 2',
+      duration: '36 СЕК',
+      title: 'Окрашенные или нет?',
+      descr: 'Как отличить неокрашенный целинный срез от волос щадящего фабричного осветления.',
+      poster: 'https://kinescopecdn.net/be3501b7-76a0-44cc-b5a2-bf1ab144d162/posters/07cce31e-405c-4a77-b037-4077c8f99991/019e6d94-1403-7e7f-a4af-2f5a10becb9c.jpg'
+    },
+    {
+      id: 'qjuvNhMoWxiPGHiiMhMiig',
+      lessonNum: 'УРОК 3',
+      duration: '1 МИН 24 СЕК',
+      title: 'Перевёртыш',
+      descr: 'Почему кутикула должна быть направлена строго в одну сторону и как избежать спутывания.',
+      poster: 'https://kinescopecdn.net/be3501b7-76a0-44cc-b5a2-bf1ab144d162/posters/fe0ad110-6154-4c49-868c-59666dbe3033/019e6d94-1587-73c1-bdcc-5285f60a5a2c.jpg'
+    },
+    {
+      id: '42dwoJ2St7kS9wMxQkVHKd',
+      lessonNum: 'ВИДЕО',
+      duration: '12 СЕК',
+      title: 'Команда',
+      descr: 'Мастера и технологи фабрики «Магия Волос» за отбором и контролем донорских волос.',
+      poster: 'https://kinescopecdn.net/be3501b7-76a0-44cc-b5a2-bf1ab144d162/posters/5cdb6dc7-7552-4d4f-8b1f-51b0003489b4/019e6de2-0bda-7a8d-b984-5519d76a7f17.jpg'
+    }
+  ];
+
+  // Данные срезов
   var CATALOG_ITEMS = [
     {
       id: 1,
@@ -1217,7 +1203,7 @@
     }
   ];
 
-  // 3. Рендер посадочной страницы
+  // 3. Рендер приложения SPA
   function renderApp() {
     if (document.getElementById('mv-app')) return;
 
@@ -1234,7 +1220,7 @@
               <span class="mv-logo-sub">Фабрика натуральных волос с 2009 г.</span>
             </a>
             <nav class="mv-nav">
-              <a href="#education">Обучающий видеогид</a>
+              <a href="#education">Видеоуроки</a>
               <a href="#catalog">Каталог срезов</a>
               <a href="#quiz">Подбор среза</a>
               <a href="#masters">Мастерам & Опт</a>
@@ -1252,7 +1238,7 @@
         </div>
       </header>
 
-      <!-- HERO С РОДНОЙ КАРТИНКОЙ С САЙТА -->
+      <!-- HERO С РОДНЫМ ФОТО -->
       <section id="hero" class="mv-hero">
         <div class="mv-container">
           <div class="mv-hero-layout">
@@ -1268,13 +1254,12 @@
                 Только одноголовые донорские срезы из России: детские целинные хвостики и славянский люкс. Без силикона, живая кутикула. Доставка по РФ и миру.
               </p>
               <div class="mv-hero-actions">
-                <a href="#education" class="mv-btn mv-btn-primary">Обучающий видеогид ▶</a>
+                <a href="#education" class="mv-btn mv-btn-primary">Видеоуроки по выбору ▶</a>
                 <a href="#catalog" class="mv-btn mv-btn-outline">Каталог в наличии</a>
-                <a href="#quiz" class="mv-btn mv-btn-outline">Подобрать онлайн ✦</a>
+                <a href="#quiz" class="mv-btn mv-btn-outline">Подбор за 30 сек ✦</a>
               </div>
             </div>
 
-            <!-- Родная картинка с первого экрана сайта (kling_20260726_IMAGE.png) -->
             <div class="mv-hero-visual">
               <img src="https://static.tildacdn.com/tild6635-3130-4331-b132-306531653965/kling_20260726_IMAGE.png" alt="Магия Волос — донорские срезы премиум качества" class="mv-hero-img">
               <div class="mv-hero-float-badge">
@@ -1308,83 +1293,41 @@
         </div>
       </section>
 
-      <!-- ОБУЧАЮЩИЙ ВИДЕОГИД: КАК ПРАВИЛЬНО ВЫБРАТЬ ВОЛОСЫ -->
+      <!-- ОБУЧАЮЩИЕ ВИДЕОУРОКИ (4 РЕАЛЬНЫХ УРОКА ИЗ КИНЕСКОПА В СЕТКЕ) -->
       <section id="education" class="mv-video-section">
         <div class="mv-container">
           <div class="mv-sec-head">
-            <span class="mv-sec-badge">Обучающий видеогид</span>
-            <h2 class="mv-sec-title mv-title-serif">Как правильно выбрать натуральные волосы</h2>
-            <p class="mv-sec-sub">Серия обучающих видеоуроков от главного технолога фабрики «Магия Волос». Узнайте, как не ошибиться при выборе, отличить целинный волос от азиатского сырья и проверить кутикулу.</p>
+            <span class="mv-sec-badge">Обучающие видео</span>
+            <h2 class="mv-sec-title mv-title-serif">Как правильно выбрать волосы</h2>
+            <p class="mv-sec-sub">Короткие экспертные видеоуроки от технологов «Магия Волос»: проверьте срез на силикон, кутикулу и фабричное осветление перед заказом.</p>
           </div>
 
-          <div class="mv-video-layout">
-            <!-- Главный обучающий мастер-класс -->
-            <div class="mv-main-video-box">
-              <div class="mv-main-video-card" data-video-id="gJZV99n1gmgEXYKEDCXNj2">
-                <img src="https://static.tildacdn.com/tild6664-3935-4431-a539-613836366139/___3.png" alt="Обучающий мастер-класс: как выбрать волосы">
-                <div class="mv-play-btn">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="#0c0a09"><path d="M8 5v14l11-7z"/></svg>
+          <!-- Сетка 4 уроков с точными именами из Kinescope -->
+          <div class="mv-lessons-grid" id="mv-lessons-container">
+            ${LESSON_VIDEOS.map(function(item) {
+              return `
+                <div class="mv-lesson-card" data-video-id="${item.id}">
+                  <div class="mv-lesson-video-box">
+                    <img src="${item.poster}" alt="${item.title}">
+                    <div class="mv-lesson-play-btn">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="#0c0a09"><path d="M8 5v14l11-7z"/></svg>
+                    </div>
+                  </div>
+                  <div class="mv-lesson-body">
+                    <div class="mv-lesson-badge">
+                      <span>${item.lessonNum}</span>
+                      <span>${item.duration}</span>
+                    </div>
+                    <h3 class="mv-lesson-card-title">${item.title}</h3>
+                    <p class="mv-lesson-card-descr">${item.descr}</p>
+                    <div class="mv-lesson-card-action">
+                      <span>Смотреть урок</span>
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                    </div>
+                  </div>
                 </div>
-              </div>
-              <div class="mv-main-video-info">
-                <span class="mv-lesson-tag">ГЛАВНЫЙ ВИДЕОУРОК • 12 МИН</span>
-                <h3 class="mv-main-video-title">Мастер-класс: 5 главных критериев выбора донорских волос</h3>
-                <p class="mv-main-video-descr">
-                  Технолог фабрики с 20-летним опытом наглядно показывает, почему дешевые волосы путаются после первой мойки, как выявить силиконовую маскировку и как подобрать структуру под свои родные волосы без сложной укладки.
-                </p>
-              </div>
-            </div>
-
-            <!-- Сетка 4 практических уроков -->
-            <div class="mv-video-grid">
-              <div class="mv-lesson-item" data-video-id="9iFkqc7sAqedM6nr7QcMgj">
-                <div class="mv-lesson-thumb">
-                  <img src="https://static.tildacdn.com/tild3430-6438-4630-b435-663237353933/photo_2025-09-24_10-.jpg" alt="Урок 1">
-                  <div class="mv-lesson-play"><svg width="14" height="14" viewBox="0 0 24 24" fill="#0c0a09"><path d="M8 5v14l11-7z"/></svg></div>
-                </div>
-                <div class="mv-lesson-content">
-                  <span class="mv-lesson-dur">УРОК 1 • 4 МИН</span>
-                  <h4 class="mv-lesson-title">Как отличить детский целинный срез от азиатского сырья</h4>
-                  <span class="mv-lesson-sub">Тест на эластичность волоса и естественную мягкость кончиков.</span>
-                </div>
-              </div>
-
-              <div class="mv-lesson-item" data-video-id="oBK1RzCCNt8hJjRS4FeRVp">
-                <div class="mv-lesson-thumb">
-                  <img src="https://static.tildacdn.com/tild3131-3761-4165-b235-366537393336/img_8889-scaled.jpg" alt="Урок 2">
-                  <div class="mv-lesson-play"><svg width="14" height="14" viewBox="0 0 24 24" fill="#0c0a09"><path d="M8 5v14l11-7z"/></svg></div>
-                </div>
-                <div class="mv-lesson-content">
-                  <span class="mv-lesson-dur">УРОК 2 • 5 МИН</span>
-                  <h4 class="mv-lesson-title">Плотность концов: Double Drawn против Single Drawn</h4>
-                  <span class="mv-lesson-sub">Как оценить вычес и не переплачивать за пустые кончики.</span>
-                </div>
-              </div>
-
-              <div class="mv-lesson-item" data-video-id="qjuvNhMoWxiPGHiiMhMiig">
-                <div class="mv-lesson-thumb">
-                  <img src="https://static.tildacdn.com/tild6635-3130-4331-b132-306531653965/kling_20260726_IMAGE.png" alt="Урок 3">
-                  <div class="mv-lesson-play"><svg width="14" height="14" viewBox="0 0 24 24" fill="#0c0a09"><path d="M8 5v14l11-7z"/></svg></div>
-                </div>
-                <div class="mv-lesson-content">
-                  <span class="mv-lesson-dur">УРОК 3 • 6 МИН</span>
-                  <h4 class="mv-lesson-title">Тест на скрытый силикон прямо в студии</h4>
-                  <span class="mv-lesson-sub">Экспресс-проверка трением и водой: чистый живой волос.</span>
-                </div>
-              </div>
-
-              <div class="mv-lesson-item" data-video-id="42dwoJ2St7kS9wMxQkVHKd">
-                <div class="mv-lesson-thumb">
-                  <img src="https://static.tildacdn.com/tild3430-6438-4630-b435-663237353933/photo_2025-09-24_10-.jpg" alt="Урок 4">
-                  <div class="mv-lesson-play"><svg width="14" height="14" viewBox="0 0 24 24" fill="#0c0a09"><path d="M8 5v14l11-7z"/></svg></div>
-                </div>
-                <div class="mv-lesson-content">
-                  <span class="mv-lesson-dur">УРОК 4 • 5 МИН</span>
-                  <h4 class="mv-lesson-title">Подбор под структуру: волна, пористый или шелк</h4>
-                  <span class="mv-lesson-sub">Как подобрать срез для идеального слияния со своими волосами.</span>
-                </div>
-              </div>
-            </div>
+              `;
+            }).join('')}
           </div>
         </div>
       </section>
@@ -1528,7 +1471,7 @@
         </div>
       </section>
 
-      <!-- БЛОК ЗАЯВКИ С ФОРМОЙ TILDA (БЕЗ НАЛОЖЕНИЙ) -->
+      <!-- БЛОК ЗАЯВКИ С ФОРМОЙ TILDA -->
       <section id="lead-box" class="mv-lead-section">
         <div class="mv-container">
           <div class="mv-lead-card">
@@ -1576,7 +1519,7 @@
         </div>
       </footer>
 
-      <!-- МОДАЛКА ВИДЕО -->
+      <!-- МОДАЛКА ВИДЕО KINESCOPE -->
       <div id="mv-video-modal">
         <div class="mv-modal-content">
           <button class="mv-modal-close">&times;</button>
@@ -1646,7 +1589,6 @@
       });
     }
 
-    // Слушатели фильтров
     var catBtns = document.querySelectorAll('#filter-cat .mv-pill');
     catBtns.forEach(function(b) {
       b.addEventListener('click', function() {
@@ -1752,7 +1694,7 @@
     });
   }
 
-  // 8. Перенос и интеграция нативной формы Tilda (rec4705785601) БЕЗ НАЛОЖЕНИЙ
+  // 8. Перенос и интеграция нативной формы Tilda (rec4705785601)
   function mountTildaForm() {
     var slot = document.getElementById('mv-tilda-form-slot');
     if (!slot) return;
@@ -1773,6 +1715,7 @@
     if (popup) {
       popup.style.setProperty('display', 'block', 'important');
       popup.style.setProperty('visibility', 'visible', 'important');
+      popup.style.setProperty('opacity', '1', 'important');
       popup.style.setProperty('position', 'static', 'important');
       popup.classList.add('t-popup_show');
     }
@@ -1789,9 +1732,9 @@
 
     form.style.setProperty('display', 'block', 'important');
     form.style.setProperty('visibility', 'visible', 'important');
+    form.style.setProperty('opacity', '1', 'important');
     form.style.setProperty('position', 'static', 'important');
 
-    // Настройка способов связи
     var methodContainer = form.querySelector('.t-contact-method__types-container');
     var valContainer = form.querySelector('.t-contact-method__value-container');
 
@@ -1841,7 +1784,6 @@
           }
         });
 
-        // Единое надежное поле телефона
         if (phoneVal) {
           phoneVal.style.setProperty('display', 'block', 'important');
           phoneVal.classList.remove('t-contact-method__hidden');
@@ -1854,7 +1796,6 @@
           });
         }
 
-        // Скрываем остальные чтобы не было наложений
         [tgVal, waVal, maxVal].forEach(function(block) {
           if (!block) return;
           block.style.setProperty('display', 'none', 'important');
@@ -1885,9 +1826,8 @@
     if (nameInp) nameInp.placeholder = 'Ваше имя';
 
     var subBtn = form.querySelector('.t-btnflex__text, .t-submit');
-    if (subBtn) subBtn.textContent = 'Получить обучающие видео и подбор срезов ✦';
+    if (subBtn) subBtn.textContent = 'Получить видеоподборку срезов ✦';
 
-    // Валидация отправки
     var submitBtnEl = form.querySelector('button[type="submit"], .t-submit');
     if (submitBtnEl && !submitBtnEl.dataset.mvValidInit) {
       submitBtnEl.dataset.mvValidInit = 'true';
