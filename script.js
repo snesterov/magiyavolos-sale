@@ -1635,6 +1635,204 @@
           grid-template-columns: repeat(2, 1fr) !important;
         }
       }
+
+      /* ЮРИДИЧЕСКИЙ ПОПАП (LUXURY MODAL) */
+      .mv-legal-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 99999999;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        box-sizing: border-box;
+      }
+      .mv-legal-modal.active {
+        display: flex !important;
+      }
+      .mv-legal-modal__backdrop {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(8, 6, 5, 0.88);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        animation: mvFadeIn 0.25s ease;
+      }
+      .mv-legal-modal__dialog {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        max-width: 840px;
+        max-height: 88vh;
+        background: linear-gradient(165deg, #181310 0%, #0d0a08 100%);
+        border: 1px solid var(--mv-border-active);
+        border-radius: 24px;
+        box-shadow: 0 25px 70px rgba(0, 0, 0, 0.95), 0 0 40px rgba(197, 155, 109, 0.2);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        animation: mvScaleUp 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      @keyframes mvScaleUp {
+        from { opacity: 0; transform: scale(0.95) translateY(12px); }
+        to { opacity: 1; transform: scale(1) translateY(0); }
+      }
+      .mv-legal-modal__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 22px 28px;
+        border-bottom: 1px solid rgba(197, 155, 109, 0.2);
+        background: rgba(255, 255, 255, 0.02);
+      }
+      .mv-legal-modal__badge {
+        display: inline-block;
+        font-size: 10.5px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--mv-gold);
+        font-weight: 700;
+        margin-bottom: 4px;
+      }
+      .mv-legal-modal__title {
+        font-family: 'Cinzel', serif;
+        font-size: 20px;
+        color: #ffffff;
+        margin: 0;
+        font-weight: 600;
+        line-height: 1.3;
+      }
+      .mv-legal-modal__close {
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(197, 155, 109, 0.3);
+        color: #edd8be;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        font-size: 24px;
+        line-height: 1;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s ease;
+        flex-shrink: 0;
+        margin-left: 16px;
+      }
+      .mv-legal-modal__close:hover {
+        background: var(--mv-gold);
+        color: #0c0a09;
+        border-color: var(--mv-gold);
+        transform: rotate(90deg);
+      }
+      .mv-legal-modal__body {
+        padding: 28px;
+        overflow-y: auto;
+        color: #cfc5b8;
+        font-size: 13.5px;
+        line-height: 1.75;
+      }
+      .mv-legal-modal__body::-webkit-scrollbar {
+        width: 6px;
+      }
+      .mv-legal-modal__body::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.03);
+      }
+      .mv-legal-modal__body::-webkit-scrollbar-thumb {
+        background: var(--mv-gold);
+        border-radius: 4px;
+      }
+      .mv-legal-modal__body h4 {
+        color: var(--mv-gold-light);
+        font-size: 14.5px;
+        margin: 24px 0 10px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+      .mv-legal-modal__body h4:first-child {
+        margin-top: 0;
+      }
+      .mv-legal-modal__body p {
+        margin: 0 0 12px;
+      }
+      .mv-legal-modal__body ul {
+        margin: 0 0 14px 20px;
+        padding: 0;
+      }
+      .mv-legal-modal__body li {
+        margin-bottom: 6px;
+      }
+      .mv-legal-modal__legal-card {
+        margin-top: 24px;
+        padding: 16px 20px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(197, 155, 109, 0.25);
+        border-radius: 14px;
+        font-size: 12.5px;
+        line-height: 1.6;
+      }
+      .mv-legal-modal__footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 18px 28px;
+        border-top: 1px solid rgba(197, 155, 109, 0.2);
+        background: rgba(0, 0, 0, 0.4);
+        gap: 16px;
+      }
+      .mv-legal-modal__note {
+        font-size: 11.5px;
+        color: var(--mv-text-muted);
+      }
+      .mv-legal-modal__btn {
+        padding: 11px 26px !important;
+        font-size: 13.5px !important;
+        white-space: nowrap;
+        border-radius: 999px !important;
+      }
+      .mv-footer-doc-btn {
+        background: none;
+        border: none;
+        padding: 0;
+        margin: 0;
+        color: var(--mv-text-muted);
+        font-family: inherit;
+        font-size: 12px;
+        text-decoration: underline;
+        cursor: pointer;
+        transition: color 0.2s ease;
+      }
+      .mv-footer-doc-btn:hover {
+        color: var(--mv-gold-light);
+      }
+      #mv-tilda-form-slot .t-checkbox__control a,
+      #mv-tilda-form-slot .mv-legal-link {
+        color: var(--mv-gold) !important;
+        text-decoration: underline !important;
+        cursor: pointer !important;
+        transition: color 0.2s ease !important;
+        display: inline !important;
+      }
+      #mv-tilda-form-slot .t-checkbox__control a:hover,
+      #mv-tilda-form-slot .mv-legal-link:hover {
+        color: var(--mv-gold-light) !important;
+      }
+      @media (max-width: 600px) {
+        .mv-legal-modal { padding: 12px; }
+        .mv-legal-modal__header { padding: 16px 20px; }
+        .mv-legal-modal__title { font-size: 17px; }
+        .mv-legal-modal__body { padding: 20px; font-size: 13px; }
+        .mv-legal-modal__footer { flex-direction: column; align-items: stretch; padding: 16px 20px; }
+        .mv-legal-modal__btn { width: 100%; text-align: center; }
+      }
+
     `;
     document.head.appendChild(s);
   }
@@ -2127,6 +2325,26 @@
         </div>
       </section>
 
+
+      <!-- ЮРИДИЧЕСКИЙ ПОПАП (ДОГОВОР ОФЕРТЫ, ПОЛИТИКА, СОГЛАСИЕ, COOKIE) -->
+      <div id="mv-legal-modal" class="mv-legal-modal" role="dialog" aria-modal="true" style="display:none;">
+        <div class="mv-legal-modal__backdrop" onclick="mvCloseLegalModal()"></div>
+        <div class="mv-legal-modal__dialog">
+          <div class="mv-legal-modal__header">
+            <div class="mv-legal-modal__title-box">
+              <span class="mv-legal-modal__badge">ОФИЦИАЛЬНЫЙ ДОКУМЕНТ</span>
+              <h3 class="mv-legal-modal__title" id="mv-legal-modal-title">Политика конфиденциальности</h3>
+            </div>
+            <button type="button" class="mv-legal-modal__close" onclick="mvCloseLegalModal()" title="Закрыть">&times;</button>
+          </div>
+          <div class="mv-legal-modal__body" id="mv-legal-modal-body"></div>
+          <div class="mv-legal-modal__footer">
+            <div class="mv-legal-modal__note">ИП Зарипов Д.А. • ОГРНИП 321508100565547 • ФЗ-152 РФ</div>
+            <button type="button" class="mv-btn mv-btn-primary mv-legal-modal__btn" onclick="mvCloseLegalModal()">Понятно, закрыть</button>
+          </div>
+        </div>
+      </div>
+
       <!-- ПОДВАЛ -->
             <!-- ЮРИДИЧЕСКИЙ ПОДВАЛ -->
       <footer id="contacts" class="mv-footer">
@@ -2188,9 +2406,10 @@
             <div class="mv-footer-bottom-row">
               <span>© 2009–2026 Фабрика натуральных волос «Магия Волос». Все права защищены.</span>
               <div class="mv-footer-bottom-links">
-                <a href="https://магияволос.рф/oferta_sale" target="_blank" rel="noopener noreferrer">Договор оферты</a>
-                <a href="https://магияволос.рф/politika_sale" target="_blank" rel="noopener noreferrer">Политика конфиденциальности (ФЗ-152)</a>
-                <button type="button" onclick="mvOpenCookieSettings()">Настройки файлов Cookie</button>
+                <button type="button" class="mv-footer-doc-btn" onclick="mvOpenLegalModal('oferta')">Договор оферты</button>
+                <button type="button" class="mv-footer-doc-btn" onclick="mvOpenLegalModal('privacy')">Политика конфиденциальности (ФЗ-152)</button>
+                <button type="button" class="mv-footer-doc-btn" onclick="mvOpenLegalModal('cookie')">Положение о файлах Cookie</button>
+                <button type="button" class="mv-footer-doc-btn" onclick="mvOpenCookieSettings()">Настройки Cookie</button>
               </div>
             </div>
             <div class="mv-footer-disclaimer">
@@ -2207,7 +2426,7 @@
         <div id="mv-cookie-view-main" class="mv-cookie-view">
           <div class="mv-cookie-title">«Магия Волос» использует cookie</div>
           <div class="mv-cookie-text">
-            Файлы cookie и технические данные необходимы для стабильной и безопасной работы сайта, сохранения ваших настроек и веб-аналитики. Подробнее — в <a href="https://магияволос.рф/politika_sale" target="_blank" rel="noopener noreferrer">Политике конфиденциальности</a>.
+            Файлы cookie и технические данные необходимы для стабильной и безопасной работы сайта, сохранения ваших настроек и веб-аналитики. Подробнее — в <button type="button" class="mv-footer-doc-btn" onclick="mvOpenLegalModal('privacy')">Политике конфиденциальности</button> и <button type="button" class="mv-footer-doc-btn" onclick="mvOpenLegalModal('cookie')">Положении о Cookie</button>.
           </div>
           <div class="mv-cookie-btn-col">
             <button type="button" class="mv-cookie-btn-primary" onclick="mvAcceptAllCookies()">Разрешить все</button>
@@ -2457,6 +2676,193 @@
   }
 
   // 8. Перенос и интеграция нативной формы Tilda (rec4705785601)
+
+  // ==========================================
+  // ЮРИДИЧЕСКИЕ ДОКУМЕНТЫ (ФЗ-152, ОФЕРТА, COOKIE, СОГЛАСИЕ)
+  // ==========================================
+  var LEGAL_DOCS = {
+    privacy: {
+      title: "Политика конфиденциальности (ФЗ-152 РФ)",
+      body: `
+        <h4>1. Общие положения</h4>
+        <p>Настоящая Политика конфиденциальности определяет порядок обработки и защиты информации о физических лицах (далее — Пользователь), пользующихся услугами веб-ресурса Фабрики натуральных волос «Магия Волос» (магияволос.рф, magiavolos.shop, snesterov.github.io).</p>
+        <p>Оператором персональных данных является <strong>Индивидуальный предприниматель Зарипов Дамир Анверович</strong> (ИНН: 502918883974, ОГРНИП: 321508100565547).</p>
+        
+        <h4>2. Состав обрабатываемых данных</h4>
+        <p>Оператор обрабатывает следующие персональные данные Пользователя:</p>
+        <ul>
+          <li>Имя и фамилия;</li>
+          <li>Контактный номер телефона;</li>
+          <li>Идентификатор (username) в мессенджерах (Telegram, MAX, WhatsApp);</li>
+          <li>Технические данные: IP-адрес, файлы cookie, данные браузера и устройства, параметры пользовательской сессии.</li>
+        </ul>
+
+        <h4>3. Цели обработки персональных данных</h4>
+        <p>Сбор и обработка данных производятся исключительно в целях:</p>
+        <ul>
+          <li>Предоставления индивидуальных консультаций технолога и подбора срезов донорских волос;</li>
+          <li>Отправки макро-видеозаписей срезов и демонстрации оттенков в мессенджеры Пользователя;</li>
+          <li>Оформления бронирования, выставления счетов и организации курьерской доставки через СДЭК и экспресс-службы;</li>
+          <li>Улучшения качества обслуживания и аналитики работы веб-сервиса.</li>
+        </ul>
+
+        <h4>4. Правовые основания и безопасность</h4>
+        <p>Обработка данных осуществляется на основании согласия Пользователя, данного свободно, своей волей и в своем интересе (ст. 9 Федерального закона № 152-ФЗ «О персональных данных»).</p>
+        <p>Оператор принимает необходимые организационные и технические меры для защиты персональной информации от неправомерного или случайного доступа, уничтожения, изменения, блокирования и распространения. Передача данных третьим лицам возможна исключительно логистическим партнерам (СДЭК) для вручения заказа.</p>
+
+        <h4>5. Срок действия и отзыв согласия</h4>
+        <p>Согласие действует до момента достижения целей обработки или до отзыва Пользователем. Пользователь вправе отозвать согласие в любой момент, направив официальное уведомление на адрес электронной почты: <strong>info@magiyavolos.ru</strong> с темой «Отзыв согласия на обработку ПДн».</p>
+
+        <div class="mv-legal-modal__legal-card">
+          <strong>Реквизиты оператора:</strong><br>
+          ИП Зарипов Дамир Анверович<br>
+          ИНН: 502918883974 | ОГРНИП: 321508100565547<br>
+          Адрес шоурума: г. Москва, ул. Машкова, дом 26, стр. 1<br>
+          Телефон: +7 (925) 506-37-50 | Email: info@magiyavolos.ru
+        </div>
+      `
+    },
+    consent: {
+      title: "Согласие на обработку персональных данных",
+      body: `
+        <h4>Текст согласия субъекта персональных данных</h4>
+        <p>Заполняя форму обратной связи, нажимая кнопку отправки заявки либо оформляя бронирование на сайте, я свободно, своей волей и в своем интересе выражаю свое безусловное согласие Индивидуальному предпринимателю Зарипову Дамиру Анверовичу (ИНН 502918883974, ОГРНИП 321508100565547) на обработку моих персональных данных в соответствии с Федеральным законом от 27.07.2006 № 152-ФЗ «О персональных данных».</p>
+
+        <h4>Перечень персональных данных:</h4>
+        <ul>
+          <li>Имя;</li>
+          <li>Номер телефона;</li>
+          <li>Имя пользователя / номер в мессенджерах Telegram, MAX, WhatsApp;</li>
+          <li>Данные о выбранных характеристиках среза (длина, вес, категория, оттенок).</li>
+        </ul>
+
+        <h4>Перечень разрешенных действий:</h4>
+        <p>Сбор, запись, систематизация, накопление, хранение, уточнение (обновление, изменение), извлечение, использование, передача службам доставки (СДЭК), блокирование, удаление и уничтожение данных с использованием средств автоматизации и без них.</p>
+
+        <h4>Цель предоставления данных:</h4>
+        <p>Получение персональной видеоподборки срезов натуральных волос, консультация технолога фабрики, расчет стоимости, согласование доставки и подтверждение бронирования.</p>
+
+        <p>Настоящее согласие действует бессрочно до момента его отзыва путем направления письменного заявления на email: <strong>info@magiyavolos.ru</strong>.</p>
+      `
+    },
+    oferta: {
+      title: "Договор публичной оферты купли-продажи",
+      body: `
+        <h4>1. Общие положения</h4>
+        <p>Настоящий документ является публичной офертой Индивидуального предпринимателя Зарипова Дамира Анверовича (далее — Продавец) в соответствии со ст. 437 Гражданского кодекса Российской Федерации. Акцептом настоящей оферты признается оформление заказа или бронирования Покупателем через форму на сайте или через мессенджеры Продавца.</p>
+
+        <h4>2. Предмет договора</h4>
+        <p>Продавец обязуется передать в собственность Покупателя, а Покупатель обязуется принять и оплатить Товар — отборные срезы натуральных донорских волос одноголового сбора славянского и детского типа, а также сопутствующие материалы для наращивания.</p>
+
+        <h4>3. Порядок заказа и фиксация характеристик</h4>
+        <p>Ввиду уникальности каждого натурального среза (длина, вес, структура, оттенок) перед оформлением заказа технолог Продавца производит индивидуальную фото- и видеофиксацию среза на ювелирных/высокоточных весах и направляет подтверждение Покупателю в Telegram или MAX.</p>
+
+        <h4>4. Оплата и доставка</h4>
+        <p>Оплата производится безналичным расчетом по реквизитам либо через платежные сервисы. Доставка осуществляется силами СДЭК, курьерскими службами по РФ и миру либо самовывозом из шоурума фабрики по адресу: г. Москва, ул. Машкова, 26с1.</p>
+
+        <h4>5. Возврат и гарантии</h4>
+        <p>Натуральные донорские волосы фабричной обработки являются предметом личной гигиены и индивидуального потребления. Возврат и обмен осуществляются строго в соответствии с Законом РФ «О защите прав потребителей» и действующим законодательством РФ.</p>
+
+        <div class="mv-legal-modal__legal-card">
+          <strong>Реквизиты Продавца:</strong><br>
+          ИП Зарипов Дамир Анверович<br>
+          ИНН: 502918883974 | ОГРНИП: 321508100565547<br>
+          Адрес: 105064, г. Москва, ул. Машкова, д. 26, стр. 1<br>
+          Email: info@magiyavolos.ru | Тел: +7 (925) 506-37-50
+        </div>
+      `
+    },
+    cookie: {
+      title: "Политика использования файлов Cookie",
+      body: `
+        <h4>1. Что такое файлы Cookie</h4>
+        <p>Файлы cookie — это небольшие текстовые фрагменты данных, сохраняемые на вашем устройстве при посещении веб-сайта. Они обеспечивают корректную работу интерфейса, сохраняют выбранные предпочтения и помогают нам анализировать взаимодействие с сайтом.</p>
+
+        <h4>2. Категории используемых файлов:</h4>
+        <ul>
+          <li><strong>Технические (Обязательные):</strong> необходимы для функционирования квиза, запоминания выбранного среза волос и передачи данных формы. Без них работа сайта невозможна.</li>
+          <li><strong>Аналитические:</strong> используются сервисом Яндекс.Метрика для оценки посещаемости, источников трафика и улучшения удобства навигации (не содержат персональных идентификаторов).</li>
+          <li><strong>Функциональные:</strong> сохраняют настройки интерфейса и статус согласия на уведомления.</li>
+        </ul>
+
+        <h4>3. Управление файлами Cookie</h4>
+        <p>Вы можете в любой момент изменить настройки файлов cookie через кнопку «Настройки файлов Cookie» в подвале сайта либо отключить их в настройках вашего браузера (Chrome, Safari, Firefox, Яндекс.Браузер). Обратите внимание, что отключение технических cookie может повлиять на работоспособность формы подбора срезов.</p>
+      `
+    }
+  };
+
+  window.mvOpenLegalModal = function(docType) {
+    var modal = document.getElementById('mv-legal-modal');
+    var titleEl = document.getElementById('mv-legal-modal-title');
+    var bodyEl = document.getElementById('mv-legal-modal-body');
+    if (!modal || !titleEl || !bodyEl) return;
+
+    var doc = LEGAL_DOCS[docType] || LEGAL_DOCS.privacy;
+    titleEl.textContent = doc.title;
+    bodyEl.innerHTML = doc.body;
+
+    modal.style.display = 'flex';
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  };
+
+  window.mvCloseLegalModal = function() {
+    var modal = document.getElementById('mv-legal-modal');
+    if (modal) {
+      modal.style.display = 'none';
+      modal.classList.remove('active');
+    }
+    document.body.style.overflow = '';
+  };
+
+  // Закрытие по кнопке Esc
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' || e.keyCode === 27) {
+      window.mvCloseLegalModal();
+    }
+  });
+
+  // Глобальный перехват любых юридических кликов (форма, чекбокс, ссылки)
+  document.addEventListener('click', function(e) {
+    var a = e.target.closest('a, button, span');
+    if (!a) return;
+
+    // Не перехватываем клики внутри самого открытого попапа закрытия
+    if (a.closest('.mv-legal-modal__header, .mv-legal-modal__footer')) return;
+
+    var href = (a.getAttribute('href') || '').toLowerCase();
+    var txt = (a.textContent || '').toLowerCase();
+
+    if (href.indexOf('politika') !== -1 || href.indexOf('privacy') !== -1) {
+      e.preventDefault();
+      e.stopPropagation();
+      window.mvOpenLegalModal('privacy');
+      return;
+    }
+    if (href.indexOf('oferta') !== -1) {
+      e.preventDefault();
+      e.stopPropagation();
+      window.mvOpenLegalModal('oferta');
+      return;
+    }
+    if (txt.indexOf('политикой конфиденциальности') !== -1 || txt.indexOf('политика конфиденциальности') !== -1) {
+      if (a.closest('.mv-lead-section, #mv-tilda-form-slot, .mv-footer, .mv-cookie-banner, .t-checkbox')) {
+        e.preventDefault();
+        e.stopPropagation();
+        window.mvOpenLegalModal('privacy');
+        return;
+      }
+    }
+    if (txt.indexOf('персональных данных') !== -1 || txt.indexOf('обработкой') !== -1) {
+      if (a.closest('.mv-lead-section, #mv-tilda-form-slot, .t-checkbox')) {
+        e.preventDefault();
+        e.stopPropagation();
+        window.mvOpenLegalModal('consent');
+        return;
+      }
+    }
+  }, true);
+
   function mountTildaForm() {
     var slot = document.getElementById('mv-tilda-form-slot');
     if (!slot) return;
@@ -2632,6 +3038,55 @@
         }
       });
     }
+
+    // Обработка кликов по ссылкам политики и согласия в чекбоксе формы Тильды
+    var cbControls = form.querySelectorAll('.t-checkbox__control');
+    cbControls.forEach(function(ctrl) {
+      if (ctrl.dataset.mvLegalInit) return;
+      ctrl.dataset.mvLegalInit = 'true';
+
+      var existingLinks = ctrl.querySelectorAll('a');
+      if (existingLinks.length > 0) {
+        existingLinks.forEach(function(link) {
+          link.setAttribute('href', 'javascript:void(0)');
+          link.removeAttribute('target');
+          link.classList.add('mv-legal-link');
+          link.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            var lt = (link.textContent || '').toLowerCase();
+            if (lt.indexOf('персональн') !== -1 || lt.indexOf('обработк') !== -1) {
+              window.mvOpenLegalModal('consent');
+            } else {
+              window.mvOpenLegalModal('privacy');
+            }
+          });
+        });
+      } else {
+        var lblText = ctrl.querySelector('.t-checkbox__labeltext') || ctrl;
+        var h = lblText.innerHTML;
+        if (h.indexOf('mv-legal-link') === -1) {
+          h = h.replace(
+            /политикой\s+конфиденциальности/gi,
+            '<span class="mv-legal-link" data-doc="privacy">политикой конфиденциальности</span>'
+          );
+          h = h.replace(
+            /обработкой\s+(своих\s+)?персональных\s+данных/gi,
+            '<span class="mv-legal-link" data-doc="consent">обработкой персональных данных</span>'
+          );
+          lblText.innerHTML = h;
+
+          lblText.querySelectorAll('.mv-legal-link').forEach(function(sp) {
+            sp.addEventListener('click', function(e) {
+              e.preventDefault();
+              e.stopPropagation();
+              var doc = sp.getAttribute('data-doc');
+              window.mvOpenLegalModal(doc || 'privacy');
+            });
+          });
+        }
+      }
+    });
 
     if (typeof window.t_contactMethod__init === 'function') {
       try {
