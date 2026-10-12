@@ -614,6 +614,54 @@
         padding: 9px 16px;
         font-size: 12px;
       }
+      .mv-card-video-overlay {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        background: rgba(0,0,0,0.35);
+        cursor: pointer;
+        transition: background 0.2s ease, opacity 0.2s ease;
+      }
+      .mv-card-video-overlay:hover {
+        background: rgba(0,0,0,0.15);
+      }
+      .mv-card-video-play {
+        width: 46px; height: 46px;
+        border-radius: 50%;
+        background: var(--mv-grad-gold);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+        transition: transform 0.2s ease;
+      }
+      .mv-card-video-overlay:hover .mv-card-video-play {
+        transform: scale(1.12);
+      }
+      .mv-card-video-label {
+        font-size: 11px;
+        font-weight: 600;
+        color: #fff;
+        background: rgba(12, 10, 9, 0.8);
+        padding: 4px 10px;
+        border-radius: 999px;
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(255,255,255,0.15);
+      }
+      .mv-card-msg--video {
+        background: rgba(42, 171, 238, 0.14) !important;
+        border-color: #2AABEE !important;
+        color: #fff !important;
+        font-weight: 600 !important;
+      }
+      .mv-card-msg--video:hover {
+        background: #2AABEE !important;
+        color: #0c0a09 !important;
+      }
       .mv-card-messengers {
         display: grid;
         grid-template-columns: 1fr auto;
@@ -1237,80 +1285,119 @@
       poster: 'https://kinescopecdn.net/be3501b7-76a0-44cc-b5a2-bf1ab144d162/posters/5cdb6dc7-7552-4d4f-8b1f-51b0003489b4/019e6de2-0bda-7a8d-b984-5519d76a7f17.jpg'
     }
   ];
-
-  // Данные срезов
+  // Данные срезов (СИНХРОНИЗИРОВАНО С РЕАЛЬНЫМИ ВИДЕОПОСТАМИ ИЗ TELEGRAM @magiavolos_chanel)
   var CATALOG_ITEMS = [
     {
       id: 1,
-      title: 'Детский срез • Легкая волна',
+      title: 'Детские срезы • Легкая и активная волна',
       category: 'детские_срезы',
-      tags: ['#детские_срезы', '#не_окрашен', '#одноголовый_срез'],
-      len: '55-60 см',
+      tags: ['#детские_срезы', '#легкая_волна', '#видеообзор'],
+      is_video: true,
+      tg_url: 'https://t.me/magiavolos_chanel/1219',
+      len: '50-55 см',
       struct: 'Легкая волна',
-      shade: 'Не окрашен',
+      shade: 'Русый целинный',
       weight: '105 грамм',
       price: 'от 19 500 ₽',
-      img: 'https://static.tildacdn.com/tild3430-6438-4630-b435-663237353933/photo_2025-09-24_10-.jpg'
+      img: 'https://cdn4.telesco.pe/file/DmhephMmDxLZwv7O_NanAqLUVi5-p9-QYmh2Uj3Wb5c6j5-D-RRkEAzd4Dkg_9YxDvfWfS0tv_MFU1i6lYsCJcDPmYs0F138L8sR46IB_ZW_TVQPShq0UandU8UfJW5j83HAy7BtznGjsdXKtCFQ0Btmm7qY5iUkTsvrtt5R5ic3Bs0s3vAaepzysXgwo99qQ4Z0j1Co4D8U2Lr3XY_9dHcpNrldD7JWoi30hrRT8_2l6UCC0bM2jGkmS82fX-SmDhxMYH4yRq-6-wwPayGwl432j8NASWmbB-Riy9UitDoQ9eXjCESKwKEPsTOKyljsAbXTwif5n1ggM7xpV5SOeg'
     },
     {
       id: 2,
-      title: 'Славянский люкс • Шелковистый прямой',
-      category: 'славянский_люкс',
-      tags: ['#славянский_люкс', '#шелковистый_хвостик', '#плотный_кончик'],
+      title: 'Детские срезы • Активная волна и кудри',
+      category: 'активная_волна',
+      tags: ['#детские_срезы', '#активная_волна', '#кудри', '#видеообзор'],
+      is_video: true,
+      tg_url: 'https://t.me/magiavolos_chanel/1224',
       len: '55-60 см',
-      struct: 'Плотный прямой',
-      shade: 'Шоколад',
-      weight: '120 грамм',
+      struct: 'Активная волна',
+      shade: 'Натуральный русый',
+      weight: '115 грамм',
       price: 'от 22 000 ₽',
-      img: 'https://static.tildacdn.com/tild3131-3761-4165-b235-366537393336/img_8889-scaled.jpg'
+      img: 'https://cdn4.telesco.pe/file/hXSvwjvs__TYlFl1VJocVZ5MNpQAg17xico-g5af4gsFuQ_072egHfwV49Q4fGlHGnew0UDTTr-Ri00Ci_hb99-as5FNP3QTQAdApSKdtoxhS8a7hblgLVPZBdkv_8koLY4gNVKB5C4OqgAoGEuEZ10hiBGgCukSJqnKCDR3GoAnu6bIOHySquJrWB9_1__bkoae9S0rspix9oXb-hXejqIgMWUibqW_oDcZKokVDUzr8FIM0pU0JeGu8RS6N8vgcsLDRm78GC86MCtyyf4jWTyS1vD7BpwUaRQBAnXDohPVczCVHzswRyDLdGhc7OLca2fpqD0U_1-hzH27Agu_yg'
     },
     {
       id: 3,
-      title: 'Роскошные кудри • Карамельный подтон',
-      category: 'активная_волна',
-      tags: ['#активная_волна', '#роскошные_кудри', '#карамель'],
-      len: '65-70 см',
-      struct: 'Кудри',
-      shade: 'Карамель',
-      weight: '135 грамм',
-      price: 'от 24 500 ₽',
-      img: 'https://static.tildacdn.com/tild6635-3130-4331-b132-306531653965/kling_20260726_IMAGE.png'
+      title: 'Детский целинный хвостик • Не окрашен',
+      category: 'детские_срезы',
+      tags: ['#детские_срезы', '#не_окрашен', '#одноголовый_срез', '#видеообзор'],
+      is_video: true,
+      tg_url: 'https://t.me/magiavolos_chanel/1231',
+      len: '45-50 см',
+      struct: 'Тонкий шелк',
+      shade: 'Светло-русый',
+      weight: '95 грамм',
+      price: 'от 18 500 ₽',
+      img: 'https://cdn4.telesco.pe/file/Zpd9mStkWCwb-zj5UqAvhOFGRk6kgivMbp2g_mLJtwtbrySP7EZWwLJtb6VjM_tdmOwoCd5XPvpgWc-LCMSSvbrWrfsxTusd20YiN7gREX5H7bPU3MxNj1aXuX7E8m3LxdHNHKTIWjye2Lfuc3GXpuqbnHYZlBmy7gGvQk2lvNhfJ1ZiKqwzPWeXkrqLc9tfIqdbANqKCJC2DTVzpSLWL8iNphfDFEiB8WJn44By-hbTWSb7Nth9EQ9oZyH8g4Nets-L1gq4MJhlRqWGuqykZutlDKwyWgPgc7Fzk7dh_Y8mAiEKG83avGeETYLYyjt1376yo5Esb9kCi8r4FWWjNg'
     },
     {
       id: 4,
-      title: 'Детский целинный хвостик • Русый шелк',
-      category: 'детские_срезы',
-      tags: ['#детские_срезы', '#целинный_хвостик', '#тонкий_шелк'],
-      len: '40-50 см',
-      struct: 'Тонкий шелк',
-      shade: 'Не окрашен',
-      weight: '90 грамм',
-      price: 'от 18 000 ₽',
-      img: 'https://static.tildacdn.com/tild3430-6438-4630-b435-663237353933/photo_2025-09-24_10-.jpg'
+      title: 'Шелковистый хвостик • Шоколадный оттенок',
+      category: 'славянский_люкс',
+      tags: ['#славянский_люкс', '#шоколад', '#прямой_срез', '#видеообзор'],
+      is_video: true,
+      tg_url: 'https://t.me/magiavolos_chanel/1232',
+      len: '60-65 см',
+      struct: 'Прямой с легкой волной',
+      shade: 'Шоколад',
+      weight: '125 грамм',
+      price: 'от 23 500 ₽',
+      img: 'https://cdn4.telesco.pe/file/ocbu0_B7Cud0z1UdxyVp3aL0CZtk1Q9f2unXBa5DvL0w7qpkGLrwH6LZPKRC1yx77NnSE0LE7AIJuLRr7eV8HkrEVGo7OKFblDGvm6yMKs3TQVgcNwHlW8Uvjp_KFshb5zCwLvxqXSOa_1Fl-GfxmjEoYbQ5kWrpr6WZ-8JppkBH0ngHOcsR0kiQwkwScUKWOntoky_sjkDfiQL8-Fk_1lkgvv02ffrHXT4Loyun2iFRLt06U2FjvIY6qV9t6AfmaUWAnCQrABHPElpkDZeJdH6YU4NKRP1m0C7Ra-_o-EMvUn0SnnOIOMTJLUHK2N7yMPUkO5SrQpi2_nbjsrMvAg'
     },
     {
       id: 5,
-      title: 'Глубокий шоколад • Прямой одноголовый срез',
+      title: 'Прямой одноголовый срез • Глубокий шоколад',
       category: 'глубокий_шоколад',
-      tags: ['#глубокий_шоколад', '#не_окрашен', '#одноголовый_срез'],
+      tags: ['#глубокий_шоколад', '#не_окрашен', '#прямой_срез', '#видеообзор'],
+      is_video: true,
+      tg_url: 'https://t.me/magiavolos_chanel/1233',
       len: '65-70 см',
       struct: 'Плотный прямой',
-      shade: 'Темный брюнет',
-      weight: '150 грамм',
-      price: 'от 26 500 ₽',
-      img: 'https://static.tildacdn.com/tild3131-3761-4165-b235-366537393336/img_8889-scaled.jpg'
+      shade: 'Глубокий шоколад',
+      weight: '140 грамм',
+      price: 'от 25 000 ₽',
+      img: 'https://cdn4.telesco.pe/file/Xqp4-FcR8fSUmI42cmMSz2_L-1YjSwnCFazLD1j8l9ZwkjhDwmwriX4vG2ToGSJAVPYwFibv2rIcxy01HL6Eccs4eUej3buz-Hg9Vt65YFk2WrFsA8EeFEOswHEavEcTYwNTnjjhGiPdpfQIoE6DKKEfjDUml0ketR53FYTbcs8hvpowYexNmGMbu-_QdEusow6USeoKnOJBH3sSJ6CEZFVK5bd1jRviFduTJyvdbBKg1xso9WzZjYo5Lz1hBwqkLCvfnlzNWWcuuyZMRIs2H_ZhLhc2d7uLMaTqQ0Kr8hqfv1TU1TDZD14vyz3cXTEtG1hMTJwW9-0vOr9X2HEbjg'
     },
     {
       id: 6,
-      title: 'Комплект для лентирования • Биоленты Люкс',
-      category: 'биоленты',
-      tags: ['#обучение_лентированию', '#биоленты', '#мастерам'],
+      title: 'Волна с карамельным подтоном • Не окрашен',
+      category: 'активная_волна',
+      tags: ['#активная_волна', '#карамель', '#не_окрашен', '#видеообзор'],
+      is_video: true,
+      tg_url: 'https://t.me/magiavolos_chanel/1235',
+      len: '60-65 см',
+      struct: 'Мягкая волна',
+      shade: 'Карамельный подтон',
+      weight: '120 грамм',
+      price: 'от 24 000 ₽',
+      img: 'https://cdn4.telesco.pe/file/SVUtPSue9W3sJKPZ6g3yF7QXNWiKxBSI-ELijUHgKP8ftFXN7fZDXsUyOOugo7Go5INzQaIiKqHlGwV5JrqjZxBdjI17efAwH0EHQoNTgEvgJPfwgE0JL9kZwsNK0I7Bid6CKbUNFXbINU9RMGH61L5bRqw93ZuEY3qt2AS9olWBLkFLT66XQDPweRtEHSV5V4w0fEE8XK96iYlJfACbwaareI6jUX0u07ssB2uJZUVnEb42VwWCn0B7KivjVAwELSaZg9BwkwRJ8ReHU-Ad1-nlGBHI5DeC-iTO0UCFjPWp1hjwMTdchf4XpHFGmmlRD63rVrONJ8E300kwKL1oOg'
+    },
+    {
+      id: 7,
+      title: 'Роскошные кудри • Отборный срез',
+      category: 'активная_волна',
+      tags: ['#роскошные_кудри', '#кудри', '#видеообзор'],
+      is_video: true,
+      tg_url: 'https://t.me/magiavolos_chanel/1236',
+      len: '65-70 см',
+      struct: 'Упругие кудри',
+      shade: 'Темно-русый',
+      weight: '135 грамм',
+      price: 'от 26 000 ₽',
+      img: 'https://cdn4.telesco.pe/file/pqnLh9sAgW96nzuJPvJO1EZJ-hPRRl6EvdlgT2MDuaFOkf9JQOZX_rWpH8ECzhREthdgaNxEwu_puC16tMvGH6z4QFLw6i03nMgzP_Slg15P1N6uWelkwKbqOQ_QsirC_xwMa5jOi7KkgbcN8IOllhPa67KfFFBqgMIvnEmzbjhXz3T25p9aKs5jrgaPxvl0OjlQBDdUYPAJHZS4Ne6cuV4m4kTaEbgagQdb0BbpxnvyxZakWyzDp1TxLBu2tRreU5OZM1Hkdi3vCR5lcQwo8nGOi1uzO8GCU6l1R3QLr-0yVgd2licJAxdhJfwn1tw--E0HmIVO3Bl5WK7t7H4R4A'
+    },
+    {
+      id: 8,
+      title: 'Красивая волна • Одноголовый срез',
+      category: 'активная_волна',
+      tags: ['#одноголовый_срез', '#не_окрашен', '#активная_волна', '#видеообзор'],
+      is_video: true,
+      tg_url: 'https://t.me/magiavolos_chanel/1237',
       len: '55-60 см',
-      struct: 'Тонкий шелк',
-      shade: 'Блонд',
-      weight: '100 грамм',
-      price: 'от 23 000 ₽',
-      img: 'https://static.tildacdn.com/tild6635-3130-4331-b132-306531653965/kling_20260726_IMAGE.png'
+      struct: 'Крупная волна',
+      shade: 'Шоколад',
+      weight: '110 грамм',
+      price: 'от 21 000 ₽',
+      img: 'https://cdn4.telesco.pe/file/VCVvwUuGkjJNX7OdLxCOwdwrzED4A3rxby23nn1yUP1hWe0f8N-gapRpHa7p5rc2VkGgtu9Ifmn0GxFSKFHcAZ9QjrIpOcLt3ImOnTGgwS8xFaeTgwGnqiwlldDA51XvMVX8x5K_97LIMiDkPDW8_dNCb-uYCf9LxHzSo-p0Rh9vfubC6wnhqP5blRiTqPIQYZkgZXMEkEsjCDubBf0ESMhENh9vMWVbi7A6HezEL7OML0X9VCHW-uTPHsHnKOqLsMk5wehvK8HMV9tokG-44J896RZEOqLuxOANgjdII9d9pomFMlw-xIGLco9sW1O_M6oyCPg415AzL49WYuaGVw'
     }
   ];
 
@@ -1687,8 +1774,16 @@
         card.className = 'mv-card';
         card.innerHTML = `
           <div class="mv-card-img-wrap">
-            <img src="${item.img}" alt="${item.title}" class="mv-card-img">
-            <span class="mv-card-badge">В наличии</span>
+            <img src="${item.img}" alt="${item.title}" class="mv-card-img" referrerpolicy="no-referrer" loading="lazy">
+            ${item.is_video ? `
+              <div class="mv-card-video-overlay" data-tg-url="${item.tg_url}" title="Смотреть видеообзор в Telegram">
+                <div class="mv-card-video-play">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="#0c0a09"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+                <span class="mv-card-video-label">Видео в Telegram</span>
+              </div>
+            ` : ''}
+            <span class="mv-card-badge">${item.is_video ? '▶ Видеообзор' : 'В наличии'}</span>
           </div>
           <div class="mv-card-body">
             <div class="mv-card-hashtags">
@@ -1705,18 +1800,21 @@
               <button class="mv-btn mv-btn-primary mv-card-btn" data-title="${item.title}">Забронировать</button>
             </div>
             <div class="mv-card-messengers">
-              <a href="https://t.me/Magiavolos?text=${encodeURIComponent('Здравствуйте! Интересует срез: ' + item.title + ' (' + item.len + ', ' + item.weight + ', ' + item.price + ')')}" target="_blank" rel="noopener noreferrer" class="mv-card-msg-btn mv-card-msg--tg" title="Уточнить наличие в Telegram">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none"><circle cx="12" cy="12" r="12" fill="#2AABEE"/><path d="M5.5 11.8l3.2 1.2 1.3 4.1c.2.5.8.6 1.1.2l1.9-1.9 3.8 2.8c.4.3 1 .1 1.1-.4l2.2-10.4c.1-.6-.4-1.1-1-.9L5.5 10.7c-.6.2-.6 1 0 1.1zm4.2 1l6.8-4.3c.2-.1.3.1.2.2l-5.6 5.1-.2 2.3-.8-2.6-.4-.7z" fill="#ffffff"/></svg>
-                <span>В Telegram</span>
-              </a>
-              <a href="https://max.ru/u/f9LHodD0cOKWrw5xtMdExj0FHPSJ6XMPPXtGG050Eaxzc1IZ2NirvJiMRCo" target="_blank" rel="noopener noreferrer" class="mv-card-msg-btn mv-card-msg--max" title="Написать в MAX">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none"><circle cx="12" cy="12" r="12" fill="#0080FF"/><path d="M6.5 15.5V8.5h2.2l2.3 4.5 2.3-4.5h2.2v7h-1.8v-4.8l-2.1 4.2h-1.2L8.3 10.7v4.8H6.5z" fill="#ffffff"/></svg>
-                <span>В MAX</span>
+              ${item.is_video ? `
+                <a href="${item.tg_url}" target="_blank" rel="noopener noreferrer" class="mv-card-msg-btn mv-card-msg--video" title="Смотреть реальное видео в Telegram">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><circle cx="12" cy="12" r="12" fill="#2AABEE"/><path d="M9.5 7.5v9l7-4.5z" fill="#ffffff"/></svg>
+                  <span>Смотреть видео в Telegram</span>
+                </a>
+              ` : `
+                <a href="${item.tg_url}" target="_blank" rel="noopener noreferrer" class="mv-card-msg-btn mv-card-msg--tg" title="Смотреть пост в Telegram">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none"><circle cx="12" cy="12" r="12" fill="#2AABEE"/><path d="M5.5 11.8l3.2 1.2 1.3 4.1c.2.5.8.6 1.1.2l1.9-1.9 3.8 2.8c.4.3 1 .1 1.1-.4l2.2-10.4c.1-.6-.4-1.1-1-.9L5.5 10.7c-.6.2-.6 1 0 1.1zm4.2 1l6.8-4.3c.2-.1.3.1.2.2l-5.6 5.1-.2 2.3-.8-2.6-.4-.7z" fill="#ffffff"/></svg>
+                  <span>Пост в Telegram</span>
+                </a>
+              `}
+              <a href="https://t.me/Magiavolos?text=${encodeURIComponent('Здравствуйте! Интересует срез из видео: ' + item.title + ' (' + item.tg_url + ')')}" target="_blank" rel="noopener noreferrer" class="mv-card-msg-btn mv-card-msg--max" title="Уточнить в ЛС">
+                <span>Запросить в ЛС</span>
               </a>
             </div>
-            <a href="https://t.me/magiavolos_chanel" target="_blank" rel="noopener noreferrer" class="mv-card-channel-link">
-              <span>Смотреть видео срезов в канале</span> ↗
-            </a>
           </div>
         `;
 
@@ -1727,6 +1825,14 @@
           var leadBox = document.getElementById('lead-box');
           if (leadBox) leadBox.scrollIntoView({ behavior: 'smooth' });
         });
+
+        var overlay = card.querySelector('.mv-card-video-overlay');
+        if (overlay) {
+          overlay.addEventListener('click', function() {
+            var url = overlay.getAttribute('data-tg-url');
+            if (url) window.open(url, '_blank');
+          });
+        }
 
         container.appendChild(card);
       });
