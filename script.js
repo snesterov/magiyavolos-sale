@@ -1084,35 +1084,62 @@
       .mv-faq-item.open .mv-faq-body { display: block; }
 
       /* FOOTER */
+            /* ПОДВАЛ И ЮРИДИЧЕСКИЙ БЛОК */
       .mv-footer {
-        padding: 60px 0 30px;
+        padding: 70px 0 35px;
         background: #080605;
         border-top: 1px solid var(--mv-border);
       }
       .mv-footer-grid {
         display: grid;
-        grid-template-columns: 2fr 1fr 1fr;
+        grid-template-columns: 1.5fr 1fr 1.2fr;
         gap: 40px;
-        margin-bottom: 40px;
+        margin-bottom: 45px;
       }
       .mv-footer-col h4 {
-        font-size: 15px;
-        font-weight: 600;
+        font-size: 14px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
         color: var(--mv-gold-light);
-        margin: 0 0 16px;
+        margin: 0 0 18px;
+      }
+      .mv-footer-legal-box {
+        margin-top: 18px;
+        padding: 14px 16px;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(197, 155, 109, 0.18);
+        font-size: 12px;
+        color: var(--mv-text-muted);
+        line-height: 1.7;
+      }
+      .mv-footer-legal-title {
+        color: var(--mv-gold-light);
+        font-weight: 600;
+        margin-bottom: 4px;
+        font-size: 12px;
       }
       .mv-footer-links {
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        gap: 11px;
       }
-      .mv-footer-links a {
+      .mv-footer-links a, .mv-footer-links button.mv-footer-btn-link {
         color: var(--mv-text-muted);
         text-decoration: none;
         font-size: 13px;
+        background: none;
+        border: none;
+        padding: 0;
+        text-align: left;
+        cursor: pointer;
+        font-family: inherit;
         transition: color 0.2s ease;
       }
-      .mv-footer-links a:hover { color: var(--mv-gold-light); }
+      .mv-footer-links a:hover, .mv-footer-links button.mv-footer-btn-link:hover {
+        color: var(--mv-gold-light);
+      }
       .mv-footer-ls-item {
         display: inline-flex !important;
         align-items: center !important;
@@ -1122,12 +1149,240 @@
       }
       .mv-footer-ls-item:hover { color: var(--mv-gold-light) !important; }
       .mv-footer-bottom {
-        padding-top: 24px;
-        border-top: 1px solid rgba(255,255,255,0.05);
+        padding-top: 26px;
+        border-top: 1px solid rgba(255, 255, 255, 0.07);
         display: flex;
-        justify-content: space-between;
+        flex-direction: column;
+        gap: 14px;
         font-size: 12px;
         color: var(--mv-text-muted);
+      }
+      .mv-footer-bottom-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+      .mv-footer-bottom-links {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+      .mv-footer-bottom-links a, .mv-footer-bottom-links button {
+        color: var(--mv-text-muted);
+        text-decoration: underline;
+        font-size: 12px;
+        background: none;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        font-family: inherit;
+        transition: color 0.2s ease;
+      }
+      .mv-footer-bottom-links a:hover, .mv-footer-bottom-links button:hover {
+        color: var(--mv-gold-light);
+      }
+      .mv-footer-disclaimer {
+        font-size: 11px;
+        line-height: 1.5;
+        color: rgba(168, 159, 145, 0.65);
+        border-top: 1px dashed rgba(255, 255, 255, 0.05);
+        padding-top: 12px;
+      }
+
+      /* ДВУХЭТАПНЫЙ COOKIE-БАННЕР (GREYZZZZWOLF СТИЛЬ) */
+      .mv-cookie-banner {
+        position: fixed;
+        bottom: 24px;
+        left: 24px;
+        max-width: 440px;
+        width: calc(100% - 48px);
+        background: #14100e;
+        border: 1.5px solid var(--mv-gold);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), 0 0 30px rgba(197, 155, 109, 0.25);
+        border-radius: 20px;
+        padding: 24px;
+        z-index: 99999;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(25px);
+        transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+        box-sizing: border-box;
+        color: var(--mv-text);
+        backdrop-filter: blur(16px);
+      }
+      .mv-cookie-banner.visible {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+      .mv-cookie-close-corner {
+        position: absolute;
+        top: 14px; right: 14px;
+        width: 28px; height: 28px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(197, 155, 109, 0.3);
+        color: var(--mv-gold-light);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 13px;
+        transition: all 0.2s;
+        z-index: 10;
+      }
+      .mv-cookie-close-corner:hover {
+        background: var(--mv-gold);
+        color: #0c0a09;
+      }
+      .mv-cookie-view { display: flex; flex-direction: column; gap: 14px; }
+      .mv-cookie-view.hidden { display: none !important; }
+      .mv-cookie-top-nav { display: flex; align-items: center; gap: 12px; }
+      .mv-cookie-back-btn {
+        width: 32px; height: 32px;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid var(--mv-border);
+        color: var(--mv-gold-light);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        flex-shrink: 0;
+        transition: background 0.2s;
+      }
+      .mv-cookie-back-btn:hover { background: rgba(197, 155, 109, 0.2); }
+      .mv-cookie-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 19px;
+        font-weight: 700;
+        color: #fff;
+        line-height: 1.25;
+      }
+      .mv-cookie-text {
+        font-size: 13px;
+        line-height: 1.6;
+        color: var(--mv-text-muted);
+      }
+      .mv-cookie-text a {
+        color: var(--mv-gold-light);
+        text-decoration: underline;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      .mv-cookie-btn-col {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-top: 4px;
+      }
+      .mv-cookie-btn-primary {
+        background: var(--mv-grad-gold);
+        color: #0c0a09;
+        font-size: 13.5px;
+        font-weight: 700;
+        padding: 12px 18px;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: transform 0.15s, box-shadow 0.2s;
+        text-align: center;
+      }
+      .mv-cookie-btn-primary:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 18px rgba(197, 155, 109, 0.45);
+      }
+      .mv-cookie-btn-secondary {
+        background: rgba(197, 155, 109, 0.12);
+        color: var(--mv-gold-light);
+        border: 1px solid var(--mv-border);
+        font-size: 13.5px;
+        font-weight: 600;
+        padding: 11px 18px;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: background 0.2s;
+        text-align: center;
+      }
+      .mv-cookie-btn-secondary:hover {
+        background: rgba(197, 155, 109, 0.22);
+      }
+      .mv-cookie-btn-dark {
+        background: rgba(255, 255, 255, 0.04);
+        color: var(--mv-text-muted);
+        font-size: 13px;
+        font-weight: 600;
+        padding: 10px 18px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 12px;
+        cursor: pointer;
+        text-align: center;
+        transition: all 0.2s;
+      }
+      .mv-cookie-btn-dark:hover {
+        color: #fff;
+        border-color: var(--mv-gold);
+      }
+      .mv-cookie-toggles-list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin: 6px 0;
+      }
+      .mv-cookie-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 14px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid var(--mv-border);
+        border-radius: 12px;
+        gap: 10px;
+      }
+      .mv-cookie-item-label {
+        font-size: 13px;
+        color: #eee;
+        font-weight: 600;
+      }
+      .mv-switch {
+        position: relative;
+        display: inline-block;
+        width: 44px;
+        height: 24px;
+        flex-shrink: 0;
+      }
+      .mv-switch input { opacity: 0; width: 0; height: 0; }
+      .mv-slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background-color: #2b221b;
+        transition: 0.25s;
+        border-radius: 24px;
+      }
+      .mv-slider:before {
+        position: absolute;
+        content: "";
+        height: 18px; width: 18px;
+        left: 3px; bottom: 3px;
+        background-color: #ffffff;
+        transition: 0.25s;
+        border-radius: 50%;
+      }
+      .mv-switch input:checked + .mv-slider { background-color: var(--mv-gold); }
+      .mv-switch input:checked + .mv-slider:before { transform: translateX(20px); }
+
+      @media (max-width: 600px) {
+        .mv-cookie-banner {
+          bottom: 12px; left: 12px;
+          width: calc(100% - 24px);
+          padding: 18px;
+        }
       }
 
       /* Виджеты */
@@ -1694,25 +1949,40 @@
       </section>
 
       <!-- ПОДВАЛ -->
+            <!-- ЮРИДИЧЕСКИЙ ПОДВАЛ -->
       <footer id="contacts" class="mv-footer">
         <div class="mv-container">
           <div class="mv-footer-grid">
+            <!-- КОЛОНКА 1: БРЕНД И ЮР. ДАННЫЕ -->
             <div class="mv-footer-col">
               <span class="mv-logo-title">Магия Волос</span>
-              <p style="font-size:13px; color:var(--mv-text-muted); line-height:1.6; margin:14px 0 0; max-width:340px;">
-                Собственное производство и салон-магазин донорских волос в Москве. Работаем более 15 лет. Оптовые и розничные поставки.
+              <p style="font-size:13px; color:var(--mv-text-muted); line-height:1.6; margin:14px 0 0; max-width:360px;">
+                Собственное фабричное производство и шоурум отборных донорских волос одноголового сбора в Москве. Оптовые и розничные поставки по всей территории РФ и миру с 2009 года.
               </p>
-            </div>
-            <div class="mv-footer-col">
-              <h4>Контакты шоурума</h4>
-              <div class="mv-footer-links">
-                <a href="tel:+79255063750">+7 (925) 506-37-50</a>
-                <span>г. Москва, ул. Машкова, 26с1</span>
-                <span>Ежедневно с 10:00 до 20:00</span>
+              <div class="mv-footer-legal-box">
+                <div class="mv-footer-legal-title">Юридическая информация:</div>
+                <div>Индивидуальный предприниматель Зарипов Д.А.</div>
+                <div>ИНН: 502918883974</div>
+                <div>ОГРНИП: 321508100565547</div>
               </div>
             </div>
+
+            <!-- КОЛОНКА 2: РАЗДЕЛЫ САЙТА -->
             <div class="mv-footer-col">
-              <h4>Личные сообщения (ЛС)</h4>
+              <h4>Разделы каталога</h4>
+              <div class="mv-footer-links">
+                <a href="#education">Видеоуроки от технолога</a>
+                <a href="#catalog">Каталог срезов в наличии</a>
+                <a href="#quiz">Экспресс-подбор среза (Квиз)</a>
+                <a href="#masters">Мастерам & Оптовые условия</a>
+                <a href="#faq">Частые вопросы (FAQ)</a>
+                <a href="#lead-box">Забронировать видеоподборку</a>
+              </div>
+            </div>
+
+            <!-- КОЛОНКА 3: ЛС И ШОУРУМ -->
+            <div class="mv-footer-col">
+              <h4>Прямая связь & Шоурум</h4>
               <div class="mv-footer-links">
                 <a href="https://t.me/Magiavolos" target="_blank" rel="noopener noreferrer" class="mv-footer-ls-item">
                   <svg viewBox="0 0 24 24" width="18" height="18" fill="none"><circle cx="12" cy="12" r="12" fill="#2AABEE"/><path d="M5.5 11.8l3.2 1.2 1.3 4.1c.2.5.8.6 1.1.2l1.9-1.9 3.8 2.8c.4.3 1 .1 1.1-.4l2.2-10.4c.1-.6-.4-1.1-1-.9L5.5 10.7c-.6.2-.6 1 0 1.1zm4.2 1l6.8-4.3c.2-.1.3.1.2.2l-5.6 5.1-.2 2.3-.8-2.6-.4-.7z" fill="#ffffff"/></svg>
@@ -1726,15 +1996,85 @@
                   <svg viewBox="0 0 24 24" width="18" height="18" fill="none"><circle cx="12" cy="12" r="12" fill="rgba(197,155,109,0.3)"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" fill="#edd8be"/></svg>
                   <span>Канал со срезами (@magiavolos_chanel)</span>
                 </a>
+                <a href="tel:+79255063750" style="margin-top:6px;"><strong>+7 (925) 506-37-50</strong> (Консультация)</a>
+                <a href="tel:+74951363244">+7 (495) 136-32-44 (Шоурум фабрики)</a>
+                <span>г. Москва, ул. Машкова, 26с1</span>
+                <span>Ежедневно с 10:00 до 20:00</span>
               </div>
             </div>
           </div>
+
+          <!-- НИЖНЯЯ ПАНЕЛЬ С ДОКУМЕНТАМИ И ДИСКЛЕЙМЕРОМ -->
           <div class="mv-footer-bottom">
-            <span>© 2009–2026 Магия Волос. Все права защищены.</span>
-            <a href="https://xn--80aecuqbsb1a9k.xn--p1ai/politika_sale" target="_blank" style="color:var(--mv-text-muted); text-decoration:none;">Политика конфиденциальности</a>
+            <div class="mv-footer-bottom-row">
+              <span>© 2009–2026 Фабрика натуральных волос «Магия Волос». Все права защищены.</span>
+              <div class="mv-footer-bottom-links">
+                <a href="https://магияволос.рф/oferta_sale" target="_blank" rel="noopener noreferrer">Договор оферты</a>
+                <a href="https://магияволос.рф/politika_sale" target="_blank" rel="noopener noreferrer">Политика конфиденциальности (ФЗ-152)</a>
+                <button type="button" onclick="mvOpenCookieSettings()">Настройки файлов Cookie</button>
+              </div>
+            </div>
+            <div class="mv-footer-disclaimer">
+              * Деятельность Meta Platforms Inc. (социальные сети Facebook и Instagram) признана экстремистской и запрещена на территории Российской Федерации.
+            </div>
           </div>
         </div>
       </footer>
+
+      <!-- ДВУХЭТАПНЫЙ БАННЕР COOKIE (GREYZZZZWOLF СТИЛЬ) -->
+      <div id="mv-cookie-banner" class="mv-cookie-banner">
+        <button type="button" class="mv-cookie-close-corner" onclick="mvCloseCookieBanner()" title="Закрыть">✕</button>
+
+        <div id="mv-cookie-view-main" class="mv-cookie-view">
+          <div class="mv-cookie-title">«Магия Волос» использует cookie</div>
+          <div class="mv-cookie-text">
+            Файлы cookie и технические данные необходимы для стабильной и безопасной работы сайта, сохранения ваших настроек и веб-аналитики. Подробнее — в <a href="https://магияволос.рф/politika_sale" target="_blank" rel="noopener noreferrer">Политике конфиденциальности</a>.
+          </div>
+          <div class="mv-cookie-btn-col">
+            <button type="button" class="mv-cookie-btn-primary" onclick="mvAcceptAllCookies()">Разрешить все</button>
+            <button type="button" class="mv-cookie-btn-secondary" onclick="mvAcceptEssentialCookies()">Разрешить обязательные</button>
+            <button type="button" class="mv-cookie-btn-dark" onclick="mvShowCookieSettings()">Настроить</button>
+          </div>
+        </div>
+
+        <div id="mv-cookie-view-settings" class="mv-cookie-view hidden">
+          <div class="mv-cookie-top-nav">
+            <button type="button" class="mv-cookie-back-btn" onclick="mvHideCookieSettings()" title="Назад">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M15 19l-7-7 7-7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="mv-cookie-title">Настройки файлов cookie</div>
+          </div>
+          <div class="mv-cookie-text">
+            Вы можете выбрать, какие типы файлов cookie разрешить для работы с сайтом фабрики:
+          </div>
+          <div class="mv-cookie-toggles-list">
+            <div class="mv-cookie-item">
+              <div class="mv-cookie-item-label">Технические (обязательные)</div>
+              <label class="mv-switch">
+                <input type="checkbox" checked disabled>
+                <span class="mv-slider"></span>
+              </label>
+            </div>
+            <div class="mv-cookie-item">
+              <div class="mv-cookie-item-label">Аналитические (Яндекс.Метрика)</div>
+              <label class="mv-switch">
+                <input type="checkbox" id="mv-cookie-toggle-analytics" checked>
+                <span class="mv-slider"></span>
+              </label>
+            </div>
+            <div class="mv-cookie-item">
+              <div class="mv-cookie-item-label">Маркетинговые и видео</div>
+              <label class="mv-switch">
+                <input type="checkbox" id="mv-cookie-toggle-other" checked>
+                <span class="mv-slider"></span>
+              </label>
+            </div>
+          </div>
+          <div class="mv-cookie-btn-col">
+            <button type="button" class="mv-cookie-btn-primary" onclick="mvSaveCustomCookies()">Сохранить настройки</button>
+          </div>
+        </div>
+      </div>
 
       <!-- МОДАЛКА ВИДЕО KINESCOPE -->
       <div id="mv-video-modal">
@@ -2187,6 +2527,72 @@
     }
   }
 
+    // 10. Управление Cookie-баннером (GreyzzzzWolf стандарт)
+  window.mvAcceptAllCookies = function() {
+    localStorage.setItem('mv_cookie_consent', JSON.stringify({ status: 'all', time: Date.now() }));
+    localStorage.setItem('mv_cookie_accepted', 'true');
+    mvCloseCookieBanner();
+  };
+
+  window.mvAcceptEssentialCookies = function() {
+    localStorage.setItem('mv_cookie_consent', JSON.stringify({ status: 'essential', time: Date.now() }));
+    localStorage.setItem('mv_cookie_accepted', 'true');
+    mvCloseCookieBanner();
+  };
+
+  window.mvShowCookieSettings = function() {
+    var mainView = document.getElementById('mv-cookie-view-main');
+    var setView = document.getElementById('mv-cookie-view-settings');
+    if (mainView && setView) {
+      mainView.classList.add('hidden');
+      setView.classList.remove('hidden');
+    }
+  };
+
+  window.mvHideCookieSettings = function() {
+    var mainView = document.getElementById('mv-cookie-view-main');
+    var setView = document.getElementById('mv-cookie-view-settings');
+    if (mainView && setView) {
+      setView.classList.add('hidden');
+      mainView.classList.remove('hidden');
+    }
+  };
+
+  window.mvCloseCookieBanner = function() {
+    var banner = document.getElementById('mv-cookie-banner');
+    if (banner) banner.classList.remove('visible');
+  };
+
+  window.mvSaveCustomCookies = function() {
+    var a = document.getElementById('mv-cookie-toggle-analytics');
+    var o = document.getElementById('mv-cookie-toggle-other');
+    localStorage.setItem('mv_cookie_consent', JSON.stringify({
+      status: 'custom',
+      analytics: a ? a.checked : true,
+      other: o ? o.checked : false,
+      time: Date.now()
+    }));
+    localStorage.setItem('mv_cookie_accepted', 'true');
+    mvCloseCookieBanner();
+  };
+
+  window.mvOpenCookieSettings = function() {
+    var banner = document.getElementById('mv-cookie-banner');
+    if (banner) {
+      mvShowCookieSettings();
+      banner.classList.add('visible');
+    }
+  };
+
+  function initCookieBanner() {
+    if (!localStorage.getItem('mv_cookie_accepted')) {
+      setTimeout(function() {
+        var banner = document.getElementById('mv-cookie-banner');
+        if (banner) banner.classList.add('visible');
+      }, 800);
+    }
+  }
+
   function mount() {
     renderApp();
     initCatalog();
@@ -2194,6 +2600,7 @@
     initVideoModal();
     initFaq();
     initWidgets();
+    initCookieBanner();
 
     mountTildaForm();
     setTimeout(mountTildaForm, 400);
