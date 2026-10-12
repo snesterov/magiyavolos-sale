@@ -664,7 +664,7 @@
       }
       .mv-card-messengers {
         display: grid;
-        grid-template-columns: 1fr auto;
+        grid-template-columns: 1fr 1fr;
         gap: 8px;
         margin-top: 10px;
       }
@@ -2319,19 +2319,13 @@
               <button class="mv-btn mv-btn-primary mv-card-btn" data-title="${item.title}">Забронировать</button>
             </div>
             <div class="mv-card-messengers">
-              ${item.is_video ? `
-                <a href="${item.tg_url}" target="_blank" rel="noopener noreferrer" class="mv-card-msg-btn mv-card-msg--video" title="Смотреть реальное видео в Telegram">
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><circle cx="12" cy="12" r="12" fill="#2AABEE"/><path d="M9.5 7.5v9l7-4.5z" fill="#ffffff"/></svg>
-                  <span>Смотреть видео в Telegram</span>
-                </a>
-              ` : `
-                <a href="${item.tg_url}" target="_blank" rel="noopener noreferrer" class="mv-card-msg-btn mv-card-msg--tg" title="Смотреть пост в Telegram">
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none"><circle cx="12" cy="12" r="12" fill="#2AABEE"/><path d="M5.5 11.8l3.2 1.2 1.3 4.1c.2.5.8.6 1.1.2l1.9-1.9 3.8 2.8c.4.3 1 .1 1.1-.4l2.2-10.4c.1-.6-.4-1.1-1-.9L5.5 10.7c-.6.2-.6 1 0 1.1zm4.2 1l6.8-4.3c.2-.1.3.1.2.2l-5.6 5.1-.2 2.3-.8-2.6-.4-.7z" fill="#ffffff"/></svg>
-                  <span>Пост в Telegram</span>
-                </a>
-              `}
-              <a href="https://t.me/Magiavolos?text=${encodeURIComponent('Здравствуйте! Интересует срез из видео: ' + item.title + ' (' + item.tg_url + ')')}" target="_blank" rel="noopener noreferrer" class="mv-card-msg-btn mv-card-msg--max" title="Уточнить в ЛС">
-                <span>Запросить в ЛС</span>
+              <a href="https://t.me/Magiavolos?text=${encodeURIComponent('Здравствуйте! Хочу уточнить наличие среза: ' + item.title + (item.tg_url ? ' (' + item.tg_url + ')' : ''))}" target="_blank" rel="noopener noreferrer" class="mv-card-msg-btn mv-card-msg--tg" title="Написать в ЛС Telegram">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none"><circle cx="12" cy="12" r="12" fill="#2AABEE"/><path d="M5.5 11.8l3.2 1.2 1.3 4.1c.2.5.8.6 1.1.2l1.9-1.9 3.8 2.8c.4.3 1 .1 1.1-.4l2.2-10.4c.1-.6-.4-1.1-1-.9L5.5 10.7c-.6.2-.6 1 0 1.1zm4.2 1l6.8-4.3c.2-.1.3.1.2.2l-5.6 5.1-.2 2.3-.8-2.6-.4-.7z" fill="#ffffff"/></svg>
+                <span>В ЛС Telegram</span>
+              </a>
+              <a href="https://max.ru/u/f9LHodD0cOKWrw5xtMdExj0FHPSJ6XMPPXtGG050Eaxzc1IZ2NirvJiMRCo" target="_blank" rel="noopener noreferrer" class="mv-card-msg-btn mv-card-msg--max" title="Написать в ЛС MAX">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none"><circle cx="12" cy="12" r="12" fill="#0080FF"/><path d="M6.5 15.5V8.5h2.2l2.3 4.5 2.3-4.5h2.2v7h-1.8v-4.8l-2.1 4.2h-1.2L8.3 10.7v4.8H6.5z" fill="#ffffff"/></svg>
+                <span>В ЛС MAX</span>
               </a>
             </div>
           </div>
@@ -2345,11 +2339,11 @@
           if (leadBox) leadBox.scrollIntoView({ behavior: 'smooth' });
         });
 
-        var overlay = card.querySelector('.mv-card-video-overlay');
-        if (overlay) {
-          overlay.addEventListener('click', function() {
-            var url = overlay.getAttribute('data-tg-url');
-            if (url) window.open(url, '_blank');
+        var imgWrap = card.querySelector('.mv-card-img-wrap');
+        if (imgWrap && item.tg_url) {
+          imgWrap.style.cursor = 'pointer';
+          imgWrap.addEventListener('click', function(e) {
+            window.open(item.tg_url, '_blank');
           });
         }
 
