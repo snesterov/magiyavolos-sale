@@ -1,9 +1,5 @@
 (function() {
-  // Проверка повторного запуска
-  if (window.__mv_spa_initialized) return;
-  window.__mv_spa_initialized = true;
-
-  // 1. Подключение шрифтов (Playfair Display + Montserrat)
+  // 1. Подключение премиальных шрифтов
   if (!document.getElementById('mv-fonts')) {
     var f = document.createElement('link');
     f.id = 'mv-fonts';
@@ -17,7 +13,7 @@
     var s = document.createElement('style');
     s.id = 'mv-styles';
     s.textContent = `
-      /* Скрываем стандартные блоки Tilda кроме формы и контейнера скрипта */
+      /* Полная нейтрализация стандартных блоков Tilda */
       #allrecords > .r:not(#rec4705804401):not(#rec4705785601),
       #allrecords > div.r:not(#rec4705804401):not(#rec4705785601),
       .t-records > .r:not(#rec4705804401):not(#rec4705785601) {
@@ -31,6 +27,11 @@
         padding: 0 !important;
       }
 
+      body > #rec4705785601,
+      #allrecords > #rec4705785601 {
+        display: none !important;
+      }
+
       :root {
         --mv-bg: #0c0a09;
         --mv-bg-card: rgba(22, 18, 16, 0.82);
@@ -39,9 +40,8 @@
         --mv-gold-light: #e5c59e;
         --mv-gold-dark: #967045;
         --mv-champagne: #edd8be;
-        --mv-pearl: #faf6f0;
         --mv-text: #f7f4ee;
-        --mv-text-muted: #aba196;
+        --mv-text-muted: #a89f91;
         --mv-border: rgba(197, 155, 109, 0.22);
         --mv-border-active: rgba(229, 197, 158, 0.65);
         --mv-grad-gold: linear-gradient(135deg, #dfc098 0%, #c59b6d 50%, #9e7343 100%);
@@ -79,7 +79,6 @@
         padding: 0 20px;
       }
 
-      /* Типографика */
       .mv-title-serif {
         font-family: 'Playfair Display', serif;
         font-weight: 600;
@@ -131,15 +130,12 @@
       /* HEADER */
       .mv-header {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
+        top: 0; left: 0; right: 0;
         z-index: 999;
-        background: rgba(12, 10, 9, 0.85);
+        background: rgba(12, 10, 9, 0.88);
         backdrop-filter: blur(16px);
         -webkit-backdrop-filter: blur(16px);
         border-bottom: 1px solid var(--mv-border);
-        transition: all 0.3s ease;
       }
       .mv-header-inner {
         display: flex;
@@ -151,7 +147,6 @@
         display: flex;
         flex-direction: column;
         text-decoration: none;
-        color: var(--mv-text);
       }
       .mv-logo-title {
         font-family: 'Playfair Display', serif;
@@ -168,11 +163,10 @@
         color: var(--mv-text-muted);
         letter-spacing: 0.06em;
         text-transform: uppercase;
-        margin-top: -2px;
       }
       .mv-nav {
         display: flex;
-        gap: 24px;
+        gap: 22px;
       }
       .mv-nav a {
         color: var(--mv-text-muted);
@@ -209,11 +203,17 @@
         font-size: 13px;
       }
 
-      /* HERO */
+      /* HERO С РОДНОЙ КАРТИНКОЙ С САЙТА */
       .mv-hero {
-        padding: 150px 0 80px;
+        padding: 140px 0 80px;
         position: relative;
-        background: radial-gradient(circle at 50% 20%, rgba(197, 155, 109, 0.12) 0%, transparent 60%);
+        background: radial-gradient(circle at 30% 30%, rgba(197, 155, 109, 0.12) 0%, transparent 60%);
+      }
+      .mv-hero-layout {
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 40px;
+        align-items: center;
       }
       .mv-hero-badge {
         display: inline-flex;
@@ -221,72 +221,115 @@
         gap: 8px;
         padding: 6px 16px;
         border-radius: 999px;
-        background: rgba(197, 155, 109, 0.1);
+        background: rgba(197, 155, 109, 0.12);
         border: 1px solid var(--mv-border);
         color: var(--mv-gold-light);
         font-size: 12px;
         font-weight: 500;
-        margin-bottom: 24px;
+        margin-bottom: 20px;
       }
       .mv-hero-title {
-        font-size: 52px;
+        font-size: 48px;
         line-height: 1.15;
-        margin: 0 0 24px;
-        max-width: 900px;
+        margin: 0 0 20px;
       }
       .mv-hero-descr {
-        font-size: 18px;
+        font-size: 16.5px;
         line-height: 1.6;
         color: var(--mv-text-muted);
-        max-width: 740px;
-        margin: 0 0 40px;
+        margin: 0 0 32px;
         font-weight: 300;
       }
       .mv-hero-actions {
         display: flex;
-        gap: 16px;
+        gap: 14px;
         flex-wrap: wrap;
-        margin-bottom: 60px;
+        margin-bottom: 40px;
       }
+
+      /* Правый блок Hero: оригинальное фото с сайта kling_20260726_IMAGE.png */
+      .mv-hero-visual {
+        position: relative;
+        border-radius: 24px;
+        overflow: hidden;
+        border: 1px solid var(--mv-border);
+        box-shadow: var(--mv-glow);
+        background: var(--mv-grad-card);
+      }
+      .mv-hero-img {
+        width: 100%;
+        height: auto;
+        display: block;
+        object-fit: cover;
+        transition: transform 0.6s ease;
+      }
+      .mv-hero-visual:hover .mv-hero-img {
+        transform: scale(1.03);
+      }
+      .mv-hero-float-badge {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        right: 20px;
+        background: rgba(12, 10, 9, 0.85);
+        backdrop-filter: blur(12px);
+        border: 1px solid var(--mv-border);
+        border-radius: 16px;
+        padding: 14px 18px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .mv-hero-float-txt {
+        font-size: 12.5px;
+        font-weight: 600;
+        color: var(--mv-text);
+      }
+      .mv-hero-float-sub {
+        font-size: 11px;
+        color: var(--mv-gold-light);
+      }
+
       .mv-hero-stats {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        gap: 20px;
+        gap: 16px;
         border-top: 1px solid var(--mv-border);
-        padding-top: 40px;
+        padding-top: 36px;
+        margin-top: 30px;
       }
       .mv-stat-item {
         display: flex;
         flex-direction: column;
-        gap: 6px;
+        gap: 4px;
       }
       .mv-stat-val {
-        font-size: 26px;
+        font-size: 24px;
         font-weight: 700;
         color: var(--mv-gold-light);
       }
       .mv-stat-lbl {
-        font-size: 13px;
+        font-size: 12px;
         color: var(--mv-text-muted);
         line-height: 1.4;
       }
 
-      /* ВИДЕО БЛОК */
+      /* ОБУЧАЮЩИЙ ВИДЕОГИД */
       .mv-video-section {
         padding: 90px 0;
-        background: rgba(16, 13, 11, 0.6);
+        background: rgba(16, 13, 11, 0.7);
         border-top: 1px solid var(--mv-border);
         border-bottom: 1px solid var(--mv-border);
       }
       .mv-sec-head {
         text-align: center;
-        max-width: 720px;
+        max-width: 820px;
         margin: 0 auto 50px;
       }
       .mv-sec-badge {
         display: inline-block;
         font-size: 11px;
-        letter-spacing: 0.1em;
+        letter-spacing: 0.12em;
         text-transform: uppercase;
         color: var(--mv-gold-light);
         margin-bottom: 12px;
@@ -305,87 +348,143 @@
 
       .mv-video-layout {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1.15fr 0.85fr;
         gap: 28px;
-        align-items: center;
+        align-items: stretch;
+      }
+      .mv-main-video-box {
+        background: var(--mv-grad-card);
+        border: 1px solid var(--mv-border);
+        border-radius: 20px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
       }
       .mv-main-video-card {
         position: relative;
-        border-radius: 20px;
-        overflow: hidden;
-        background: var(--mv-grad-card);
-        border: 1px solid var(--mv-border);
-        box-shadow: var(--mv-glow);
         aspect-ratio: 16/9;
+        overflow: hidden;
         cursor: pointer;
+        background: #000;
       }
       .mv-main-video-card img {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        transition: transform 0.6s ease;
+        transition: transform 0.5s ease;
       }
       .mv-main-video-card:hover img {
         transform: scale(1.04);
       }
       .mv-play-btn {
         position: absolute;
-        top: 50%;
-        left: 50%;
+        top: 50%; left: 50%;
         transform: translate(-50%, -50%);
-        width: 68px;
-        height: 68px;
+        width: 66px; height: 66px;
         border-radius: 50%;
-        background: rgba(197, 155, 109, 0.9);
+        background: var(--mv-grad-gold);
         display: flex;
         align-items: center;
         justify-content: center;
-        box-shadow: 0 4px 25px rgba(0,0,0,0.5);
+        box-shadow: 0 4px 25px rgba(0,0,0,0.6);
         transition: all 0.3s ease;
         z-index: 2;
       }
       .mv-main-video-card:hover .mv-play-btn {
         transform: translate(-50%, -50%) scale(1.12);
-        background: var(--mv-gold-light);
       }
-      .mv-video-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 16px;
+      .mv-main-video-info {
+        padding: 24px;
       }
-      .mv-video-mini {
-        position: relative;
-        border-radius: 14px;
-        overflow: hidden;
-        border: 1px solid var(--mv-border);
-        background: var(--mv-bg-card);
-        aspect-ratio: 9/12;
-        cursor: pointer;
-      }
-      .mv-video-mini iframe, .mv-video-mini .mv-video-thumb {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-      }
-      .mv-video-mini-overlay {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        padding: 14px;
-        background: linear-gradient(to top, rgba(12,10,9,0.9) 0%, transparent 100%);
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      }
-      .mv-video-mini-title {
-        font-size: 12px;
+      .mv-lesson-tag {
+        display: inline-block;
+        padding: 4px 12px;
+        border-radius: 999px;
+        font-size: 11px;
         font-weight: 600;
-        color: var(--mv-text);
+        background: rgba(197, 155, 109, 0.15);
+        color: var(--mv-gold-light);
+        margin-bottom: 10px;
+      }
+      .mv-main-video-title {
+        font-size: 20px;
+        font-weight: 600;
+        margin: 0 0 10px;
+      }
+      .mv-main-video-descr {
+        font-size: 13.5px;
+        color: var(--mv-text-muted);
+        line-height: 1.6;
+        margin: 0;
       }
 
-      /* КАТАЛОГ И ФИЛЬТРЫ */
+      /* Сетка 4 практических уроков */
+      .mv-video-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+      .mv-lesson-item {
+        display: grid;
+        grid-template-columns: 130px 1fr;
+        gap: 16px;
+        background: var(--mv-grad-card);
+        border: 1px solid var(--mv-border);
+        border-radius: 16px;
+        overflow: hidden;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        padding: 10px;
+      }
+      .mv-lesson-item:hover {
+        border-color: var(--mv-gold-light);
+        transform: translateX(4px);
+      }
+      .mv-lesson-thumb {
+        position: relative;
+        border-radius: 10px;
+        overflow: hidden;
+        aspect-ratio: 4/3;
+        background: #000;
+      }
+      .mv-lesson-thumb img {
+        width: 100%; height: 100%; object-fit: cover;
+      }
+      .mv-lesson-play {
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        width: 32px; height: 32px;
+        border-radius: 50%;
+        background: rgba(197, 155, 109, 0.9);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .mv-lesson-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .mv-lesson-dur {
+        font-size: 11px;
+        color: var(--mv-gold-light);
+        font-weight: 600;
+        margin-bottom: 4px;
+      }
+      .mv-lesson-title {
+        font-size: 14px;
+        font-weight: 600;
+        margin: 0 0 6px;
+        line-height: 1.35;
+      }
+      .mv-lesson-sub {
+        font-size: 12px;
+        color: var(--mv-text-muted);
+        line-height: 1.4;
+      }
+
+      /* КАТАЛОГ С ХЭШТЕГАМИ TELEGRAM */
       .mv-catalog-section {
         padding: 90px 0;
       }
@@ -402,14 +501,14 @@
       .mv-filter-row {
         display: flex;
         align-items: center;
-        gap: 14px;
+        gap: 12px;
         flex-wrap: wrap;
       }
       .mv-filter-lbl {
         font-size: 13px;
         font-weight: 600;
         color: var(--mv-gold-light);
-        min-width: 80px;
+        min-width: 90px;
       }
       .mv-filter-pills {
         display: flex;
@@ -455,27 +554,22 @@
       .mv-card-img-wrap {
         position: relative;
         width: 100%;
-        height: 280px;
+        height: 270px;
         overflow: hidden;
       }
       .mv-card-img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+        width: 100%; height: 100%; object-fit: cover;
         transition: transform 0.5s ease;
       }
-      .mv-card:hover .mv-card-img {
-        transform: scale(1.05);
-      }
-      .mv-card-tag {
+      .mv-card:hover .mv-card-img { transform: scale(1.05); }
+      .mv-card-badge {
         position: absolute;
-        top: 14px;
-        left: 14px;
+        top: 14px; left: 14px;
         padding: 4px 12px;
         border-radius: 999px;
         font-size: 11px;
         font-weight: 600;
-        background: rgba(12, 10, 9, 0.75);
+        background: rgba(12, 10, 9, 0.8);
         backdrop-filter: blur(8px);
         color: var(--mv-gold-light);
         border: 1px solid var(--mv-border);
@@ -485,6 +579,19 @@
         display: flex;
         flex-direction: column;
         flex-grow: 1;
+      }
+      .mv-card-hashtags {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+        margin-bottom: 10px;
+      }
+      .mv-hashtag {
+        font-size: 11px;
+        color: var(--mv-gold);
+        background: rgba(197, 155, 109, 0.08);
+        padding: 2px 8px;
+        border-radius: 6px;
       }
       .mv-card-title {
         font-size: 18px;
@@ -505,10 +612,7 @@
         border-bottom: 1px dashed rgba(255,255,255,0.06);
         padding-bottom: 4px;
       }
-      .mv-card-spec-val {
-        color: var(--mv-text);
-        font-weight: 500;
-      }
+      .mv-card-spec-val { color: var(--mv-text); font-weight: 500; }
       .mv-card-footer {
         display: flex;
         align-items: center;
@@ -518,7 +622,7 @@
         border-top: 1px solid var(--mv-border);
       }
       .mv-card-price {
-        font-size: 18px;
+        font-size: 17px;
         font-weight: 700;
         color: var(--mv-gold-light);
       }
@@ -541,13 +645,11 @@
         padding: 40px;
         box-shadow: var(--mv-glow);
       }
-      .mv-quiz-step {
-        margin-bottom: 30px;
-      }
+      .mv-quiz-step { margin-bottom: 26px; }
       .mv-quiz-q {
-        font-size: 16px;
+        font-size: 15px;
         font-weight: 600;
-        margin-bottom: 16px;
+        margin-bottom: 14px;
         color: var(--mv-gold-light);
       }
       .mv-quiz-grid {
@@ -556,8 +658,8 @@
         gap: 12px;
       }
       .mv-quiz-card {
-        padding: 16px;
-        border-radius: 14px;
+        padding: 14px;
+        border-radius: 12px;
         background: rgba(255,255,255,0.03);
         border: 1px solid var(--mv-border);
         text-align: center;
@@ -569,42 +671,287 @@
         background: rgba(197, 155, 109, 0.14);
       }
       .mv-quiz-card-val {
-        font-size: 14px;
+        font-size: 13.5px;
         font-weight: 600;
         color: var(--mv-text);
       }
 
-      /* ПРЕИМУЩЕСТВА & ФАБРИКА */
-      .mv-about-section {
+      /* СЕКЦИЯ ЗАЯВКИ С ФОРМОЙ TILDA (ИСПРАВЛЕННАЯ СТРУКТУРА) */
+      .mv-lead-section {
         padding: 90px 0;
-        border-top: 1px solid var(--mv-border);
+        position: relative;
+        background: radial-gradient(circle at 50% 50%, rgba(197, 155, 109, 0.12) 0%, transparent 70%);
       }
-      .mv-about-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 24px;
-      }
-      .mv-about-card {
+      .mv-lead-card {
+        max-width: 640px;
+        margin: 0 auto;
         background: var(--mv-grad-card);
         border: 1px solid var(--mv-border);
-        border-radius: 20px;
-        padding: 32px;
+        border-radius: 28px;
+        padding: 44px;
+        box-shadow: var(--mv-glow);
+        text-align: center;
+        position: relative;
       }
-      .mv-about-num {
-        font-size: 32px;
-        font-family: 'Playfair Display', serif;
-        color: var(--mv-gold-light);
-        margin-bottom: 14px;
-      }
-      .mv-about-title {
-        font-size: 18px;
+      .mv-lead-badge {
+        display: inline-block;
+        padding: 6px 16px;
+        border-radius: 999px;
+        font-size: 12px;
         font-weight: 600;
-        margin-bottom: 12px;
+        background: rgba(197, 155, 109, 0.15);
+        color: var(--mv-gold-light);
+        border: 1px solid var(--mv-border);
+        margin-bottom: 18px;
       }
-      .mv-about-text {
-        font-size: 14px;
-        color: var(--mv-text-muted);
-        line-height: 1.6;
+
+      /* СТИЛИ И ЧИСТКА ФОРМЫ ТИЛЬДЫ */
+      #mv-tilda-form-slot {
+        width: 100% !important;
+        margin-top: 20px !important;
+        position: relative !important;
+      }
+      #mv-tilda-form-slot #rec4705785601 {
+        display: block !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        background: transparent !important;
+        position: static !important;
+        width: 100% !important;
+      }
+      #mv-tilda-form-slot .t-popup,
+      #mv-tilda-form-slot .t-popup__container,
+      #mv-tilda-form-slot .t702__wrapper {
+        position: static !important;
+        background: transparent !important;
+        display: block !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        box-shadow: none !important;
+        border: none !important;
+        transform: none !important;
+      }
+      /* Скрываем дублирующиеся нативные тексты попапа */
+      #mv-tilda-form-slot .t-popup__close,
+      #mv-tilda-form-slot .t702__text-wrapper,
+      #mv-tilda-form-slot .t702__title,
+      #mv-tilda-form-slot .t702__descr,
+      #mv-tilda-form-slot .t-input-group_tx,
+      #mv-tilda-form-slot .t-form__errorbox-middle,
+      #mv-tilda-form-slot .t-form__errorbox-bottom {
+        display: none !important;
+      }
+
+      #mv-tilda-form-slot form.t-form,
+      #mv-tilda-form-slot #form4705785601 {
+        display: block !important;
+        position: static !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        border: none !important;
+      }
+      #mv-tilda-form-slot .t-form__inputsbox {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 16px !important;
+        width: 100% !important;
+      }
+      #mv-tilda-form-slot .t-input-group {
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+        text-align: left !important;
+      }
+      #mv-tilda-form-slot .t-input-title {
+        color: var(--mv-gold-light) !important;
+        font-family: 'Montserrat', sans-serif !important;
+        font-size: 13.5px !important;
+        font-weight: 600 !important;
+        margin-bottom: 10px !important;
+        display: block !important;
+      }
+
+      /* 4 кнопки мессенджеров */
+      #mv-tilda-form-slot .t-contact-method__types-container {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 10px !important;
+        margin: 0 0 14px 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+      }
+      #mv-tilda-form-slot .t-contact-method__type {
+        background: rgba(255, 255, 255, 0.05) !important;
+        border: 1px solid var(--mv-border) !important;
+        border-radius: 14px !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        cursor: pointer !important;
+        transition: all 0.2s ease !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        height: 48px !important;
+      }
+      #mv-tilda-form-slot .t-contact-method__type:hover {
+        border-color: var(--mv-gold-light) !important;
+        background: rgba(197, 155, 109, 0.12) !important;
+      }
+      #mv-tilda-form-slot .t-contact-method__type.mv-active,
+      #mv-tilda-form-slot .t-contact-method__type:has(>.t-radio:checked) {
+        background: rgba(197, 155, 109, 0.24) !important;
+        border-color: var(--mv-gold-light) !important;
+        box-shadow: 0 0 16px rgba(197, 155, 109, 0.35) !important;
+      }
+      #mv-tilda-form-slot .t-contact-method__type input[type="radio"],
+      #mv-tilda-form-slot .t-contact-method__type svg.t-sociallinks__svg {
+        display: none !important;
+      }
+      #mv-tilda-form-slot .t-contact-method__type-label {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 8px !important;
+        cursor: pointer !important;
+        width: 100% !important;
+        height: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+      #mv-tilda-form-slot .t-contact-method__type-label svg {
+        width: 20px !important;
+        height: 20px !important;
+        flex-shrink: 0 !important;
+      }
+      #mv-tilda-form-slot .t-contact-method__title {
+        color: #f7f4ee !important;
+        font-family: 'Montserrat', sans-serif !important;
+        font-size: 13px !important;
+        font-weight: 600 !important;
+        line-height: 1 !important;
+      }
+
+      /* Контейнер телефонной маски Тильды */
+      #mv-tilda-form-slot .t-contact-method__value-container {
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+      #mv-tilda-form-slot .t-input-phonemask__wrap {
+        display: flex !important;
+        align-items: center !important;
+        width: 100% !important;
+        background: rgba(14, 11, 10, 0.95) !important;
+        border: 1px solid var(--mv-border) !important;
+        border-radius: 14px !important;
+        padding: 0 16px !important;
+        height: 54px !important;
+        box-sizing: border-box !important;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+      }
+      #mv-tilda-form-slot .t-input-phonemask__wrap:focus-within {
+        border-color: var(--mv-gold-light) !important;
+        box-shadow: 0 0 16px rgba(197, 155, 109, 0.35) !important;
+      }
+      #mv-tilda-form-slot .t-input-phonemask__select {
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 6px !important;
+        margin-right: 10px !important;
+        padding-right: 10px !important;
+        border-right: 1px solid rgba(255, 255, 255, 0.15) !important;
+        color: #ffffff !important;
+      }
+      #mv-tilda-form-slot .t-input-phonemask__select-code {
+        color: #ffffff !important;
+        font-family: 'Montserrat', sans-serif !important;
+        font-size: 14.5px !important;
+        font-weight: 600 !important;
+      }
+      #mv-tilda-form-slot input.t-input.t-input-phonemask {
+        background: transparent !important;
+        border: none !important;
+        border-radius: 0 !important;
+        padding: 0 !important;
+        height: 100% !important;
+        width: 100% !important;
+        flex: 1 !important;
+        color: #ffffff !important;
+        font-size: 15px !important;
+        font-family: 'Montserrat', sans-serif !important;
+        outline: none !important;
+        box-shadow: none !important;
+      }
+
+      /* Обычные инпуты (Имя) */
+      #mv-tilda-form-slot input.t-input:not(.t-input-phonemask) {
+        width: 100% !important;
+        background: rgba(14, 11, 10, 0.95) !important;
+        border: 1px solid var(--mv-border) !important;
+        border-radius: 14px !important;
+        padding: 16px 20px !important;
+        color: #ffffff !important;
+        font-size: 15px !important;
+        font-family: 'Montserrat', sans-serif !important;
+        outline: none !important;
+        height: 54px !important;
+        box-sizing: border-box !important;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+      }
+      #mv-tilda-form-slot input.t-input:not(.t-input-phonemask):focus {
+        border-color: var(--mv-gold-light) !important;
+        box-shadow: 0 0 16px rgba(197, 155, 109, 0.35) !important;
+      }
+
+      /* Чекбокс согласия */
+      #mv-tilda-form-slot .t-checkbox__control {
+        color: var(--mv-text-muted) !important;
+        font-size: 12px !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 10px !important;
+        text-align: left !important;
+        margin-top: 4px !important;
+      }
+      #mv-tilda-form-slot .t-checkbox__indicator {
+        border-color: var(--mv-gold) !important;
+      }
+
+      /* Кнопка отправки */
+      #mv-tilda-form-slot .t-submit,
+      #mv-tilda-form-slot button[type="submit"] {
+        width: 100% !important;
+        background: var(--mv-grad-gold) !important;
+        color: #0c0a09 !important;
+        border: none !important;
+        border-radius: 999px !important;
+        padding: 16px 26px !important;
+        font-size: 15.5px !important;
+        font-weight: 700 !important;
+        font-family: 'Montserrat', sans-serif !important;
+        cursor: pointer !important;
+        box-shadow: 0 6px 25px rgba(197, 155, 109, 0.4) !important;
+        transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+        margin-top: 6px !important;
+      }
+      #mv-tilda-form-slot .t-submit:hover,
+      #mv-tilda-form-slot button[type="submit"]:hover {
+        transform: translateY(-2px) !important;
+        box-shadow: 0 10px 32px rgba(229, 197, 158, 0.55) !important;
+      }
+      #mv-tilda-form-slot .t-btn_wrap-effects { display: none !important; }
+
+      /* Мягкая подсветка ошибок под инпутом */
+      .mv-input-err {
+        border-color: #ef4444 !important;
+        box-shadow: 0 0 16px rgba(239, 68, 68, 0.4) !important;
       }
 
       /* FAQ АККОРДЕОН */
@@ -635,13 +982,12 @@
         user-select: none;
       }
       .mv-faq-q {
-        font-size: 16px;
+        font-size: 15.5px;
         font-weight: 600;
         color: var(--mv-text);
       }
       .mv-faq-icon {
-        width: 24px;
-        height: 24px;
+        width: 24px; height: 24px;
         border-radius: 50%;
         background: rgba(197, 155, 109, 0.15);
         display: flex;
@@ -660,154 +1006,7 @@
         line-height: 1.7;
         display: none;
       }
-      .mv-faq-item.open .mv-faq-body {
-        display: block;
-      }
-
-      /* СЕКЦИЯ ФОРМЫ */
-      .mv-lead-section {
-        padding: 90px 0;
-        position: relative;
-        background: radial-gradient(circle at 50% 50%, rgba(197, 155, 109, 0.12) 0%, transparent 70%);
-      }
-      .mv-lead-card {
-        max-width: 680px;
-        margin: 0 auto;
-        background: var(--mv-grad-card);
-        border: 1px solid var(--mv-border);
-        border-radius: 28px;
-        padding: 44px;
-        box-shadow: var(--mv-glow);
-        text-align: center;
-      }
-      .mv-lead-badge {
-        display: inline-block;
-        padding: 6px 16px;
-        border-radius: 999px;
-        font-size: 12px;
-        font-weight: 600;
-        background: rgba(197, 155, 109, 0.15);
-        color: var(--mv-gold-light);
-        border: 1px solid var(--mv-border);
-        margin-bottom: 20px;
-      }
-
-      /* Стилизация формы Тильды внутри слота */
-      #mv-tilda-form-slot {
-        width: 100%;
-        margin-top: 24px;
-      }
-      #rec4705785601 {
-        padding: 0 !important;
-        margin: 0 !important;
-        background: transparent !important;
-      }
-      #rec4705785601 .t-popup,
-      #rec4705785601 .t-popup__container {
-        position: static !important;
-        background: transparent !important;
-        padding: 0 !important;
-        margin: 0 !important;
-        width: 100% !important;
-        max-width: 100% !important;
-        box-shadow: none !important;
-      }
-      #rec4705785601 .t-popup__close,
-      #rec4705785601 .t702__text-wrapper {
-        display: none !important;
-      }
-      #rec4705785601 .t-form__inputsbox {
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-      }
-      #rec4705785601 input.t-input {
-        background: rgba(255, 255, 255, 0.05) !important;
-        border: 1px solid var(--mv-border) !important;
-        border-radius: 14px !important;
-        color: var(--mv-text) !important;
-        font-family: 'Montserrat', sans-serif !important;
-        font-size: 15px !important;
-        padding: 16px 20px !important;
-        height: 52px !important;
-        outline: none !important;
-        transition: all 0.2s ease !important;
-      }
-      #rec4705785601 input.t-input:focus {
-        border-color: var(--mv-gold-light) !important;
-        box-shadow: 0 0 15px rgba(197, 155, 109, 0.3) !important;
-      }
-      #rec4705785601 .t-input-group_tx {
-        display: none !important;
-      }
-      #rec4705785601 .t-input-title {
-        color: var(--mv-text) !important;
-        font-size: 14px !important;
-        margin-bottom: 10px !important;
-        text-align: left !important;
-      }
-
-      /* 4 кнопки мессенджеров в одну строку */
-      #rec4705785601 .t-contact-method__types-container {
-        display: grid !important;
-        grid-template-columns: repeat(4, 1fr) !important;
-        gap: 10px !important;
-        margin-bottom: 12px !important;
-      }
-      #rec4705785601 .t-contact-method__type {
-        margin: 0 !important;
-        padding: 10px 6px !important;
-        border-radius: 12px !important;
-        border: 1px solid var(--mv-border) !important;
-        background: rgba(255, 255, 255, 0.04) !important;
-        cursor: pointer !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        transition: all 0.2s ease !important;
-      }
-      #rec4705785601 .t-contact-method__type.mv-active {
-        border-color: var(--mv-gold-light) !important;
-        background: rgba(197, 155, 109, 0.2) !important;
-      }
-      #rec4705785601 .t-contact-method__type-label {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        gap: 6px !important;
-        cursor: pointer !important;
-      }
-      #rec4705785601 .t-contact-method__title {
-        font-size: 11px !important;
-        font-weight: 600 !important;
-        color: var(--mv-text) !important;
-      }
-
-      /* Кнопка отправки формы */
-      #rec4705785601 .t-submit {
-        background: var(--mv-grad-gold) !important;
-        color: #0c0a09 !important;
-        border: none !important;
-        border-radius: 999px !important;
-        font-family: 'Montserrat', sans-serif !important;
-        font-size: 15px !important;
-        font-weight: 700 !important;
-        height: 54px !important;
-        width: 100% !important;
-        cursor: pointer !important;
-        box-shadow: 0 4px 20px rgba(197, 155, 109, 0.35) !important;
-        transition: all 0.3s ease !important;
-      }
-      #rec4705785601 .t-submit:hover {
-        transform: translateY(-2px) !important;
-        box-shadow: 0 8px 30px rgba(229, 197, 158, 0.5) !important;
-      }
-
-      /* Мягкая подсветка ошибок */
-      .mv-input-err {
-        border-color: #ef4444 !important;
-        box-shadow: 0 0 16px rgba(239, 68, 68, 0.35) !important;
-      }
+      .mv-faq-item.open .mv-faq-body { display: block; }
 
       /* FOOTER */
       .mv-footer {
@@ -838,9 +1037,7 @@
         font-size: 13px;
         transition: color 0.2s ease;
       }
-      .mv-footer-links a:hover {
-        color: var(--mv-gold-light);
-      }
+      .mv-footer-links a:hover { color: var(--mv-gold-light); }
       .mv-footer-bottom {
         padding-top: 24px;
         border-top: 1px solid rgba(255,255,255,0.05);
@@ -853,8 +1050,7 @@
       /* Плавающий мобильный виджет */
       #mv-widget-lead {
         position: fixed;
-        bottom: 24px;
-        right: 24px;
+        bottom: 24px; right: 24px;
         z-index: 990;
         transition: opacity 0.3s ease;
       }
@@ -871,16 +1067,13 @@
         display: flex;
         align-items: center;
         gap: 8px;
-        outline: none;
       }
 
       /* Кнопка наверх */
       #mv-btn-top {
         position: fixed;
-        bottom: 24px;
-        left: 24px;
-        width: 46px;
-        height: 46px;
+        bottom: 24px; left: 24px;
+        width: 46px; height: 46px;
         border-radius: 50%;
         background: rgba(22, 18, 16, 0.85);
         border: 1px solid var(--mv-border);
@@ -891,18 +1084,13 @@
         cursor: pointer;
         z-index: 990;
         backdrop-filter: blur(10px);
-        transition: all 0.2s ease;
-      }
-      #mv-btn-top:hover {
-        border-color: var(--mv-gold-light);
-        transform: translateY(-2px);
       }
 
       /* Модальное окно видео */
       #mv-video-modal {
         position: fixed;
         inset: 0;
-        background: rgba(0,0,0,0.85);
+        background: rgba(0,0,0,0.88);
         backdrop-filter: blur(12px);
         z-index: 10000;
         display: none;
@@ -922,8 +1110,7 @@
       }
       .mv-modal-close {
         position: absolute;
-        top: -44px;
-        right: 0;
+        top: -44px; right: 0;
         background: transparent;
         border: none;
         color: #fff;
@@ -931,23 +1118,22 @@
         cursor: pointer;
       }
 
-      /* Адаптив под планшеты и мобильные */
       @media (max-width: 992px) {
         .mv-nav, .mv-header-phone { display: none !important; }
-        .mv-hero-title { font-size: 38px; }
+        .mv-hero-layout { grid-template-columns: 1fr; }
+        .mv-hero-title { font-size: 36px; }
         .mv-hero-stats { grid-template-columns: repeat(2, 1fr); }
         .mv-video-layout { grid-template-columns: 1fr; }
         .mv-catalog-grid { grid-template-columns: repeat(2, 1fr); }
-        .mv-about-grid { grid-template-columns: 1fr; }
         .mv-quiz-grid { grid-template-columns: repeat(2, 1fr); }
         .mv-footer-grid { grid-template-columns: 1fr; }
       }
       @media (max-width: 600px) {
-        .mv-hero-title { font-size: 30px; }
+        .mv-hero-title { font-size: 28px; }
         .mv-catalog-grid { grid-template-columns: 1fr; }
         .mv-hero-stats { grid-template-columns: 1fr; }
         .mv-lead-card { padding: 26px 18px; }
-        #rec4705785601 .t-contact-method__types-container {
+        #mv-tilda-form-slot .t-contact-method__types-container {
           grid-template-columns: repeat(2, 1fr) !important;
         }
       }
@@ -955,77 +1141,83 @@
     document.head.appendChild(s);
   }
 
-  // Данные срезов для каталога
+  // Данные срезов на основе реального Telegram-канала Магия Волос
   var CATALOG_ITEMS = [
     {
       id: 1,
-      title: 'Детский шелк • Золотистый русый',
-      type: 'Детский шелк',
-      len: '55-65 см',
-      shade: 'Теплый русый',
-      weight: '110 грамм',
-      tag: 'Тончайший волос',
-      price: 'от 18 500 ₽',
+      title: 'Детский срез • Легкая волна',
+      category: 'детские_срезы',
+      tags: ['#детские_срезы', '#не_окрашен', '#одноголовый_срез'],
+      len: '55-60 см',
+      struct: 'Легкая волна',
+      shade: 'Не окрашен',
+      weight: '105 грамм',
+      price: 'от 19 500 ₽',
       img: 'https://static.tildacdn.com/tild3430-6438-4630-b435-663237353933/photo_2025-09-24_10-.jpg'
     },
     {
       id: 2,
-      title: 'Славянский люкс • Платиновый блонд',
-      type: 'Славянские люкс',
-      len: '55-65 см',
-      shade: 'Пепельный блонд',
-      weight: '125 грамм',
-      tag: 'Плотный срез',
-      price: 'от 22 900 ₽',
+      title: 'Славянский люкс • Шелковистый прямой',
+      category: 'славянский_люкс',
+      tags: ['#славянский_люкс', '#шелковистый_хвостик', '#плотный_кончик'],
+      len: '55-60 см',
+      struct: 'Плотный прямой',
+      shade: 'Шоколад',
+      weight: '120 грамм',
+      price: 'от 22 000 ₽',
       img: 'https://static.tildacdn.com/tild3131-3761-4165-b235-366537393336/img_8889-scaled.jpg'
     },
     {
       id: 3,
-      title: 'Волнистые славянские • Шоколад',
-      type: 'Волнистые',
-      len: '60-70 см',
-      shade: 'Шоколад',
-      weight: '140 грамм',
-      tag: 'Естественная волна',
+      title: 'Роскошные кудри • Карамельный подтон',
+      category: 'активная_волна',
+      tags: ['#активная_волна', '#роскошные_кудри', '#карамель'],
+      len: '65-70 см',
+      struct: 'Кудри',
+      shade: 'Карамель',
+      weight: '135 грамм',
       price: 'от 24 500 ₽',
       img: 'https://static.tildacdn.com/tild6635-3130-4331-b132-306531653965/kling_20260726_IMAGE.png'
     },
     {
       id: 4,
-      title: 'Детский неокрашенный срез • Светло-русый',
-      type: 'Детский шелк',
-      len: '45-55 см',
-      shade: 'Теплый русый',
-      weight: '95 грамм',
-      tag: 'Целинный срез',
-      price: 'от 21 000 ₽',
+      title: 'Детский целинный хвостик • Русый шелк',
+      category: 'детские_срезы',
+      tags: ['#детские_срезы', '#целинный_хвостик', '#тонкий_шелк'],
+      len: '40-50 см',
+      struct: 'Тонкий шелк',
+      shade: 'Не окрашен',
+      weight: '90 грамм',
+      price: 'от 18 000 ₽',
       img: 'https://static.tildacdn.com/tild3430-6438-4630-b435-663237353933/photo_2025-09-24_10-.jpg'
     },
     {
       id: 5,
-      title: 'Славянский экстра-длинный • Эспрессо',
-      type: 'Славянские люкс',
-      len: '70+ см',
-      shade: 'Глубокий темный',
-      weight: '160 грамм',
-      tag: 'Длина 75 см',
-      price: 'от 28 000 ₽',
+      title: 'Глубокий шоколад • Прямой одноголовый срез',
+      category: 'глубокий_шоколад',
+      tags: ['#глубокий_шоколад', '#не_окрашен', '#одноголовый_срез'],
+      len: '65-70 см',
+      struct: 'Плотный прямой',
+      shade: 'Темный брюнет',
+      weight: '150 грамм',
+      price: 'от 26 500 ₽',
       img: 'https://static.tildacdn.com/tild3131-3761-4165-b235-366537393336/img_8889-scaled.jpg'
     },
     {
       id: 6,
-      title: 'Шелковистый прямой • Пшеничный блонд',
-      type: 'Славянские люкс',
-      len: '50-60 см',
-      shade: 'Пепельный блонд',
-      weight: '115 грамм',
-      tag: 'Идеальные концы',
-      price: 'от 20 500 ₽',
+      title: 'Комплект для лентирования • Биоленты Люкс',
+      category: 'биоленты',
+      tags: ['#обучение_лентированию', '#биоленты', '#мастерам'],
+      len: '55-60 см',
+      struct: 'Тонкий шелк',
+      shade: 'Блонд',
+      weight: '100 грамм',
+      price: 'от 23 000 ₽',
       img: 'https://static.tildacdn.com/tild6635-3130-4331-b132-306531653965/kling_20260726_IMAGE.png'
     }
   ];
 
-  // 3. Рендер посадочной страницы SPA
+  // 3. Рендер посадочной страницы
   function renderApp() {
     if (document.getElementById('mv-app')) return;
 
@@ -1042,10 +1234,10 @@
               <span class="mv-logo-sub">Фабрика натуральных волос с 2009 г.</span>
             </a>
             <nav class="mv-nav">
-              <a href="#catalog">Каталог</a>
-              <a href="#videos">Видеообзоры</a>
+              <a href="#education">Обучающий видеогид</a>
+              <a href="#catalog">Каталог срезов</a>
               <a href="#quiz">Подбор среза</a>
-              <a href="#about">О фабрике</a>
+              <a href="#masters">Мастерам & Опт</a>
               <a href="#faq">Вопрос-ответ</a>
               <a href="#contacts">Контакты</a>
             </nav>
@@ -1060,97 +1252,136 @@
         </div>
       </header>
 
-      <!-- HERO ЭКРАН -->
+      <!-- HERO С РОДНОЙ КАРТИНКОЙ С САЙТА -->
       <section id="hero" class="mv-hero">
         <div class="mv-container">
-          <div class="mv-hero-badge">
-            <span>✦</span> Более 150 кг отборных срезов всегда в наличии в Москве
+          <div class="mv-hero-layout">
+            <div class="mv-hero-left">
+              <div class="mv-hero-badge">
+                <span>✦</span> Более 150 кг отборных донорских волос в наличии в Москве
+              </div>
+              <h1 class="mv-hero-title mv-title-serif">
+                Натуральные донорские волосы <br>
+                <span class="mv-gold-text">с собственной фабрики</span>
+              </h1>
+              <p class="mv-hero-descr">
+                Только одноголовые донорские срезы из России: детские целинные хвостики и славянский люкс. Без силикона, живая кутикула. Доставка по РФ и миру.
+              </p>
+              <div class="mv-hero-actions">
+                <a href="#education" class="mv-btn mv-btn-primary">Обучающий видеогид ▶</a>
+                <a href="#catalog" class="mv-btn mv-btn-outline">Каталог в наличии</a>
+                <a href="#quiz" class="mv-btn mv-btn-outline">Подобрать онлайн ✦</a>
+              </div>
+            </div>
+
+            <!-- Родная картинка с первого экрана сайта (kling_20260726_IMAGE.png) -->
+            <div class="mv-hero-visual">
+              <img src="https://static.tildacdn.com/tild6635-3130-4331-b132-306531653965/kling_20260726_IMAGE.png" alt="Магия Волос — донорские срезы премиум качества" class="mv-hero-img">
+              <div class="mv-hero-float-badge">
+                <div>
+                  <div class="mv-hero-float-txt">100% натуральные донорские срезы</div>
+                  <div class="mv-hero-float-sub">Один донор — один срез. Не обработаны силиконом.</div>
+                </div>
+                <a href="#lead-box" class="mv-btn mv-btn-primary" style="padding:8px 16px; font-size:12px;">Выбрать</a>
+              </div>
+            </div>
           </div>
-          <h1 class="mv-hero-title mv-title-serif">
-            Натуральные волосы премиум-класса <br>
-            <span class="mv-gold-text">с собственной фабрики</span>
-          </h1>
-          <p class="mv-hero-descr">
-            Только одноволосые донорские срезы из экологически чистых регионов России. Живая сохранённая кутикула без силикона и агрессивной химии. Доставка по РФ и миру.
-          </p>
-          <div class="mv-hero-actions">
-            <a href="#quiz" class="mv-btn mv-btn-primary">Подобрать срез онлайн ✦</a>
-            <a href="#videos" class="mv-btn mv-btn-outline">Смотреть видеообзоры ▶</a>
-            <a href="#catalog" class="mv-btn mv-btn-outline">Каталог в наличии</a>
-          </div>
+
           <div class="mv-hero-stats">
             <div class="mv-stat-item">
               <span class="mv-stat-val">>150 кг</span>
-              <span class="mv-stat-lbl">волос всех оттенков и структур в шоуруме</span>
+              <span class="mv-stat-lbl">волос всех структур и длин всегда в шоуруме</span>
             </div>
             <div class="mv-stat-item">
               <span class="mv-stat-val">1 донор</span>
-              <span class="mv-stat-lbl">строго один срез в пучке, без перевертышей</span>
+              <span class="mv-stat-lbl">строго один срез в пучке, направление кутикулы 100%</span>
             </div>
             <div class="mv-stat-item">
               <span class="mv-stat-val">с 2009 г.</span>
-              <span class="mv-stat-lbl">собственное производство и щадящее осветление</span>
+              <span class="mv-stat-lbl">собственное бережное производство и осветление</span>
             </div>
             <div class="mv-stat-item">
-              <span class="mv-stat-val">1–3 дня</span>
-              <span class="mv-stat-lbl">экспресс-доставка в любой город РФ и мира</span>
+              <span class="mv-stat-val">Рассрочка</span>
+              <span class="mv-stat-lbl">оплата долями и спецусловия для мастеров от 1 кг</span>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- ВИДЕО-СЕКЦИЯ (KINESCOPE) -->
-      <section id="videos" class="mv-video-section">
+      <!-- ОБУЧАЮЩИЙ ВИДЕОГИД: КАК ПРАВИЛЬНО ВЫБРАТЬ ВОЛОСЫ -->
+      <section id="education" class="mv-video-section">
         <div class="mv-container">
           <div class="mv-sec-head">
-            <span class="mv-sec-badge">Видеоматериалы</span>
-            <h2 class="mv-sec-title mv-title-serif">Живые обзоры срезов и наша фабрика</h2>
-            <p class="mv-sec-sub">Оцените шелковистость, плотность кончиков и натуральный блеск волос на реальных видеосъемках перед покупкой.</p>
+            <span class="mv-sec-badge">Обучающий видеогид</span>
+            <h2 class="mv-sec-title mv-title-serif">Как правильно выбрать натуральные волосы</h2>
+            <p class="mv-sec-sub">Серия обучающих видеоуроков от главного технолога фабрики «Магия Волос». Узнайте, как не ошибиться при выборе, отличить целинный волос от азиатского сырья и проверить кутикулу.</p>
           </div>
+
           <div class="mv-video-layout">
-            <!-- Главное видео о производстве -->
-            <div class="mv-main-video-card" data-video-id="gJZV99n1gmgEXYKEDCXNj2">
-              <img src="https://static.tildacdn.com/tild6664-3935-4431-a539-613836366139/___3.png" alt="Собственная фабрика волос">
-              <div class="mv-play-btn">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="#0c0a09"><path d="M8 5v14l11-7z"/></svg>
+            <!-- Главный обучающий мастер-класс -->
+            <div class="mv-main-video-box">
+              <div class="mv-main-video-card" data-video-id="gJZV99n1gmgEXYKEDCXNj2">
+                <img src="https://static.tildacdn.com/tild6664-3935-4431-a539-613836366139/___3.png" alt="Обучающий мастер-класс: как выбрать волосы">
+                <div class="mv-play-btn">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="#0c0a09"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+              </div>
+              <div class="mv-main-video-info">
+                <span class="mv-lesson-tag">ГЛАВНЫЙ ВИДЕОУРОК • 12 МИН</span>
+                <h3 class="mv-main-video-title">Мастер-класс: 5 главных критериев выбора донорских волос</h3>
+                <p class="mv-main-video-descr">
+                  Технолог фабрики с 20-летним опытом наглядно показывает, почему дешевые волосы путаются после первой мойки, как выявить силиконовую маскировку и как подобрать структуру под свои родные волосы без сложной укладки.
+                </p>
               </div>
             </div>
-            <!-- Сетка 4 видео срезов -->
+
+            <!-- Сетка 4 практических уроков -->
             <div class="mv-video-grid">
-              <div class="mv-video-mini" data-video-id="9iFkqc7sAqedM6nr7QcMgj">
-                <div class="mv-main-video-card" style="height:100%;">
-                  <img src="https://static.tildacdn.com/tild3430-6438-4630-b435-663237353933/photo_2025-09-24_10-.jpg" alt="Обзор среза 1">
-                  <div class="mv-play-btn" style="width:44px; height:44px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="#0c0a09"><path d="M8 5v14l11-7z"/></svg></div>
+              <div class="mv-lesson-item" data-video-id="9iFkqc7sAqedM6nr7QcMgj">
+                <div class="mv-lesson-thumb">
+                  <img src="https://static.tildacdn.com/tild3430-6438-4630-b435-663237353933/photo_2025-09-24_10-.jpg" alt="Урок 1">
+                  <div class="mv-lesson-play"><svg width="14" height="14" viewBox="0 0 24 24" fill="#0c0a09"><path d="M8 5v14l11-7z"/></svg></div>
                 </div>
-                <div class="mv-video-mini-overlay">
-                  <span class="mv-video-mini-title">Славянский блонд 60 см</span>
-                </div>
-              </div>
-              <div class="mv-video-mini" data-video-id="oBK1RzCCNt8hJjRS4FeRVp">
-                <div class="mv-main-video-card" style="height:100%;">
-                  <img src="https://static.tildacdn.com/tild3131-3761-4165-b235-366537393336/img_8889-scaled.jpg" alt="Обзор среза 2">
-                  <div class="mv-play-btn" style="width:44px; height:44px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="#0c0a09"><path d="M8 5v14l11-7z"/></svg></div>
-                </div>
-                <div class="mv-video-mini-overlay">
-                  <span class="mv-video-mini-title">Детский шелк 55 см</span>
+                <div class="mv-lesson-content">
+                  <span class="mv-lesson-dur">УРОК 1 • 4 МИН</span>
+                  <h4 class="mv-lesson-title">Как отличить детский целинный срез от азиатского сырья</h4>
+                  <span class="mv-lesson-sub">Тест на эластичность волоса и естественную мягкость кончиков.</span>
                 </div>
               </div>
-              <div class="mv-video-mini" data-video-id="qjuvNhMoWxiPGHiiMhMiig">
-                <div class="mv-main-video-card" style="height:100%;">
-                  <img src="https://static.tildacdn.com/tild6635-3130-4331-b132-306531653965/kling_20260726_IMAGE.png" alt="Обзор среза 3">
-                  <div class="mv-play-btn" style="width:44px; height:44px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="#0c0a09"><path d="M8 5v14l11-7z"/></svg></div>
+
+              <div class="mv-lesson-item" data-video-id="oBK1RzCCNt8hJjRS4FeRVp">
+                <div class="mv-lesson-thumb">
+                  <img src="https://static.tildacdn.com/tild3131-3761-4165-b235-366537393336/img_8889-scaled.jpg" alt="Урок 2">
+                  <div class="mv-lesson-play"><svg width="14" height="14" viewBox="0 0 24 24" fill="#0c0a09"><path d="M8 5v14l11-7z"/></svg></div>
                 </div>
-                <div class="mv-video-mini-overlay">
-                  <span class="mv-video-mini-title">Волнистый шоколад 65 см</span>
+                <div class="mv-lesson-content">
+                  <span class="mv-lesson-dur">УРОК 2 • 5 МИН</span>
+                  <h4 class="mv-lesson-title">Плотность концов: Double Drawn против Single Drawn</h4>
+                  <span class="mv-lesson-sub">Как оценить вычес и не переплачивать за пустые кончики.</span>
                 </div>
               </div>
-              <div class="mv-video-mini" data-video-id="42dwoJ2St7kS9wMxQkVHKd">
-                <div class="mv-main-video-card" style="height:100%;">
-                  <img src="https://static.tildacdn.com/tild3430-6438-4630-b435-663237353933/photo_2025-09-24_10-.jpg" alt="Обзор среза 4">
-                  <div class="mv-play-btn" style="width:44px; height:44px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="#0c0a09"><path d="M8 5v14l11-7z"/></svg></div>
+
+              <div class="mv-lesson-item" data-video-id="qjuvNhMoWxiPGHiiMhMiig">
+                <div class="mv-lesson-thumb">
+                  <img src="https://static.tildacdn.com/tild6635-3130-4331-b132-306531653965/kling_20260726_IMAGE.png" alt="Урок 3">
+                  <div class="mv-lesson-play"><svg width="14" height="14" viewBox="0 0 24 24" fill="#0c0a09"><path d="M8 5v14l11-7z"/></svg></div>
                 </div>
-                <div class="mv-video-mini-overlay">
-                  <span class="mv-video-mini-title">Русый целинный 50 см</span>
+                <div class="mv-lesson-content">
+                  <span class="mv-lesson-dur">УРОК 3 • 6 МИН</span>
+                  <h4 class="mv-lesson-title">Тест на скрытый силикон прямо в студии</h4>
+                  <span class="mv-lesson-sub">Экспресс-проверка трением и водой: чистый живой волос.</span>
+                </div>
+              </div>
+
+              <div class="mv-lesson-item" data-video-id="42dwoJ2St7kS9wMxQkVHKd">
+                <div class="mv-lesson-thumb">
+                  <img src="https://static.tildacdn.com/tild3430-6438-4630-b435-663237353933/photo_2025-09-24_10-.jpg" alt="Урок 4">
+                  <div class="mv-lesson-play"><svg width="14" height="14" viewBox="0 0 24 24" fill="#0c0a09"><path d="M8 5v14l11-7z"/></svg></div>
+                </div>
+                <div class="mv-lesson-content">
+                  <span class="mv-lesson-dur">УРОК 4 • 5 МИН</span>
+                  <h4 class="mv-lesson-title">Подбор под структуру: волна, пористый или шелк</h4>
+                  <span class="mv-lesson-sub">Как подобрать срез для идеального слияния со своими волосами.</span>
                 </div>
               </div>
             </div>
@@ -1158,38 +1389,39 @@
         </div>
       </section>
 
-      <!-- КАТАЛОГ -->
+      <!-- КАТАЛОГ С ХЭШТЕГАМИ TELEGRAM -->
       <section id="catalog" class="mv-catalog-section">
         <div class="mv-container">
           <div class="mv-sec-head">
-            <span class="mv-sec-badge">Каталог срезов</span>
-            <h2 class="mv-sec-title mv-title-serif">Популярные срезы в наличии</h2>
-            <p class="mv-sec-sub">Выберите категорию или воспользуйтесь быстрым фильтром по длине и оттенку</p>
+            <span class="mv-sec-badge">Каталог в наличии</span>
+            <h2 class="mv-sec-title mv-title-serif">Отборные срезы из нашего Telegram-канала</h2>
+            <p class="mv-sec-sub">Свежие поступления с фабрики: выберите категорию или длину для мгновенного бронирования</p>
           </div>
 
-          <!-- Фильтры -->
+          <!-- Фильтры Telegram -->
           <div class="mv-filters-box">
-            <div class="mv-filter-row" id="filter-type">
-              <span class="mv-filter-lbl">Тип волос:</span>
+            <div class="mv-filter-row" id="filter-cat">
+              <span class="mv-filter-lbl">Категория:</span>
               <div class="mv-filter-pills">
-                <button class="mv-pill active" data-filter="all">Все категории</button>
-                <button class="mv-pill" data-filter="Детский шелк">Детский шелк</button>
-                <button class="mv-pill" data-filter="Славянские люкс">Славянские люкс</button>
-                <button class="mv-pill" data-filter="Волнистые">Волнистые</button>
+                <button class="mv-pill active" data-cat="all">Все срезы</button>
+                <button class="mv-pill" data-cat="детские_срезы">#детские_срезы</button>
+                <button class="mv-pill" data-cat="славянский_люкс">#славянский_люкс</button>
+                <button class="mv-pill" data-cat="активная_волна">#активная_волна</button>
+                <button class="mv-pill" data-cat="глубокий_шоколад">#глубокий_шоколад</button>
+                <button class="mv-pill" data-cat="биоленты">#биоленты</button>
               </div>
             </div>
             <div class="mv-filter-row" id="filter-len">
               <span class="mv-filter-lbl">Длина:</span>
               <div class="mv-filter-pills">
-                <button class="mv-pill active" data-len="all">Любая</button>
-                <button class="mv-pill" data-len="45-55 см">45–55 см</button>
-                <button class="mv-pill" data-len="55-65 см">55–65 см</button>
-                <button class="mv-pill" data-len="70+ см">70+ см</button>
+                <button class="mv-pill active" data-len="all">Любая длина</button>
+                <button class="mv-pill" data-len="40-50 см">40–50 см</button>
+                <button class="mv-pill" data-len="55-60 см">55–60 см</button>
+                <button class="mv-pill" data-len="65-70 см">65–70 см</button>
               </div>
             </div>
           </div>
 
-          <!-- Сетка карточек -->
           <div class="mv-catalog-grid" id="mv-cards-container"></div>
         </div>
       </section>
@@ -1198,9 +1430,9 @@
       <section id="quiz" class="mv-quiz-section">
         <div class="mv-container">
           <div class="mv-sec-head">
-            <span class="mv-sec-badge">Онлайн-подбор</span>
-            <h2 class="mv-sec-title mv-title-serif">Подберите идеальный срез за 3 шага</h2>
-            <p class="mv-sec-sub">Укажите параметры — эксперт фабрики подготовит видео подборки срезов под ваш тон</p>
+            <span class="mv-sec-badge">Онлайн-подбор за 30 сек</span>
+            <h2 class="mv-sec-title mv-title-serif">Подберите идеальный срез под ваш тип волос</h2>
+            <p class="mv-sec-sub">Укажите параметры — технолог снимет видео 2–3 подходящих срезов из наличия при дневном свете</p>
           </div>
           <div class="mv-quiz-box">
             <div class="mv-quiz-step">
@@ -1215,42 +1447,42 @@
             <div class="mv-quiz-step">
               <div class="mv-quiz-q">2. Структура собственных волос:</div>
               <div class="mv-quiz-grid" id="quiz-type-grid">
-                <div class="mv-quiz-card selected" data-val="Тонкие шелковистые"><div class="mv-quiz-card-val">Тонкие шелковые</div></div>
+                <div class="mv-quiz-card selected" data-val="Детский шелк (тонкие)"><div class="mv-quiz-card-val">Тонкий шелк</div></div>
                 <div class="mv-quiz-card" data-val="Плотные прямые"><div class="mv-quiz-card-val">Плотные прямые</div></div>
                 <div class="mv-quiz-card" data-val="Легкая волна"><div class="mv-quiz-card-val">Легкая волна</div></div>
-                <div class="mv-quiz-card" data-val="Пористые / кудрявые"><div class="mv-quiz-card-val">Пористые / кудри</div></div>
+                <div class="mv-quiz-card" data-val="Активная волна / кудри"><div class="mv-quiz-card-val">Кудри / волна</div></div>
               </div>
             </div>
-            <div style="text-align: center; margin-top: 30px;">
+            <div style="text-align: center; margin-top: 24px;">
               <button type="button" class="mv-btn mv-btn-primary" id="mv-quiz-submit">Получить видеоподборку под мои параметры ✦</button>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- О ФАБРИКЕ -->
-      <section id="about" class="mv-about-section">
+      <!-- МАСТЕРАМ & ОПТ -->
+      <section id="masters" class="mv-about-section">
         <div class="mv-container">
           <div class="mv-sec-head">
-            <span class="mv-sec-badge">Стандарты качества</span>
-            <h2 class="mv-sec-title mv-title-serif">Почему наши волосы не теряют блеск</h2>
-            <p class="mv-sec-sub">Собственная фабрика полного цикла в России гарантирует 100% натуральность</p>
+            <span class="mv-sec-badge">Сотрудничество & Опт</span>
+            <h2 class="mv-sec-title mv-title-serif">Специальные условия для мастеров и студий</h2>
+            <p class="mv-sec-sub">Оптовые цены от 1 кг, рассрочка и обучение авторскому лентированию</p>
           </div>
           <div class="mv-about-grid">
             <div class="mv-about-card">
               <div class="mv-about-num">01</div>
-              <div class="mv-about-title">Один донор — один срез</div>
-              <div class="mv-about-text">Никогда не смешиваем волосы от разных людей. Чешуйки кутикулы направлены строго в одну сторону, поэтому волосы не путаются при мытье.</div>
+              <div class="mv-about-title">Опт от 1 кг по фабричной цене</div>
+              <div class="mv-about-text">Самый выгодный прайс для мастеров наращивания и салонов красоты. Возможность разделения срезов и персональный видео-отбор.</div>
             </div>
             <div class="mv-about-card">
               <div class="mv-about-num">02</div>
-              <div class="mv-about-title">Без силикона и маскировки</div>
-              <div class="mv-about-text">Мы не покрываем волосы силиконом. Их мягкость и шелковистость — естественные, они останутся такими же после 10 и 50 моек головы.</div>
+              <div class="mv-about-title">Обучение лентированию (офлайн)</div>
+              <div class="mv-about-text">2 дня практики на фабрике: классические ленты и биоленты, изготовление, правильная раскладка и колористика без колориста.</div>
             </div>
             <div class="mv-about-card">
               <div class="mv-about-num">03</div>
-              <div class="mv-about-title">Щадящее осветление</div>
-              <div class="mv-about-text">Авторская бережная технология бережного осветления на низких оксидах сохраняет белковые связи волоса. Краска не вымывается в желтизну.</div>
+              <div class="mv-about-title">Рассрочка и оплата долями</div>
+              <div class="mv-about-text">Доступны гибкие формы расчетов: комфортная рассрочка без переплат и оплата долями для клиентов и оптовых покупателей.</div>
             </div>
           </div>
         </div>
@@ -1260,7 +1492,7 @@
       <section id="faq" class="mv-faq-section">
         <div class="mv-container">
           <div class="mv-sec-head">
-            <span class="mv-sec-badge">Вопросы и ответы</span>
+            <span class="mv-sec-badge">Вопрос-ответ</span>
             <h2 class="mv-sec-title mv-title-serif">Часто задаваемые вопросы</h2>
           </div>
           <div class="mv-faq-list">
@@ -1269,66 +1501,59 @@
                 <span class="mv-faq-q">Делаете ли вы доставку в другие города?</span>
                 <span class="mv-faq-icon">+</span>
               </div>
-              <div class="mv-faq-body">Да, доставка осуществляется по тарифам СДЭК и курьерских служб по всей России и миру. Перед отправкой мы снимаем подробное макро-видео среза при дневном свете и согласовываем его с вами.</div>
+              <div class="mv-faq-body">Да, доставка осуществляется по тарифам СДЭК и экспресс-служб по всей России и миру. Перед отправкой мы снимаем подробное макро-видео среза при дневном свете и согласовываем его с вами.</div>
             </div>
             <div class="mv-faq-item">
               <div class="mv-faq-head">
-                <span class="mv-faq-q">Можно ли приехать и выбрать срез лично?</span>
+                <span class="mv-faq-q">Могу ли я приехать в студию в Москве и выбрать срез лично?</span>
                 <span class="mv-faq-icon">+</span>
               </div>
-              <div class="mv-faq-body">Конечно! Наш шоурум и производство находятся в центре Москвы: ул. Машкова, дом 26, стр. 1. У нас более 150 кг волос в наличии, мастер приложит срезы к вашим волосам для точного совпадения оттенка и плотности.</div>
+              <div class="mv-faq-body">Конечно! Ждем вас ежедневно с 10:00 до 20:00 по адресу: г. Москва, ул. Машкова, дом 26, стр. 1. У нас более 150 кг волос в наличии, мастер приложит срезы к вашим волосам для идеального совпадения.</div>
             </div>
             <div class="mv-faq-item">
               <div class="mv-faq-head">
-                <span class="mv-faq-q">Как ухаживать за наращенными волосами?</span>
+                <span class="mv-faq-q">Как ухаживать за донорскими волосами?</span>
                 <span class="mv-faq-icon">+</span>
               </div>
-              <div class="mv-faq-body">Уход прост: домашний уход по вашему типу волос и профессиональная расческа для наращенных волос. Мойте голову вертикально, не запрокидывая вперед. Не наносите маски и масла на прикорневую зону капсул.</div>
+              <div class="mv-faq-body">Используйте бессульфатный уход и специальную расческу для нарощенных волос. Мойте голову вертикально по росту волос. Не наносите маски и масла на капсулы.</div>
             </div>
             <div class="mv-faq-item">
               <div class="mv-faq-head">
-                <span class="mv-faq-q">Можно ли посещать бани, сауны и купаться?</span>
+                <span class="mv-faq-q">Волосы действительно 100% натуральные и без силикона?</span>
                 <span class="mv-faq-icon">+</span>
               </div>
-              <div class="mv-faq-body">Да, с нашими волосами можно посещать бани и термальные источники. В сауне рекомендуется надевать войлочную шапочку, а на море защищать волосы от палящего солнца уходовым спреем.</div>
-            </div>
-            <div class="mv-faq-item">
-              <div class="mv-faq-head">
-                <span class="mv-faq-q">Возможна ли оплата частями или рассрочка?</span>
-                <span class="mv-faq-icon">+</span>
-              </div>
-              <div class="mv-faq-body">Да, мы подбираем удобные варианты оплаты для частных клиентов и специальные оптовые условия для мастеров и студий красоты.</div>
+              <div class="mv-faq-body">Да! Мы используем только отборные донорские волосы одноголового сбора, собранные в РФ. Без химикатов и силикона. Щадящее бережное осветление гарантирует, что краска не смывается в желтизну.</div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- БЛОК ЗАЯВКИ С ФОРМОЙ TILDA -->
+      <!-- БЛОК ЗАЯВКИ С ФОРМОЙ TILDA (БЕЗ НАЛОЖЕНИЙ) -->
       <section id="lead-box" class="mv-lead-section">
         <div class="mv-container">
           <div class="mv-lead-card">
-            <span class="mv-lead-badge" id="mv-lead-selected-badge">✦ Забронировать консультацию фабрики</span>
-            <h2 class="mv-sec-title mv-title-serif" style="margin-bottom:12px;">Получите персональный подбор</h2>
-            <p class="mv-sec-sub" style="margin-bottom:24px;">Оставьте номер — технолог фабрики пришлет макро-видео 2–3 подходящих срезов в удобный мессенджер в течение 15 минут.</p>
+            <span class="mv-lead-badge" id="mv-lead-selected-badge">✦ Забронировать подбор среза с фабрики</span>
+            <h2 class="mv-sec-title mv-title-serif" style="margin-bottom:10px;">Получите персональную видеоподборку</h2>
+            <p class="mv-sec-sub" style="margin-bottom:20px;">Оставьте номер — технолог пришлет макро-видео 2–3 срезов в выбранный мессенджер в течение 15 минут.</p>
 
-            <!-- СЛОТ ДЛЯ ПЕРЕНОСА ФОРМЫ ТИЛЬДЫ -->
+            <!-- СЛОТ ФОРМЫ -->
             <div id="mv-tilda-form-slot"></div>
           </div>
         </div>
       </section>
 
-      <!-- КОНТАКТЫ & ПОДВАЛ -->
+      <!-- ПОДВАЛ -->
       <footer id="contacts" class="mv-footer">
         <div class="mv-container">
           <div class="mv-footer-grid">
             <div class="mv-footer-col">
               <span class="mv-logo-title">Магия Волос</span>
               <p style="font-size:13px; color:var(--mv-text-muted); line-height:1.6; margin:14px 0 0; max-width:340px;">
-                Производство и магазин натуральных волос высшей категории в Москве. Оптовые и розничные поставки по РФ и миру.
+                Собственное производство и салон-магазин донорских волос в Москве. Работаем более 15 лет. Оптовые и розничные поставки.
               </p>
             </div>
             <div class="mv-footer-col">
-              <h4>Контакты</h4>
+              <h4>Контакты шоурума</h4>
               <div class="mv-footer-links">
                 <a href="tel:+79255063750">+7 (925) 506-37-50</a>
                 <span>г. Москва, ул. Машкова, 26с1</span>
@@ -1336,11 +1561,11 @@
               </div>
             </div>
             <div class="mv-footer-col">
-              <h4>Мессенджеры и соцсети</h4>
+              <h4>Официальные каналы</h4>
               <div class="mv-footer-links">
-                <a href="https://t.me/magiavolos_chanel" target="_blank">Telegram-канал срезов</a>
+                <a href="https://t.me/magiavolos_chanel" target="_blank">Telegram-канал срезов (@magiavolos_chanel)</a>
+                <a href="https://t.me/Magiavolos" target="_blank">Менеджер в Telegram (@Magiavolos)</a>
                 <a href="#lead-box">Написать в MAX</a>
-                <a href="#lead-box">Написать в WhatsApp</a>
               </div>
             </div>
           </div>
@@ -1360,28 +1585,27 @@
       </div>
     `;
 
-    // Вставляем #mv-app в начало body
     document.body.prepend(app);
   }
 
-  // 4. Логика каталога и фильтров
+  // 4. Логика Каталога
   function initCatalog() {
     var container = document.getElementById('mv-cards-container');
     if (!container) return;
 
-    var activeType = 'all';
+    var activeCat = 'all';
     var activeLen = 'all';
 
     function renderCards() {
       container.innerHTML = '';
       var filtered = CATALOG_ITEMS.filter(function(item) {
-        var matchType = (activeType === 'all' || item.type === activeType);
+        var matchCat = (activeCat === 'all' || item.category === activeCat);
         var matchLen = (activeLen === 'all' || item.len === activeLen);
-        return matchType && matchLen;
+        return matchCat && matchLen;
       });
 
       if (!filtered.length) {
-        container.innerHTML = '<div style="grid-column: 1/-1; text-align:center; padding:40px; color:var(--mv-text-muted);">В наличии более 150 кг срезов! Оставьте заявку, и мы снимем видео именно под ваш запрос.</div>';
+        container.innerHTML = '<div style="grid-column: 1/-1; text-align:center; padding:40px; color:var(--mv-text-muted);">В наличии более 150 кг срезов! Оставьте заявку ниже, и мы пришлем видео среза под ваш персональный запрос.</div>';
         return;
       }
 
@@ -1391,18 +1615,21 @@
         card.innerHTML = `
           <div class="mv-card-img-wrap">
             <img src="${item.img}" alt="${item.title}" class="mv-card-img">
-            <span class="mv-card-tag">${item.tag}</span>
+            <span class="mv-card-badge">В наличии</span>
           </div>
           <div class="mv-card-body">
+            <div class="mv-card-hashtags">
+              ${item.tags.map(function(t) { return '<span class="mv-hashtag">' + t + '</span>'; }).join('')}
+            </div>
             <h3 class="mv-card-title">${item.title}</h3>
             <div class="mv-card-specs">
-              <div class="mv-card-spec-row"><span>Категория:</span><span class="mv-card-spec-val">${item.type}</span></div>
+              <div class="mv-card-spec-row"><span>Структура:</span><span class="mv-card-spec-val">${item.struct}</span></div>
               <div class="mv-card-spec-row"><span>Длина:</span><span class="mv-card-spec-val">${item.len}</span></div>
-              <div class="mv-card-spec-row"><span>Вес пучка:</span><span class="mv-card-spec-val">${item.weight}</span></div>
+              <div class="mv-card-spec-row"><span>Вес среза:</span><span class="mv-card-spec-val">${item.weight}</span></div>
             </div>
             <div class="mv-card-footer">
               <div class="mv-card-price">${item.price}</div>
-              <button class="mv-btn mv-btn-primary mv-card-btn" data-item="${item.title}">Забронировать</button>
+              <button class="mv-btn mv-btn-primary mv-card-btn" data-title="${item.title}">Забронировать</button>
             </div>
           </div>
         `;
@@ -1419,18 +1646,17 @@
       });
     }
 
-    // Слушатели фильтров типов
-    var typeBtns = document.querySelectorAll('#filter-type .mv-pill');
-    typeBtns.forEach(function(b) {
+    // Слушатели фильтров
+    var catBtns = document.querySelectorAll('#filter-cat .mv-pill');
+    catBtns.forEach(function(b) {
       b.addEventListener('click', function() {
-        typeBtns.forEach(function(x) { x.classList.remove('active'); });
+        catBtns.forEach(function(x) { x.classList.remove('active'); });
         b.classList.add('active');
-        activeType = b.getAttribute('data-filter');
+        activeCat = b.getAttribute('data-cat');
         renderCards();
       });
     });
 
-    // Слушатели фильтров длины
     var lenBtns = document.querySelectorAll('#filter-len .mv-pill');
     lenBtns.forEach(function(b) {
       b.addEventListener('click', function() {
@@ -1466,8 +1692,8 @@
       submitBtn.addEventListener('click', function() {
         var selLen = document.querySelector('#quiz-len-grid .selected');
         var selType = document.querySelector('#quiz-type-grid .selected');
-        var lenVal = selLen ? selLen.getAttribute('data-val') : '55-60 см';
-        var typeVal = selType ? selType.getAttribute('data-val') : 'Тонкие шелковые';
+        var lenVal = selLen ? selLen.getAttribute('data-val') : '55–60 см';
+        var typeVal = selType ? selType.getAttribute('data-val') : 'Детский шелк';
 
         var badge = document.getElementById('mv-lead-selected-badge');
         if (badge) badge.textContent = '✦ Параметры подбора: ' + lenVal + ' • ' + typeVal;
@@ -1478,7 +1704,7 @@
     }
   }
 
-  // 6. Логика Видеоплеера (Kinescope)
+  // 6. Логика Видеоплеера
   function initVideoModal() {
     var modal = document.getElementById('mv-video-modal');
     var iframe = document.getElementById('mv-modal-iframe');
@@ -1503,7 +1729,6 @@
       if (e.target === modal) closeVideo();
     });
 
-    // Навешиваем клик на все карточки с data-video-id
     document.querySelectorAll('[data-video-id]').forEach(function(el) {
       el.addEventListener('click', function() {
         var id = el.getAttribute('data-video-id');
@@ -1512,7 +1737,7 @@
     });
   }
 
-  // 7. Логика FAQ аккордеона
+  // 7. Логика FAQ
   function initFaq() {
     var items = document.querySelectorAll('.mv-faq-item');
     items.forEach(function(item) {
@@ -1527,7 +1752,7 @@
     });
   }
 
-  // 8. Перенос и интеграция нативной формы Tilda (rec4705785601)
+  // 8. Перенос и интеграция нативной формы Tilda (rec4705785601) БЕЗ НАЛОЖЕНИЙ
   function mountTildaForm() {
     var slot = document.getElementById('mv-tilda-form-slot');
     if (!slot) return;
@@ -1542,14 +1767,12 @@
     rec.style.setProperty('display', 'block', 'important');
     rec.style.setProperty('visibility', 'visible', 'important');
     rec.style.setProperty('opacity', '1', 'important');
-    rec.style.setProperty('pointer-events', 'auto', 'important');
     rec.style.setProperty('position', 'static', 'important');
 
     var popup = rec.querySelector('.t-popup');
     if (popup) {
       popup.style.setProperty('display', 'block', 'important');
       popup.style.setProperty('visibility', 'visible', 'important');
-      popup.style.setProperty('opacity', '1', 'important');
       popup.style.setProperty('position', 'static', 'important');
       popup.classList.add('t-popup_show');
     }
@@ -1566,10 +1789,9 @@
 
     form.style.setProperty('display', 'block', 'important');
     form.style.setProperty('visibility', 'visible', 'important');
-    form.style.setProperty('opacity', '1', 'important');
     form.style.setProperty('position', 'static', 'important');
 
-    // Кнопки способов связи
+    // Настройка способов связи
     var methodContainer = form.querySelector('.t-contact-method__types-container');
     var valContainer = form.querySelector('.t-contact-method__value-container');
 
@@ -1597,7 +1819,8 @@
       methodBtns.forEach(function(btn) {
         var mType = btn.getAttribute('data-method-type');
         var label = btn.querySelector('.t-contact-method__type-label');
-        if (label && mType && icons[mType]) {
+        if (label && mType && icons[mType] && !btn.dataset.mvRendered) {
+          btn.dataset.mvRendered = 'true';
           label.innerHTML = icons[mType] + '<span class="t-contact-method__title">' + (titles[mType] || mType) + '</span>';
         }
       });
@@ -1618,7 +1841,7 @@
           }
         });
 
-        // Надежный единый телефонный инпут с маской (+7)
+        // Единое надежное поле телефона
         if (phoneVal) {
           phoneVal.style.setProperty('display', 'block', 'important');
           phoneVal.classList.remove('t-contact-method__hidden');
@@ -1631,7 +1854,7 @@
           });
         }
 
-        // Остальные скрываем
+        // Скрываем остальные чтобы не было наложений
         [tgVal, waVal, maxVal].forEach(function(block) {
           if (!block) return;
           block.style.setProperty('display', 'none', 'important');
@@ -1658,19 +1881,17 @@
       selectMethod('telegram');
     }
 
-    // Тексты инпутов и кнопки
     var nameInp = form.querySelector('input[name="Name"]');
     if (nameInp) nameInp.placeholder = 'Ваше имя';
 
     var subBtn = form.querySelector('.t-btnflex__text, .t-submit');
-    if (subBtn) subBtn.textContent = 'Получить видеоподборку срезов ✦';
+    if (subBtn) subBtn.textContent = 'Получить обучающие видео и подбор срезов ✦';
 
-    // Валидация при отправке
+    // Валидация отправки
     var submitBtnEl = form.querySelector('button[type="submit"], .t-submit');
     if (submitBtnEl && !submitBtnEl.dataset.mvValidInit) {
       submitBtnEl.dataset.mvValidInit = 'true';
       submitBtnEl.addEventListener('click', function(e) {
-        // Очистка предыдущих подсветок
         form.querySelectorAll('.mv-input-err').forEach(function(el) {
           el.classList.remove('mv-input-err');
         });
@@ -1702,7 +1923,6 @@
           return false;
         }
 
-        // Вызов Яндекс Метрики в безопасной обертке
         if (typeof window.ym === 'function') {
           try {
             window.ym(window.yandexMetricId || 0, 'reachGoal', 'lead_submitted');
@@ -1711,7 +1931,6 @@
       });
     }
 
-    // Инициализация телефонных масок
     if (typeof window.t_contactMethod__init === 'function') {
       try {
         window.t_contactMethod__init('4705785601', '1770920801992');
@@ -1719,9 +1938,8 @@
     }
   }
 
-  // 9. Виджеты: Плавающий мобильный CTA и кнопка Наверх
+  // 9. Виджеты
   function initWidgets() {
-    // Кнопка Наверх
     if (!document.getElementById('mv-btn-top')) {
       var topBtn = document.createElement('button');
       topBtn.id = 'mv-btn-top';
@@ -1737,7 +1955,6 @@
       });
     }
 
-    // Плавающий виджет заявки
     if (!document.getElementById('mv-widget-lead')) {
       var leadWidget = document.createElement('div');
       leadWidget.id = 'mv-widget-lead';
@@ -1749,7 +1966,6 @@
         if (leadBox) leadBox.scrollIntoView({ behavior: 'smooth' });
       });
 
-      // Автоматическое скрытие виджета возле формы
       window.addEventListener('scroll', function() {
         var leadSec = document.getElementById('lead-box');
         if (leadSec && leadWidget) {
@@ -1766,7 +1982,6 @@
     }
   }
 
-  // 10. Запуск сборки
   function mount() {
     renderApp();
     initCatalog();
