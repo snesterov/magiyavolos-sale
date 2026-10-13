@@ -1885,7 +1885,7 @@
       shade: 'Русый целинный',
       weight: '105 грамм',
       price: 'от 19 500 ₽',
-      img: 'https://cdn4.telesco.pe/file/DmhephMmDxLZwv7O_NanAqLUVi5-p9-QYmh2Uj3Wb5c6j5-D-RRkEAzd4Dkg_9YxDvfWfS0tv_MFU1i6lYsCJcDPmYs0F138L8sR46IB_ZW_TVQPShq0UandU8UfJW5j83HAy7BtznGjsdXKtCFQ0Btmm7qY5iUkTsvrtt5R5ic3Bs0s3vAaepzysXgwo99qQ4Z0j1Co4D8U2Lr3XY_9dHcpNrldD7JWoi30hrRT8_2l6UCC0bM2jGkmS82fX-SmDhxMYH4yRq-6-wwPayGwl432j8NASWmbB-Riy9UitDoQ9eXjCESKwKEPsTOKyljsAbXTwif5n1ggM7xpV5SOeg'
+      img: 'https://cdn.jsdelivr.net/gh/snesterov/magiyavolos-sale@main/images/cut_1.jpg'
     },
     {
       id: 2,
@@ -1899,7 +1899,7 @@
       shade: 'Натуральный русый',
       weight: '115 грамм',
       price: 'от 22 000 ₽',
-      img: 'https://cdn4.telesco.pe/file/hXSvwjvs__TYlFl1VJocVZ5MNpQAg17xico-g5af4gsFuQ_072egHfwV49Q4fGlHGnew0UDTTr-Ri00Ci_hb99-as5FNP3QTQAdApSKdtoxhS8a7hblgLVPZBdkv_8koLY4gNVKB5C4OqgAoGEuEZ10hiBGgCukSJqnKCDR3GoAnu6bIOHySquJrWB9_1__bkoae9S0rspix9oXb-hXejqIgMWUibqW_oDcZKokVDUzr8FIM0pU0JeGu8RS6N8vgcsLDRm78GC86MCtyyf4jWTyS1vD7BpwUaRQBAnXDohPVczCVHzswRyDLdGhc7OLca2fpqD0U_1-hzH27Agu_yg'
+      img: 'https://cdn.jsdelivr.net/gh/snesterov/magiyavolos-sale@main/images/cut_2.jpg'
     },
     {
       id: 3,
@@ -1913,7 +1913,7 @@
       shade: 'Светло-русый',
       weight: '95 грамм',
       price: 'от 18 500 ₽',
-      img: 'https://cdn4.telesco.pe/file/Zpd9mStkWCwb-zj5UqAvhOFGRk6kgivMbp2g_mLJtwtbrySP7EZWwLJtb6VjM_tdmOwoCd5XPvpgWc-LCMSSvbrWrfsxTusd20YiN7gREX5H7bPU3MxNj1aXuX7E8m3LxdHNHKTIWjye2Lfuc3GXpuqbnHYZlBmy7gGvQk2lvNhfJ1ZiKqwzPWeXkrqLc9tfIqdbANqKCJC2DTVzpSLWL8iNphfDFEiB8WJn44By-hbTWSb7Nth9EQ9oZyH8g4Nets-L1gq4MJhlRqWGuqykZutlDKwyWgPgc7Fzk7dh_Y8mAiEKG83avGeETYLYyjt1376yo5Esb9kCi8r4FWWjNg'
+      img: 'https://cdn.jsdelivr.net/gh/snesterov/magiyavolos-sale@main/images/cut_3.jpg'
     },
     {
       id: 4,
@@ -1927,7 +1927,7 @@
       shade: 'Шоколад',
       weight: '125 грамм',
       price: 'от 23 500 ₽',
-      img: 'https://cdn4.telesco.pe/file/ocbu0_B7Cud0z1UdxyVp3aL0CZtk1Q9f2unXBa5DvL0w7qpkGLrwH6LZPKRC1yx77NnSE0LE7AIJuLRr7eV8HkrEVGo7OKFblDGvm6yMKs3TQVgcNwHlW8Uvjp_KFshb5zCwLvxqXSOa_1Fl-GfxmjEoYbQ5kWrpr6WZ-8JppkBH0ngHOcsR0kiQwkwScUKWOntoky_sjkDfiQL8-Fk_1lkgvv02ffrHXT4Loyun2iFRLt06U2FjvIY6qV9t6AfmaUWAnCQrABHPElpkDZeJdH6YU4NKRP1m0C7Ra-_o-EMvUn0SnnOIOMTJLUHK2N7yMPUkO5SrQpi2_nbjsrMvAg'
+      img: 'https://cdn.jsdelivr.net/gh/snesterov/magiyavolos-sale@main/images/cut_4.jpg'
     },
     {
       id: 5,
@@ -1941,7 +1941,7 @@
       shade: 'Глубокий шоколад',
       weight: '140 грамм',
       price: 'от 25 000 ₽',
-      img: 'https://cdn4.telesco.pe/file/Xqp4-FcR8fSUmI42cmMSz2_L-1YjSwnCFazLD1j8l9ZwkjhDwmwriX4vG2ToGSJAVPYwFibv2rIcxy01HL6Eccs4eUej3buz-Hg9Vt65YFk2WrFsA8EeFEOswHEavEcTYwNTnjjhGiPdpfQIoE6DKKEfjDUml0ketR53FYTbcs8hvpowYexNmGMbu-_QdEusow6USeoKnOJBH3sSJ6CEZFVK5bd1jRviFduTJyvdbBKg1xso9WzZjYo5Lz1hBwqkLCvfnlzNWWcuuyZMRIs2H_ZhLhc2d7uLMaTqQ0Kr8hqfv1TU1TDZD14vyz3cXTEtG1hMTJwW9-0vOr9X2HEbjg'
+      img: 'https://cdn.jsdelivr.net/gh/snesterov/magiyavolos-sale@main/images/cut_5.jpg'
     },
     {
       id: 6,
@@ -1955,7 +1955,7 @@
       shade: 'Карамельный подтон',
       weight: '120 грамм',
       price: 'от 24 000 ₽',
-      img: 'https://cdn4.telesco.pe/file/SVUtPSue9W3sJKPZ6g3yF7QXNWiKxBSI-ELijUHgKP8ftFXN7fZDXsUyOOugo7Go5INzQaIiKqHlGwV5JrqjZxBdjI17efAwH0EHQoNTgEvgJPfwgE0JL9kZwsNK0I7Bid6CKbUNFXbINU9RMGH61L5bRqw93ZuEY3qt2AS9olWBLkFLT66XQDPweRtEHSV5V4w0fEE8XK96iYlJfACbwaareI6jUX0u07ssB2uJZUVnEb42VwWCn0B7KivjVAwELSaZg9BwkwRJ8ReHU-Ad1-nlGBHI5DeC-iTO0UCFjPWp1hjwMTdchf4XpHFGmmlRD63rVrONJ8E300kwKL1oOg'
+      img: 'https://cdn.jsdelivr.net/gh/snesterov/magiyavolos-sale@main/images/cut_6.jpg'
     },
     {
       id: 7,
@@ -1969,7 +1969,7 @@
       shade: 'Темно-русый',
       weight: '135 грамм',
       price: 'от 26 000 ₽',
-      img: 'https://cdn4.telesco.pe/file/pqnLh9sAgW96nzuJPvJO1EZJ-hPRRl6EvdlgT2MDuaFOkf9JQOZX_rWpH8ECzhREthdgaNxEwu_puC16tMvGH6z4QFLw6i03nMgzP_Slg15P1N6uWelkwKbqOQ_QsirC_xwMa5jOi7KkgbcN8IOllhPa67KfFFBqgMIvnEmzbjhXz3T25p9aKs5jrgaPxvl0OjlQBDdUYPAJHZS4Ne6cuV4m4kTaEbgagQdb0BbpxnvyxZakWyzDp1TxLBu2tRreU5OZM1Hkdi3vCR5lcQwo8nGOi1uzO8GCU6l1R3QLr-0yVgd2licJAxdhJfwn1tw--E0HmIVO3Bl5WK7t7H4R4A'
+      img: 'https://cdn.jsdelivr.net/gh/snesterov/magiyavolos-sale@main/images/cut_7.jpg'
     },
     {
       id: 8,
@@ -1983,7 +1983,7 @@
       shade: 'Шоколад',
       weight: '110 грамм',
       price: 'от 21 000 ₽',
-      img: 'https://cdn4.telesco.pe/file/VCVvwUuGkjJNX7OdLxCOwdwrzED4A3rxby23nn1yUP1hWe0f8N-gapRpHa7p5rc2VkGgtu9Ifmn0GxFSKFHcAZ9QjrIpOcLt3ImOnTGgwS8xFaeTgwGnqiwlldDA51XvMVX8x5K_97LIMiDkPDW8_dNCb-uYCf9LxHzSo-p0Rh9vfubC6wnhqP5blRiTqPIQYZkgZXMEkEsjCDubBf0ESMhENh9vMWVbi7A6HezEL7OML0X9VCHW-uTPHsHnKOqLsMk5wehvK8HMV9tokG-44J896RZEOqLuxOANgjdII9d9pomFMlw-xIGLco9sW1O_M6oyCPg415AzL49WYuaGVw'
+      img: 'https://cdn.jsdelivr.net/gh/snesterov/magiyavolos-sale@main/images/cut_8.jpg'
     }
   ];
 
@@ -2510,7 +2510,7 @@
         card.className = 'mv-card';
         card.innerHTML = `
           <div class="mv-card-img-wrap">
-            <img src="${item.img}" alt="${item.title}" class="mv-card-img" referrerpolicy="no-referrer" loading="lazy">
+            <img src="${item.img}" alt="${item.title}" class="mv-card-img" onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/snesterov/magiyavolos-sale/main/images/cut_' + item.id + '.jpg';" loading="lazy">
             ${item.is_video ? `
               <div class="mv-card-video-overlay" data-tg-url="${item.tg_url}" title="Смотреть видеообзор в Telegram">
                 <div class="mv-card-video-play">
