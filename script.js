@@ -209,10 +209,8 @@
         transform: translateY(-1px);
       }
       .mv-header-social--max:hover {
-        background: rgba(0, 128, 255, 0.2);
-        border-color: #0080FF;
-        color: #fff;
-        transform: translateY(-1px);
+        background: rgba(156, 44, 254, 0.2);
+        border-color: #9C2CFE;
       }
       .mv-header-phone {
         display: flex;
@@ -689,8 +687,8 @@
         color: #fff;
       }
       .mv-card-msg--max:hover {
-        background: rgba(0, 128, 255, 0.16);
-        border-color: #0080FF;
+        background: rgba(156, 44, 254, 0.16);
+        border-color: #9C2CFE;
         color: #fff;
       }
       .mv-card-channel-link {
@@ -2020,7 +2018,7 @@
                   <span class="mv-header-social-label">ЛС Telegram</span>
                 </a>
                 <a href="https://max.ru/u/f9LHodD0cOKWrw5xtMdExj0FHPSJ6XMPPXtGG050Eaxzc1IZ2NirvJiMRCo" target="_blank" rel="noopener noreferrer" class="mv-header-social mv-header-social--max" title="Написать в ЛС MAX">
-                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none"><circle cx="12" cy="12" r="12" fill="#0080FF"/><path d="M6.5 15.5V8.5h2.2l2.3 4.5 2.3-4.5h2.2v7h-1.8v-4.8l-2.1 4.2h-1.2L8.3 10.7v4.8H6.5z" fill="#ffffff"/></svg>
+                  <svg viewBox="0 0 100 100" width="18" height="18" fill="none"><defs><linearGradient id="mv-max-grad-h" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#246BFD"/><stop offset="100%" stop-color="#9C2CFE"/></linearGradient></defs><circle cx="50" cy="50" r="50" fill="url(#mv-max-grad-h)"/><g transform="translate(19, 19) scale(0.62)"><path fill="#ffffff" fill-rule="evenodd" clip-rule="evenodd" d="M50.76 0c27.53 0 49.12 22.34 49.12 49.89S77.61 99.23 51.02 99.23c-9.43 0-14.01-1.33-21.37-6.54-.5-.36-1.2-.26-1.63.19-5.66 6.04-20.17 10.28-20.83 2.03C7.19 80.53 0 71.18 0 49.61 0 21.3 23.22 0 50.76 0m.77 24.55c-13.07-.68-23.26 8.39-25.51 22.58-1.86 11.75 1.44 26.07 4.26 26.8 1.2.3 4.08-1.9 6.18-3.88.4-.37.99-.44 1.45-.15 3.27 2 6.97 3.5 11.05 3.71 13.42.7 25.3-9.8 26-23.21.71-13.42-10.01-25.14-23.43-25.85"/></g></svg>
                   <span class="mv-header-social-label">ЛС MAX</span>
                 </a>
               </div>
@@ -2386,7 +2384,7 @@
                   <span>Написать в ЛС Telegram (@Magiavolos)</span>
                 </a>
                 <a href="https://max.ru/u/f9LHodD0cOKWrw5xtMdExj0FHPSJ6XMPPXtGG050Eaxzc1IZ2NirvJiMRCo" target="_blank" rel="noopener noreferrer" class="mv-footer-ls-item">
-                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none"><circle cx="12" cy="12" r="12" fill="#0080FF"/><path d="M6.5 15.5V8.5h2.2l2.3 4.5 2.3-4.5h2.2v7h-1.8v-4.8l-2.1 4.2h-1.2L8.3 10.7v4.8H6.5z" fill="#ffffff"/></svg>
+                  <svg viewBox="0 0 100 100" width="18" height="18" fill="none"><defs><linearGradient id="mv-max-grad-f" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#246BFD"/><stop offset="100%" stop-color="#9C2CFE"/></linearGradient></defs><circle cx="50" cy="50" r="50" fill="url(#mv-max-grad-f)"/><g transform="translate(19, 19) scale(0.62)"><path fill="#ffffff" fill-rule="evenodd" clip-rule="evenodd" d="M50.76 0c27.53 0 49.12 22.34 49.12 49.89S77.61 99.23 51.02 99.23c-9.43 0-14.01-1.33-21.37-6.54-.5-.36-1.2-.26-1.63.19-5.66 6.04-20.17 10.28-20.83 2.03C7.19 80.53 0 71.18 0 49.61 0 21.3 23.22 0 50.76 0m.77 24.55c-13.07-.68-23.26 8.39-25.51 22.58-1.86 11.75 1.44 26.07 4.26 26.8 1.2.3 4.08-1.9 6.18-3.88.4-.37.99-.44 1.45-.15 3.27 2 6.97 3.5 11.05 3.71 13.42.7 25.3-9.8 26-23.21.71-13.42-10.01-25.14-23.43-25.85"/></g></svg>
                   <span>Написать в ЛС MAX (Мессенджер)</span>
                 </a>
                 <a href="https://t.me/magiavolos_chanel" target="_blank" rel="noopener noreferrer" class="mv-footer-ls-item">
@@ -2543,7 +2541,7 @@
                 <span>В ЛС Telegram</span>
               </a>
               <a href="https://max.ru/u/f9LHodD0cOKWrw5xtMdExj0FHPSJ6XMPPXtGG050Eaxzc1IZ2NirvJiMRCo" target="_blank" rel="noopener noreferrer" class="mv-card-msg-btn mv-card-msg--max" title="Написать в ЛС MAX">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none"><circle cx="12" cy="12" r="12" fill="#0080FF"/><path d="M6.5 15.5V8.5h2.2l2.3 4.5 2.3-4.5h2.2v7h-1.8v-4.8l-2.1 4.2h-1.2L8.3 10.7v4.8H6.5z" fill="#ffffff"/></svg>
+                <svg viewBox="0 0 100 100" width="16" height="16" fill="none"><defs><linearGradient id="mv-max-grad-c" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#246BFD"/><stop offset="100%" stop-color="#9C2CFE"/></linearGradient></defs><circle cx="50" cy="50" r="50" fill="url(#mv-max-grad-c)"/><g transform="translate(19, 19) scale(0.62)"><path fill="#ffffff" fill-rule="evenodd" clip-rule="evenodd" d="M50.76 0c27.53 0 49.12 22.34 49.12 49.89S77.61 99.23 51.02 99.23c-9.43 0-14.01-1.33-21.37-6.54-.5-.36-1.2-.26-1.63.19-5.66 6.04-20.17 10.28-20.83 2.03C7.19 80.53 0 71.18 0 49.61 0 21.3 23.22 0 50.76 0m.77 24.55c-13.07-.68-23.26 8.39-25.51 22.58-1.86 11.75 1.44 26.07 4.26 26.8 1.2.3 4.08-1.9 6.18-3.88.4-.37.99-.44 1.45-.15 3.27 2 6.97 3.5 11.05 3.71 13.42.7 25.3-9.8 26-23.21.71-13.42-10.01-25.14-23.43-25.85"/></g></svg>
                 <span>В ЛС MAX</span>
               </a>
             </div>
@@ -2917,7 +2915,7 @@
         phone: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none"><circle cx="12" cy="12" r="12" fill="rgba(197,155,109,0.25)"/><path d="M7 9.8a12.5 12.5 0 005.2 5.2l1.8-1.8c.2-.2.5-.3.8-.2.9.3 1.9.5 2.9.5.4 0 .8.4.8.8v2.9c0 .4-.4.8-.8.8-7.5 0-13.7-6.2-13.7-13.7 0-.4.4-.8.8-.8H8c.4 0 .8.4.8.8 0 1 .2 2 .5 2.9.1.3 0 .6-.2.8L7 9.8z" fill="#c59b6d"/></svg>',
         telegram: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none"><circle cx="12" cy="12" r="12" fill="#2AABEE"/><path d="M5.5 11.8l3.2 1.2 1.3 4.1c.2.5.8.6 1.1.2l1.9-1.9 3.8 2.8c.4.3 1 .1 1.1-.4l2.2-10.4c.1-.6-.4-1.1-1-.9L5.5 10.7c-.6.2-.6 1 0 1.1zm4.2 1l6.8-4.3c.2-.1.3.1.2.2l-5.6 5.1-.2 2.3-.8-2.6-.4-.7z" fill="#ffffff"/></svg>',
         whatsapp: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none"><circle cx="12" cy="12" r="12" fill="#25D366"/><path d="M17.5 14.5c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2s-.8 1-.9 1.2c-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.5-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.7.1-.1.3-.4.5-.5.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5s-.7-1.7-1-2.3c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4s-1.2 1.2-1.2 2.9c0 1.7 1.3 3.4 1.4 3.6.2.2 2.5 3.9 6.2 5.4.9.4 1.6.6 2.1.8.9.3 1.7.2 2.3.1.7-.1 2.1-.9 2.4-1.7.3-.8.3-1.6.2-1.7-.1-.2-.3-.3-.6-.5z" fill="#ffffff"/></svg>',
-        max_messenger: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none"><circle cx="12" cy="12" r="12" fill="#0080FF"/><path d="M6.5 15.5V8.5h2.2l2.3 4.5 2.3-4.5h2.2v7h-1.8v-4.8l-2.1 4.2h-1.2L8.3 10.7v4.8H6.5z" fill="#ffffff"/></svg>'
+        max_messenger: '<svg viewBox="0 0 100 100" width="20" height="20" fill="none"><defs><linearGradient id="mv-max-grad-tab" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#246BFD"/><stop offset="100%" stop-color="#9C2CFE"/></linearGradient></defs><circle cx="50" cy="50" r="50" fill="url(#mv-max-grad-tab)"/><g transform="translate(19, 19) scale(0.62)"><path fill="#ffffff" fill-rule="evenodd" clip-rule="evenodd" d="M50.76 0c27.53 0 49.12 22.34 49.12 49.89S77.61 99.23 51.02 99.23c-9.43 0-14.01-1.33-21.37-6.54-.5-.36-1.2-.26-1.63.19-5.66 6.04-20.17 10.28-20.83 2.03C7.19 80.53 0 71.18 0 49.61 0 21.3 23.22 0 50.76 0m.77 24.55c-13.07-.68-23.26 8.39-25.51 22.58-1.86 11.75 1.44 26.07 4.26 26.8 1.2.3 4.08-1.9 6.18-3.88.4-.37.99-.44 1.45-.15 3.27 2 6.97 3.5 11.05 3.71 13.42.7 25.3-9.8 26-23.21.71-13.42-10.01-25.14-23.43-25.85"/></g></svg>'
       };
 
       var titles = {
@@ -3120,7 +3118,7 @@
           <svg viewBox="0 0 24 24" width="22" height="22" fill="none"><circle cx="12" cy="12" r="12" fill="#2AABEE"/><path d="M5.5 11.8l3.2 1.2 1.3 4.1c.2.5.8.6 1.1.2l1.9-1.9 3.8 2.8c.4.3 1 .1 1.1-.4l2.2-10.4c.1-.6-.4-1.1-1-.9L5.5 10.7c-.6.2-.6 1 0 1.1zm4.2 1l6.8-4.3c.2-.1.3.1.2.2l-5.6 5.1-.2 2.3-.8-2.6-.4-.7z" fill="#ffffff"/></svg>
         </a>
         <a href="https://max.ru/u/f9LHodD0cOKWrw5xtMdExj0FHPSJ6XMPPXtGG050Eaxzc1IZ2NirvJiMRCo" target="_blank" rel="noopener noreferrer" class="mv-float-icon-btn mv-float--max" title="Написать в ЛС MAX">
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="none"><circle cx="12" cy="12" r="12" fill="#0080FF"/><path d="M6.5 15.5V8.5h2.2l2.3 4.5 2.3-4.5h2.2v7h-1.8v-4.8l-2.1 4.2h-1.2L8.3 10.7v4.8H6.5z" fill="#ffffff"/></svg>
+          <svg viewBox="0 0 100 100" width="22" height="22" fill="none"><defs><linearGradient id="mv-max-grad-w" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#246BFD"/><stop offset="100%" stop-color="#9C2CFE"/></linearGradient></defs><circle cx="50" cy="50" r="50" fill="url(#mv-max-grad-w)"/><g transform="translate(19, 19) scale(0.62)"><path fill="#ffffff" fill-rule="evenodd" clip-rule="evenodd" d="M50.76 0c27.53 0 49.12 22.34 49.12 49.89S77.61 99.23 51.02 99.23c-9.43 0-14.01-1.33-21.37-6.54-.5-.36-1.2-.26-1.63.19-5.66 6.04-20.17 10.28-20.83 2.03C7.19 80.53 0 71.18 0 49.61 0 21.3 23.22 0 50.76 0m.77 24.55c-13.07-.68-23.26 8.39-25.51 22.58-1.86 11.75 1.44 26.07 4.26 26.8 1.2.3 4.08-1.9 6.18-3.88.4-.37.99-.44 1.45-.15 3.27 2 6.97 3.5 11.05 3.71 13.42.7 25.3-9.8 26-23.21.71-13.42-10.01-25.14-23.43-25.85"/></g></svg>
         </a>
         <a href="tel:+79255063750" class="mv-float-icon-btn mv-float--phone" title="Позвонить в шоурум">
           <svg viewBox="0 0 24 24" width="22" height="22" fill="none"><circle cx="12" cy="12" r="12" fill="rgba(197,155,109,0.35)"/><path d="M7 9.8a12.5 12.5 0 005.2 5.2l1.8-1.8c.2-.2.5-.3.8-.2.9.3 1.9.5 2.9.5.4 0 .8.4.8.8v2.9c0 .4-.4.8-.8.8-7.5 0-13.7-6.2-13.7-13.7 0-.4.4-.8.8-.8H8c.4 0 .8.4.8.8 0 1 .2 2 .5 2.9.1.3 0 .6-.2.8L7 9.8z" fill="#edd8be"/></svg>
