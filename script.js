@@ -1874,118 +1874,157 @@
   // Данные срезов (СИНХРОНИЗИРОВАНО С РЕАЛЬНЫМИ ВИДЕОПОСТАМИ ИЗ TELEGRAM @magiavolos_chanel)
   var CATALOG_ITEMS = [
     {
-      id: 1,
-      title: 'Детские срезы • Легкая и активная волна',
-      category: 'детские_срезы',
-      tags: ['#детские_срезы', '#легкая_волна', '#видеообзор'],
-      is_video: true,
-      tg_url: 'https://t.me/magiavolos_chanel/1219',
-      len: '50-55 см',
-      struct: 'Легкая волна',
-      shade: 'Русый целинный',
-      weight: '105 грамм',
-      price: 'от 19 500 ₽',
-      img: 'https://cdn.jsdelivr.net/gh/snesterov/magiyavolos-sale@main/images/cut_1.jpg'
+        "id": 1,
+        "title": "Детские срезы • Активная волна и кудри",
+        "category": "активная_волна",
+        "tags": [
+            "#видеообзор",
+            "#детские_срезы",
+            "#активная_волна",
+            "#кудри",
+            "#одноголовый_срез"
+        ],
+        "is_video": true,
+        "tg_url": "https://t.me/magiavolos_chanel/1224",
+        "len": "55-60 см",
+        "struct": "Активная волна и кудри",
+        "shade": "Натуральный русый",
+        "weight": "115 грамм",
+        "price": "от 21 000 ₽",
+        "img": "https://cdn.jsdelivr.net/gh/snesterov/magiyavolos-sale@main/images/cut_1224.jpg"
     },
     {
-      id: 2,
-      title: 'Детские срезы • Активная волна и кудри',
-      category: 'активная_волна',
-      tags: ['#детские_срезы', '#активная_волна', '#кудри', '#видеообзор'],
-      is_video: true,
-      tg_url: 'https://t.me/magiavolos_chanel/1224',
-      len: '55-60 см',
-      struct: 'Активная волна',
-      shade: 'Натуральный русый',
-      weight: '115 грамм',
-      price: 'от 22 000 ₽',
-      img: 'https://cdn.jsdelivr.net/gh/snesterov/magiyavolos-sale@main/images/cut_2.jpg'
+        "id": 2,
+        "title": "Кудрявые или прямые • Шелковистая волна",
+        "category": "славянский_люкс",
+        "tags": [
+            "#видеообзор",
+            "#одноголовый_срез"
+        ],
+        "is_video": true,
+        "tg_url": "https://t.me/magiavolos_chanel/1229",
+        "len": "55-60 см",
+        "struct": "Шелковистая волна",
+        "shade": "Натуральный русый",
+        "weight": "115 грамм",
+        "price": "от 21 000 ₽",
+        "img": "https://cdn.jsdelivr.net/gh/snesterov/magiyavolos-sale@main/images/cut_1229.jpg"
     },
     {
-      id: 3,
-      title: 'Детский целинный хвостик • Не окрашен',
-      category: 'детские_срезы',
-      tags: ['#детские_срезы', '#не_окрашен', '#одноголовый_срез', '#видеообзор'],
-      is_video: true,
-      tg_url: 'https://t.me/magiavolos_chanel/1231',
-      len: '45-50 см',
-      struct: 'Тонкий шелк',
-      shade: 'Светло-русый',
-      weight: '95 грамм',
-      price: 'от 18 500 ₽',
-      img: 'https://cdn.jsdelivr.net/gh/snesterov/magiyavolos-sale@main/images/cut_3.jpg'
+        "id": 3,
+        "title": "Хвостик в наличии • Шелковистая волна",
+        "category": "детские_срезы",
+        "tags": [
+            "#видеообзор",
+            "#детские_срезы",
+            "#не_окрашен",
+            "#одноголовый_срез"
+        ],
+        "is_video": true,
+        "tg_url": "https://t.me/magiavolos_chanel/1231",
+        "len": "55-60 см",
+        "struct": "Шелковистая волна",
+        "shade": "Натуральный русый",
+        "weight": "115 грамм",
+        "price": "от 19 500 ₽",
+        "img": "https://cdn.jsdelivr.net/gh/snesterov/magiyavolos-sale@main/images/cut_1231.jpg"
     },
     {
-      id: 4,
-      title: 'Шелковистый хвостик • Шоколадный оттенок',
-      category: 'славянский_люкс',
-      tags: ['#славянский_люкс', '#шоколад', '#прямой_срез', '#видеообзор'],
-      is_video: true,
-      tg_url: 'https://t.me/magiavolos_chanel/1232',
-      len: '60-65 см',
-      struct: 'Прямой с легкой волной',
-      shade: 'Шоколад',
-      weight: '125 грамм',
-      price: 'от 23 500 ₽',
-      img: 'https://cdn.jsdelivr.net/gh/snesterov/magiyavolos-sale@main/images/cut_4.jpg'
+        "id": 4,
+        "title": "В наличии • Плотный прямой",
+        "category": "славянский_люкс",
+        "tags": [
+            "#видеообзор",
+            "#прямой_срез",
+            "#шоколад",
+            "#одноголовый_срез"
+        ],
+        "is_video": true,
+        "tg_url": "https://t.me/magiavolos_chanel/1232",
+        "len": "55-60 см",
+        "struct": "Плотный прямой",
+        "shade": "Глубокий шоколад",
+        "weight": "115 грамм",
+        "price": "от 21 000 ₽",
+        "img": "https://cdn.jsdelivr.net/gh/snesterov/magiyavolos-sale@main/images/cut_1232.jpg"
     },
     {
-      id: 5,
-      title: 'Прямой одноголовый срез • Глубокий шоколад',
-      category: 'глубокий_шоколад',
-      tags: ['#глубокий_шоколад', '#не_окрашен', '#прямой_срез', '#видеообзор'],
-      is_video: true,
-      tg_url: 'https://t.me/magiavolos_chanel/1233',
-      len: '65-70 см',
-      struct: 'Плотный прямой',
-      shade: 'Глубокий шоколад',
-      weight: '140 грамм',
-      price: 'от 25 000 ₽',
-      img: 'https://cdn.jsdelivr.net/gh/snesterov/magiyavolos-sale@main/images/cut_5.jpg'
+        "id": 5,
+        "title": "В наличии • Плотный прямой",
+        "category": "славянский_люкс",
+        "tags": [
+            "#видеообзор",
+            "#прямой_срез",
+            "#шоколад",
+            "#не_окрашен",
+            "#одноголовый_срез"
+        ],
+        "is_video": true,
+        "tg_url": "https://t.me/magiavolos_chanel/1233",
+        "len": "55-60 см",
+        "struct": "Плотный прямой",
+        "shade": "Глубокий шоколад",
+        "weight": "115 грамм",
+        "price": "от 21 000 ₽",
+        "img": "https://cdn.jsdelivr.net/gh/snesterov/magiyavolos-sale@main/images/cut_1233.jpg"
     },
     {
-      id: 6,
-      title: 'Волна с карамельным подтоном • Не окрашен',
-      category: 'активная_волна',
-      tags: ['#активная_волна', '#карамель', '#не_окрашен', '#видеообзор'],
-      is_video: true,
-      tg_url: 'https://t.me/magiavolos_chanel/1235',
-      len: '60-65 см',
-      struct: 'Мягкая волна',
-      shade: 'Карамельный подтон',
-      weight: '120 грамм',
-      price: 'от 24 000 ₽',
-      img: 'https://cdn.jsdelivr.net/gh/snesterov/magiyavolos-sale@main/images/cut_6.jpg'
+        "id": 6,
+        "title": "Волна в наличии • Мягкая крупная волна",
+        "category": "славянский_люкс",
+        "tags": [
+            "#видеообзор",
+            "#волна",
+            "#одноголовый_срез"
+        ],
+        "is_video": true,
+        "tg_url": "https://t.me/magiavolos_chanel/1234",
+        "len": "55-60 см",
+        "struct": "Мягкая крупная волна",
+        "shade": "Натуральный русый",
+        "weight": "115 грамм",
+        "price": "от 21 000 ₽",
+        "img": "https://cdn.jsdelivr.net/gh/snesterov/magiyavolos-sale@main/images/cut_1234.jpg"
     },
     {
-      id: 7,
-      title: 'Роскошные кудри • Отборный срез',
-      category: 'активная_волна',
-      tags: ['#роскошные_кудри', '#кудри', '#видеообзор'],
-      is_video: true,
-      tg_url: 'https://t.me/magiavolos_chanel/1236',
-      len: '65-70 см',
-      struct: 'Упругие кудри',
-      shade: 'Темно-русый',
-      weight: '135 грамм',
-      price: 'от 26 000 ₽',
-      img: 'https://cdn.jsdelivr.net/gh/snesterov/magiyavolos-sale@main/images/cut_7.jpg'
+        "id": 7,
+        "title": "В наличии • Мягкая крупная волна",
+        "category": "славянский_люкс",
+        "tags": [
+            "#видеообзор",
+            "#волна",
+            "#карамель",
+            "#одноголовый_срез"
+        ],
+        "is_video": true,
+        "tg_url": "https://t.me/magiavolos_chanel/1235",
+        "len": "55-60 см",
+        "struct": "Мягкая крупная волна",
+        "shade": "Карамельный подтон",
+        "weight": "115 грамм",
+        "price": "от 21 000 ₽",
+        "img": "https://cdn.jsdelivr.net/gh/snesterov/magiyavolos-sale@main/images/cut_1235.jpg"
     },
     {
-      id: 8,
-      title: 'Красивая волна • Одноголовый срез',
-      category: 'активная_волна',
-      tags: ['#одноголовый_срез', '#не_окрашен', '#активная_волна', '#видеообзор'],
-      is_video: true,
-      tg_url: 'https://t.me/magiavolos_chanel/1237',
-      len: '55-60 см',
-      struct: 'Крупная волна',
-      shade: 'Шоколад',
-      weight: '110 грамм',
-      price: 'от 21 000 ₽',
-      img: 'https://cdn.jsdelivr.net/gh/snesterov/magiyavolos-sale@main/images/cut_8.jpg'
+        "id": 8,
+        "title": "Роскошные кудри • Активная волна и кудри",
+        "category": "активная_волна",
+        "tags": [
+            "#видеообзор",
+            "#активная_волна",
+            "#кудри",
+            "#одноголовый_срез"
+        ],
+        "is_video": true,
+        "tg_url": "https://t.me/magiavolos_chanel/1236",
+        "len": "55-60 см",
+        "struct": "Активная волна и кудри",
+        "shade": "Натуральный русый",
+        "weight": "115 грамм",
+        "price": "от 21 000 ₽",
+        "img": "https://cdn.jsdelivr.net/gh/snesterov/magiyavolos-sale@main/images/cut_1236.jpg"
     }
-  ];
+];
 
   // 3. Рендер приложения SPA
   function renderApp() {
@@ -2392,7 +2431,7 @@
                   <span>Канал со срезами (@magiavolos_chanel)</span>
                 </a>
                 <a href="tel:+79255063750" style="margin-top:6px;"><strong>+7 (925) 506-37-50</strong> (Консультация)</a>
-                <a href="tel:+79255063750">+7 (925) 506-37-50 (Шоурум фабрики)</a>
+                <a href="tel:+74951363244">+7 (495) 136-32-44 (Шоурум фабрики)</a>
                 <span>г. Москва, ул. Машкова, 26с1</span>
                 <span>Ежедневно с 10:00 до 20:00</span>
               </div>
