@@ -1,0 +1,41 @@
+name: Auto Update Catalog from Telegram
+
+on:
+  schedule:
+    # Run every 2 hours
+    - cron: '0 */2 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-catalog:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Run Telegram catalog updater
+        run: |
+          python auto_update_catalog.py
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add images/ script.js catalog.json
+          if git diff --staged --quiet; then
+            echo "No new updates from Telegram channel."
+          else
+            git commit -m "chore(catalog): auto-update cuts from Telegram channel [skip ci]"
+            git push origin main
+            echo "Successfully committed and pushed updates!"
+            curl -s https://purge.jsdelivr.net/gh/${{ github.repository }}@main/script.js || true
+            curl -s https://purge.jsdelivr.net/gh/${{ github.repository }}@main/catalog.json || true
+          fi
